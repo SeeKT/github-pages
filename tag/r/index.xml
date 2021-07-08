@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R | 立ち話</title>
-    <link>https://SeeKT.github.io/tag/r/</link>
-      <atom:link href="https://SeeKT.github.io/tag/r/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://tachibana-ai.netlify.app/tag/r/</link>
+      <atom:link href="https://tachibana-ai.netlify.app/tag/r/index.xml" rel="self" type="application/rss+xml" />
     <description>R</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Thu, 08 Jul 2021 18:07:46 +0900</lastBuildDate>
     <image>
-      <url>https://SeeKT.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>R</title>
-      <link>https://SeeKT.github.io/tag/r/</link>
+      <link>https://tachibana-ai.netlify.app/tag/r/</link>
     </image>
     
     <item>
       <title>Ubuntu20.04にRとRStudioをインストールする</title>
-      <link>https://SeeKT.github.io/post/ubuntu_rstudio/</link>
+      <link>https://tachibana-ai.netlify.app/post/ubuntu_rstudio/</link>
       <pubDate>Thu, 08 Jul 2021 18:07:46 +0900</pubDate>
-      <guid>https://SeeKT.github.io/post/ubuntu_rstudio/</guid>
+      <guid>https://tachibana-ai.netlify.app/post/ubuntu_rstudio/</guid>
       <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
 &lt;p&gt;授業でRとRStudioを使う必要があったのでインストールした．
 前処理がめんどくさかったので，シェルスクリプトを書いた．&lt;/p&gt;

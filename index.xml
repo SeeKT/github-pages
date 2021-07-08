@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>立ち話</title>
-    <link>https://SeeKT.github.io/</link>
-      <atom:link href="https://SeeKT.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://tachibana-ai.netlify.app/</link>
+      <atom:link href="https://tachibana-ai.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <description>立ち話</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Thu, 08 Jul 2021 19:15:53 +0900</lastBuildDate>
     <image>
-      <url>https://SeeKT.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>立ち話</title>
-      <link>https://SeeKT.github.io/</link>
+      <link>https://tachibana-ai.netlify.app/</link>
     </image>
     
     <item>
       <title>普段使っているPC周りの環境</title>
-      <link>https://SeeKT.github.io/post/myenv/</link>
+      <link>https://tachibana-ai.netlify.app/post/myenv/</link>
       <pubDate>Thu, 08 Jul 2021 19:15:53 +0900</pubDate>
-      <guid>https://SeeKT.github.io/post/myenv/</guid>
+      <guid>https://tachibana-ai.netlify.app/post/myenv/</guid>
       <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
 &lt;p&gt;この記事では，私が普段使っているPC周りの環境を書く．就職したらもっと良いのがほしい．&lt;/p&gt;
 &lt;h3 id=&#34;1-自宅の環境とノートpc&#34;&gt;1. 自宅の環境とノートPC&lt;/h3&gt;
@@ -127,9 +127,9 @@
     
     <item>
       <title>Python3の開発環境をDocker containerとして作る</title>
-      <link>https://SeeKT.github.io/post/docker_python/</link>
+      <link>https://tachibana-ai.netlify.app/post/docker_python/</link>
       <pubDate>Thu, 08 Jul 2021 18:58:51 +0900</pubDate>
-      <guid>https://SeeKT.github.io/post/docker_python/</guid>
+      <guid>https://tachibana-ai.netlify.app/post/docker_python/</guid>
       <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
 &lt;p&gt;この記事では，Docker containerとしてPythonの開発環境を作ったときのメモを残す．
 この記事の内容は，GitHubのサブのアカウントの&lt;a href=&#34;https://github.com/tcbn-ai/Docker_python_env&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;publicリポジトリ&lt;/a&gt;で公開している．&lt;/p&gt;
@@ -279,9 +279,9 @@ networkx
     
     <item>
       <title>Ubuntu20.04にDocker Engineをインストールする</title>
-      <link>https://SeeKT.github.io/post/ubuntu_docker/</link>
+      <link>https://tachibana-ai.netlify.app/post/ubuntu_docker/</link>
       <pubDate>Thu, 08 Jul 2021 18:25:39 +0900</pubDate>
-      <guid>https://SeeKT.github.io/post/ubuntu_docker/</guid>
+      <guid>https://tachibana-ai.netlify.app/post/ubuntu_docker/</guid>
       <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
 &lt;p&gt;私が学部4年から修士1年までに使っていたPythonの開発環境はUbuntu上にpipとpipenvを入れ，pipenvで仮想環境を作って使うというものだった．Ubuntuを20にアップグレードしたときにこれまで使っていた仮想環境でプログラムが動かない，ということが起こった．&lt;/p&gt;
 &lt;p&gt;このように，OSに1つの環境を作って動かそうとした際には，更新に伴いプログラムが動かなくなるというリスクがある．さらに，以下のような問題が挙げられる．&lt;/p&gt;
@@ -384,9 +384,9 @@ sudo gpasswd -a $USER docker
     
     <item>
       <title>Ubuntu20.04にRとRStudioをインストールする</title>
-      <link>https://SeeKT.github.io/post/ubuntu_rstudio/</link>
+      <link>https://tachibana-ai.netlify.app/post/ubuntu_rstudio/</link>
       <pubDate>Thu, 08 Jul 2021 18:07:46 +0900</pubDate>
-      <guid>https://SeeKT.github.io/post/ubuntu_rstudio/</guid>
+      <guid>https://tachibana-ai.netlify.app/post/ubuntu_rstudio/</guid>
       <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
 &lt;p&gt;授業でRとRStudioを使う必要があったのでインストールした．
 前処理がめんどくさかったので，シェルスクリプトを書いた．&lt;/p&gt;
@@ -486,9 +486,9 @@ sudo -S gdebi rstudio-1.4.1106-amd64.deb
     
     <item>
       <title>Ubuntu20.04にTeX Liveをインストールする</title>
-      <link>https://SeeKT.github.io/post/ubuntu_tex/</link>
+      <link>https://tachibana-ai.netlify.app/post/ubuntu_tex/</link>
       <pubDate>Thu, 08 Jul 2021 18:00:11 +0900</pubDate>
-      <guid>https://SeeKT.github.io/post/ubuntu_tex/</guid>
+      <guid>https://tachibana-ai.netlify.app/post/ubuntu_tex/</guid>
       <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;UbuntuにTeXを入れたときのメモ&lt;/li&gt;
@@ -619,9 +619,9 @@ $pdf_update_method = 4;
     
     <item>
       <title>自己紹介</title>
-      <link>https://SeeKT.github.io/post/first-post/</link>
+      <link>https://tachibana-ai.netlify.app/post/first-post/</link>
       <pubDate>Thu, 08 Jul 2021 16:14:02 +0900</pubDate>
-      <guid>https://SeeKT.github.io/post/first-post/</guid>
+      <guid>https://tachibana-ai.netlify.app/post/first-post/</guid>
       <description>&lt;h3 id=&#34;0-自己紹介-2021年現在&#34;&gt;0. 自己紹介 (2021年現在)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;ハンドルネーム

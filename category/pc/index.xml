@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>PC | 立ち話</title>
-    <link>https://SeeKT.github.io/category/pc/</link>
-      <atom:link href="https://SeeKT.github.io/category/pc/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://tachibana-ai.netlify.app/category/pc/</link>
+      <atom:link href="https://tachibana-ai.netlify.app/category/pc/index.xml" rel="self" type="application/rss+xml" />
     <description>PC</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Thu, 08 Jul 2021 19:15:53 +0900</lastBuildDate>
     <image>
-      <url>https://SeeKT.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>PC</title>
-      <link>https://SeeKT.github.io/category/pc/</link>
+      <link>https://tachibana-ai.netlify.app/category/pc/</link>
     </image>
     
     <item>
       <title>普段使っているPC周りの環境</title>
-      <link>https://SeeKT.github.io/post/myenv/</link>
+      <link>https://tachibana-ai.netlify.app/post/myenv/</link>
       <pubDate>Thu, 08 Jul 2021 19:15:53 +0900</pubDate>
-      <guid>https://SeeKT.github.io/post/myenv/</guid>
+      <guid>https://tachibana-ai.netlify.app/post/myenv/</guid>
       <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
 &lt;p&gt;この記事では，私が普段使っているPC周りの環境を書く．就職したらもっと良いのがほしい．&lt;/p&gt;
 &lt;h3 id=&#34;1-自宅の環境とノートpc&#34;&gt;1. 自宅の環境とノートPC&lt;/h3&gt;

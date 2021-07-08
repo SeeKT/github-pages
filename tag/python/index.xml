@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python | 立ち話</title>
-    <link>https://SeeKT.github.io/tag/python/</link>
-      <atom:link href="https://SeeKT.github.io/tag/python/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://tachibana-ai.netlify.app/tag/python/</link>
+      <atom:link href="https://tachibana-ai.netlify.app/tag/python/index.xml" rel="self" type="application/rss+xml" />
     <description>Python</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Thu, 08 Jul 2021 18:58:51 +0900</lastBuildDate>
     <image>
-      <url>https://SeeKT.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Python</title>
-      <link>https://SeeKT.github.io/tag/python/</link>
+      <link>https://tachibana-ai.netlify.app/tag/python/</link>
     </image>
     
     <item>
       <title>Python3の開発環境をDocker containerとして作る</title>
-      <link>https://SeeKT.github.io/post/docker_python/</link>
+      <link>https://tachibana-ai.netlify.app/post/docker_python/</link>
       <pubDate>Thu, 08 Jul 2021 18:58:51 +0900</pubDate>
-      <guid>https://SeeKT.github.io/post/docker_python/</guid>
+      <guid>https://tachibana-ai.netlify.app/post/docker_python/</guid>
       <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
 &lt;p&gt;この記事では，Docker containerとしてPythonの開発環境を作ったときのメモを残す．
 この記事の内容は，GitHubのサブのアカウントの&lt;a href=&#34;https://github.com/tcbn-ai/Docker_python_env&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;publicリポジトリ&lt;/a&gt;で公開している．&lt;/p&gt;

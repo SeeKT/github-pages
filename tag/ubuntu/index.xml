@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ubuntu | 立ち話</title>
-    <link>https://SeeKT.github.io/tag/ubuntu/</link>
-      <atom:link href="https://SeeKT.github.io/tag/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://tachibana-ai.netlify.app/tag/ubuntu/</link>
+      <atom:link href="https://tachibana-ai.netlify.app/tag/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     <description>Ubuntu</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Thu, 08 Jul 2021 18:25:39 +0900</lastBuildDate>
     <image>
-      <url>https://SeeKT.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Ubuntu</title>
-      <link>https://SeeKT.github.io/tag/ubuntu/</link>
+      <link>https://tachibana-ai.netlify.app/tag/ubuntu/</link>
     </image>
     
     <item>
       <title>Ubuntu20.04にDocker Engineをインストールする</title>
-      <link>https://SeeKT.github.io/post/ubuntu_docker/</link>
+      <link>https://tachibana-ai.netlify.app/post/ubuntu_docker/</link>
       <pubDate>Thu, 08 Jul 2021 18:25:39 +0900</pubDate>
-      <guid>https://SeeKT.github.io/post/ubuntu_docker/</guid>
+      <guid>https://tachibana-ai.netlify.app/post/ubuntu_docker/</guid>
       <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
 &lt;p&gt;私が学部4年から修士1年までに使っていたPythonの開発環境はUbuntu上にpipとpipenvを入れ，pipenvで仮想環境を作って使うというものだった．Ubuntuを20にアップグレードしたときにこれまで使っていた仮想環境でプログラムが動かない，ということが起こった．&lt;/p&gt;
 &lt;p&gt;このように，OSに1つの環境を作って動かそうとした際には，更新に伴いプログラムが動かなくなるというリスクがある．さらに，以下のような問題が挙げられる．&lt;/p&gt;
@@ -119,9 +119,9 @@ sudo gpasswd -a $USER docker
     
     <item>
       <title>Ubuntu20.04にRとRStudioをインストールする</title>
-      <link>https://SeeKT.github.io/post/ubuntu_rstudio/</link>
+      <link>https://tachibana-ai.netlify.app/post/ubuntu_rstudio/</link>
       <pubDate>Thu, 08 Jul 2021 18:07:46 +0900</pubDate>
-      <guid>https://SeeKT.github.io/post/ubuntu_rstudio/</guid>
+      <guid>https://tachibana-ai.netlify.app/post/ubuntu_rstudio/</guid>
       <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
 &lt;p&gt;授業でRとRStudioを使う必要があったのでインストールした．
 前処理がめんどくさかったので，シェルスクリプトを書いた．&lt;/p&gt;
@@ -221,9 +221,9 @@ sudo -S gdebi rstudio-1.4.1106-amd64.deb
     
     <item>
       <title>Ubuntu20.04にTeX Liveをインストールする</title>
-      <link>https://SeeKT.github.io/post/ubuntu_tex/</link>
+      <link>https://tachibana-ai.netlify.app/post/ubuntu_tex/</link>
       <pubDate>Thu, 08 Jul 2021 18:00:11 +0900</pubDate>
-      <guid>https://SeeKT.github.io/post/ubuntu_tex/</guid>
+      <guid>https://tachibana-ai.netlify.app/post/ubuntu_tex/</guid>
       <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;UbuntuにTeXを入れたときのメモ&lt;/li&gt;

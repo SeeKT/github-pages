@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Introduction | 立ち話</title>
-    <link>https://SeeKT.github.io/category/introduction/</link>
-      <atom:link href="https://SeeKT.github.io/category/introduction/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://tachibana-ai.netlify.app/category/introduction/</link>
+      <atom:link href="https://tachibana-ai.netlify.app/category/introduction/index.xml" rel="self" type="application/rss+xml" />
     <description>Introduction</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Thu, 08 Jul 2021 16:14:02 +0900</lastBuildDate>
     <image>
-      <url>https://SeeKT.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Introduction</title>
-      <link>https://SeeKT.github.io/category/introduction/</link>
+      <link>https://tachibana-ai.netlify.app/category/introduction/</link>
     </image>
     
     <item>
       <title>自己紹介</title>
-      <link>https://SeeKT.github.io/post/first-post/</link>
+      <link>https://tachibana-ai.netlify.app/post/first-post/</link>
       <pubDate>Thu, 08 Jul 2021 16:14:02 +0900</pubDate>
-      <guid>https://SeeKT.github.io/post/first-post/</guid>
+      <guid>https://tachibana-ai.netlify.app/post/first-post/</guid>
       <description>&lt;h3 id=&#34;0-自己紹介-2021年現在&#34;&gt;0. 自己紹介 (2021年現在)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;ハンドルネーム

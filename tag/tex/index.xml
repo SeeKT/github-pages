@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>TeX | 立ち話</title>
-    <link>https://SeeKT.github.io/tag/tex/</link>
-      <atom:link href="https://SeeKT.github.io/tag/tex/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://tachibana-ai.netlify.app/tag/tex/</link>
+      <atom:link href="https://tachibana-ai.netlify.app/tag/tex/index.xml" rel="self" type="application/rss+xml" />
     <description>TeX</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Thu, 08 Jul 2021 18:00:11 +0900</lastBuildDate>
     <image>
-      <url>https://SeeKT.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>TeX</title>
-      <link>https://SeeKT.github.io/tag/tex/</link>
+      <link>https://tachibana-ai.netlify.app/tag/tex/</link>
     </image>
     
     <item>
       <title>Ubuntu20.04にTeX Liveをインストールする</title>
-      <link>https://SeeKT.github.io/post/ubuntu_tex/</link>
+      <link>https://tachibana-ai.netlify.app/post/ubuntu_tex/</link>
       <pubDate>Thu, 08 Jul 2021 18:00:11 +0900</pubDate>
-      <guid>https://SeeKT.github.io/post/ubuntu_tex/</guid>
+      <guid>https://tachibana-ai.netlify.app/post/ubuntu_tex/</guid>
       <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;UbuntuにTeXを入れたときのメモ&lt;/li&gt;
