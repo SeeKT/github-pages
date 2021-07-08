@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R | 立ち話</title>
+    <link>https://SeeKT.github.io/tag/r/</link>
+      <atom:link href="https://SeeKT.github.io/tag/r/index.xml" rel="self" type="application/rss+xml" />
+    <description>R</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Thu, 08 Jul 2021 18:07:46 +0900</lastBuildDate>
+    <image>
+      <url>https://SeeKT.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>R</title>
+      <link>https://SeeKT.github.io/tag/r/</link>
+    </image>
+    
+    <item>
+      <title>Ubuntu20.04にRとRStudioをインストールする</title>
+      <link>https://SeeKT.github.io/post/ubuntu_rstudio/</link>
+      <pubDate>Thu, 08 Jul 2021 18:07:46 +0900</pubDate>
+      <guid>https://SeeKT.github.io/post/ubuntu_rstudio/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;授業でRとRStudioを使う必要があったのでインストールした．
+前処理がめんどくさかったので，シェルスクリプトを書いた．&lt;/p&gt;
+&lt;h5 id=&#34;参考&#34;&gt;参考&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://yukiyanai.github.io/jp/resources/docs/install-R_ubuntu.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;RとRStudioのインストールと初期設定 Linux (Ubuntu) 編&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;1-前処理&#34;&gt;1. 前処理&lt;/h3&gt;
+&lt;p&gt;次のようなシェルスクリプトを書き，&lt;code&gt;~/install_R_requirement.sh&lt;/code&gt;として保存した．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;#!/bin/bash
+
+# Written by A.Tachibana, 2021/4/28
+
+# Objective
+## To install R in Ubuntu 20
+## Requirement packages
+
+# Reference
+## https://yukiyanai.github.io/jp/resources/docs/install-R_ubuntu.pdf
+
+############ To execute ############
+# chmod 755 install_R_requirement.sh
+# ./install_R_requirement.sh
+####################################
+
+# Require password
+printf &amp;quot;password: &amp;quot;
+read -s password
+
+# Update and Upgrade
+echo &amp;quot;$password&amp;quot; | sudo -S apt update &amp;amp;&amp;amp; sudo -S apt -y upgrade
+
+# 1. Install tools
+sudo -S apt -y install gdebi-core wget 
+
+# 2. Get fonts
+sudo -S apt -y install fonts-ipaexfont
+fc-cache -f -v
+
+# 3. Install requirement tools
+## requirement tools
+sudo -S apt -y install build-essential libxml2-dev libssl-dev libx11-dev libglu1-mesa-dev libmagick++-dev libudunits2-0 libudunits2-dev libgdal-dev libproj-dev libgmp3-dev curl 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;このファイルに実行権限を与え，実行する．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;chmod 755 install_R_requirement.sh
+./install_R_requirement.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-rとrstudioのインストール&#34;&gt;2. RとRStudioのインストール&lt;/h3&gt;
+&lt;p&gt;次のようなシェルスクリプトを書き，&lt;code&gt;~/install_R.sh&lt;/code&gt;として保存した．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;#!/bin/bash
+
+# Written by A.Tachibana, 2021/4/28
+
+# Objective
+## To install R in Ubuntu 20
+
+# Reference
+## https://yukiyanai.github.io/jp/resources/docs/install-R_ubuntu.pdf
+
+############ To execute ############
+# chmod 755 install_R.sh
+# ./install_R.sh
+    # execute after install_R_requirement.sh
+####################################
+
+# Require password
+printf &amp;quot;password: &amp;quot;
+read -s password
+
+# 1. add repository
+sudo -S apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+sudo -S add-apt-repository &#39;deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/&#39;
+# 2. install R base
+sudo -S apt update
+sudo -S apt -y install r-base 
+# 3. install RStudio
+cd ~/Downloads/
+# 2021/4/28
+wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.4.1106-amd64.deb
+sudo -S gdebi rstudio-1.4.1106-amd64.deb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;このファイルに実行権限を与え，実行する．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;chmod 755 install_R.sh
+./install_R.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;注意点&#34;&gt;注意点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;RStudioに関しては2021/4/28時点で最新のものをダウンロードしたが，現在はもっと新しいものが出ていると思う．
+&lt;ul&gt;
+&lt;li&gt;「最新版を持ってくる」ような書き方が分からなくて，頭の悪い書き方をしている．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;install_R.sh&lt;/code&gt;は，&lt;code&gt;install_R_requirement.sh&lt;/code&gt;の実行後に実行する．&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

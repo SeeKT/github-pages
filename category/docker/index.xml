@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker | 立ち話</title>
+    <link>https://SeeKT.github.io/category/docker/</link>
+      <atom:link href="https://SeeKT.github.io/category/docker/index.xml" rel="self" type="application/rss+xml" />
+    <description>Docker</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Thu, 08 Jul 2021 18:58:51 +0900</lastBuildDate>
+    <image>
+      <url>https://SeeKT.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>Docker</title>
+      <link>https://SeeKT.github.io/category/docker/</link>
+    </image>
+    
+    <item>
+      <title>Python3の開発環境をDocker containerとして作る</title>
+      <link>https://SeeKT.github.io/post/docker_python/</link>
+      <pubDate>Thu, 08 Jul 2021 18:58:51 +0900</pubDate>
+      <guid>https://SeeKT.github.io/post/docker_python/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;この記事では，Docker containerとしてPythonの開発環境を作ったときのメモを残す．
+この記事の内容は，GitHubのサブのアカウントの&lt;a href=&#34;https://github.com/tcbn-ai/Docker_python_env&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;publicリポジトリ&lt;/a&gt;で公開している．&lt;/p&gt;
+&lt;h3 id=&#34;1-必要なもの&#34;&gt;1. 必要なもの&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Docker Engineのインストール&lt;/li&gt;
+&lt;li&gt;VSCodeのインストール
+&lt;ul&gt;
+&lt;li&gt;Remote Developementの導入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-基本構成&#34;&gt;2. 基本構成&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Docker Image
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://hub.docker.com/_/python&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;python&lt;/a&gt;の&lt;a href=&#34;https://github.com/docker-library/python/blob/e0e01b8482ea14352c710134329cdd93ece88317/3.8/buster/Dockerfile&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;3.8.10-buster&lt;/a&gt;を使っている．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ディレクトリ構成
+&lt;pre&gt;&lt;code&gt;|- test_code/   # コードを置いている
+|- .devcontainer/
+    |- devcontainer.json
+    |- docker-compose.yml
+    |- dockerfile
+    |- requirements.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;各種ファイル&#34;&gt;各種ファイル&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;devcontainer.json&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;VSCodeのRemoteを使うときの設定
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.177.0/containers/docker-existing-dockerfile
+{
+  // 名前は任意
+  &amp;quot;name&amp;quot;: &amp;quot;Docker-Python&amp;quot;,
+  // dockercomposefileの場所 (同階層に置いている)
+  &amp;quot;dockerComposeFile&amp;quot;: &amp;quot;docker-compose.yml&amp;quot;,
+  // 使う拡張機能
+  &amp;quot;extensions&amp;quot;: [
+    &amp;quot;ms-python.python&amp;quot;
+  ],
+  // ここに記載している&amp;quot;service&amp;quot;名とdocker-compose.ymlに記載している&amp;quot;service&amp;quot;を一致させる
+  &amp;quot;service&amp;quot;: &amp;quot;python&amp;quot;,
+  // コンテナ内に入ったときのworkdir
+  &amp;quot;workspaceFolder&amp;quot;: &amp;quot;/code&amp;quot;,
+  // VSCodeを閉じたときのアクション
+  &amp;quot;shutdownAction&amp;quot;: &amp;quot;stopCompose&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker-compose.yml&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;複数のコンテナを定義し，実行することができる．&lt;/li&gt;
+&lt;li&gt;今回は，1つのコンテナに対する処理を記述
+&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;version: &amp;quot;3&amp;quot;    # 3が最新版
+services: 
+    python: # ここの名前とdevcontainer.jsonの&amp;quot;service&amp;quot;を一致させる
+        build: .    # 同階層のdockerfileからビルドする
+        command: sleep infinity
+        volumes: 
+            - ../:/code  # 上階層のディレクトリをDocker Container上のworkdirにマウント
+        environment: 
+            SHELL: /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dockerfile&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;コンテナを作るための処理
+&lt;pre&gt;&lt;code class=&#34;language-dockerfile&#34;&gt;########### Image file ###########
+FROM python:3.8.10-buster
+##################################
+
+########### update and install packages ###########
+# apt-get upgradeに-yを付けないとexit 1になります．追加しました．(5/23)
+RUN apt-get update &amp;amp;&amp;amp; \
+    apt-get -y upgrade &amp;amp;&amp;amp; \
+    apt-get install -y vim git &amp;amp;&amp;amp; \
+    rm -rf /var/lib/apt/lists*
+###################################################
+
+########### create workspace ###########
+RUN mkdir /code
+WORKDIR /code
+ADD ./requirements.txt /code/
+########################################
+
+########### install packages via pip ###########
+RUN pip3 install -r requirements.txt
+ADD . /code/
+################################################
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;requirements.txt&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pip install&lt;/code&gt;するファイル
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;############ Requirements Packages ############
+pylint
+numpy
+scipy
+sympy
+matplotlib
+statsmodels
+sklearn
+pandas
+networkx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-使用時&#34;&gt;3. 使用時&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;test_code&lt;/code&gt;と同階層に自分のコードを格納したフォルダを配置して，VSCodeの左下の&amp;quot;Open Remote Window&amp;quot;を選択．&lt;/li&gt;
+&lt;li&gt;Reopen in Containerを選択．&lt;/li&gt;
+&lt;li&gt;ワークスペースが開いたら，terminalを開き，&lt;code&gt;python *.py&lt;/code&gt;で実行する．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-いろいろ変えたいとき&#34;&gt;4. いろいろ変えたいとき&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pip install&lt;/code&gt;するパッケージを変更したいとき
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;requirements.txt&lt;/code&gt;を書き換える&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Pythonのバージョンを3の別バージョンに変えたいとき
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dockerfile&lt;/code&gt;のイメージファイル (2行目の&lt;code&gt;FROM&lt;/code&gt;以下) を書き換える．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Pythonのバージョンを2にしたいとき
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://hub.docker.com/_/python&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;python&lt;/a&gt;には2系がないので，イメージファイルをUbuntu等にして1からインストールする．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

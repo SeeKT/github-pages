@@ -5,12 +5,617 @@
     <link>https://SeeKT.github.io/</link>
       <atom:link href="https://SeeKT.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>立ち話</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Thu, 08 Jul 2021 16:14:02 +0900</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Thu, 08 Jul 2021 19:15:53 +0900</lastBuildDate>
     <image>
       <url>https://SeeKT.github.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>立ち話</title>
       <link>https://SeeKT.github.io/</link>
     </image>
+    
+    <item>
+      <title>普段使っているPC周りの環境</title>
+      <link>https://SeeKT.github.io/post/myenv/</link>
+      <pubDate>Thu, 08 Jul 2021 19:15:53 +0900</pubDate>
+      <guid>https://SeeKT.github.io/post/myenv/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;この記事では，私が普段使っているPC周りの環境を書く．就職したらもっと良いのがほしい．&lt;/p&gt;
+&lt;h3 id=&#34;1-自宅の環境とノートpc&#34;&gt;1. 自宅の環境とノートPC&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;デスクトップ
+&lt;ul&gt;
+&lt;li&gt;Lenovo V530
+&lt;ul&gt;
+&lt;li&gt;色々手を加えた&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS: Windows11&lt;/li&gt;
+&lt;li&gt;SSD: 512GB
+&lt;ul&gt;
+&lt;li&gt;もともと256GB．換装した．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;RAM: 16GB&lt;/li&gt;
+&lt;li&gt;CPU: Core i5-9500&lt;/li&gt;
+&lt;li&gt;GPU (増設): GTX-1050Ti
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/gp/product/B01M360WG6/ref=ppx_yo_dt_b_asin_title_o05_s00?ie=UTF8&amp;amp;psc=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PH-GTX1050TI-4G&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ノート
+&lt;ul&gt;
+&lt;li&gt;iiyama 14インチ (BTO)&lt;/li&gt;
+&lt;li&gt;OS: Ubuntu20.04&lt;/li&gt;
+&lt;li&gt;SSD: 256GB&lt;/li&gt;
+&lt;li&gt;HDD: 1TB&lt;/li&gt;
+&lt;li&gt;RAM: 16GB&lt;/li&gt;
+&lt;li&gt;CPU: Core i5-8265&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;モニター
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.co.jp/gp/product/B06VT3DVBD/ref=ppx_yo_dt_b_asin_title_o06_s01?ie=UTF8&amp;amp;psc=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ASUS 23インチ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-研究室の環境&#34;&gt;2. 研究室の環境&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;デスクトップ
+&lt;ul&gt;
+&lt;li&gt;自作&lt;/li&gt;
+&lt;li&gt;OS: Ubuntu20.04&lt;/li&gt;
+&lt;li&gt;SSD: 480GB&lt;/li&gt;
+&lt;li&gt;RAM: 16GB&lt;/li&gt;
+&lt;li&gt;CPU: Core i5-8400&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;モニター
+&lt;ul&gt;
+&lt;li&gt;iiyama 23インチ&lt;/li&gt;
+&lt;li&gt;ASUS 27インチ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-用途&#34;&gt;3. 用途&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;デスクトップ (家)
+&lt;ul&gt;
+&lt;li&gt;ゲーム
+&lt;ul&gt;
+&lt;li&gt;ドラクエ11S楽しい！&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Virtualboxを使ったセキュリティの勉強
+&lt;ul&gt;
+&lt;li&gt;最近&lt;a href=&#34;https://www.amazon.co.jp/gp/product/4798155306/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&amp;amp;psc=1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ハッキング・ラボのつくりかた&lt;/a&gt;という本を読んでる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Hugoを使ってこのサイトの記事の編集&lt;/li&gt;
+&lt;li&gt;学会発表の練習のためにOBSを使って録音&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ノートパソコン
+&lt;ul&gt;
+&lt;li&gt;研究
+&lt;ul&gt;
+&lt;li&gt;デスクトップからモニターを外してデュアルモニターにして作業してる&lt;/li&gt;
+&lt;li&gt;論文を読む&lt;/li&gt;
+&lt;li&gt;プログラムを書く&lt;/li&gt;
+&lt;li&gt;TeXで資料をまとめる / スライドを作る&lt;/li&gt;
+&lt;li&gt;論文を書く&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;勉強
+&lt;ul&gt;
+&lt;li&gt;最近は非線形現象の勉強を少しやってる&lt;/li&gt;
+&lt;li&gt;プログラムを書く&lt;/li&gt;
+&lt;li&gt;Markdown形式でまとめる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;デスクトップ (研究室)
+&lt;ul&gt;
+&lt;li&gt;ノートパソコンと同じ環境を作っているので，研究室ではノートの代わりにデスクトップを使っている&lt;/li&gt;
+&lt;li&gt;GitHubのprivateリポジトリで共有してる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Python3の開発環境をDocker containerとして作る</title>
+      <link>https://SeeKT.github.io/post/docker_python/</link>
+      <pubDate>Thu, 08 Jul 2021 18:58:51 +0900</pubDate>
+      <guid>https://SeeKT.github.io/post/docker_python/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;この記事では，Docker containerとしてPythonの開発環境を作ったときのメモを残す．
+この記事の内容は，GitHubのサブのアカウントの&lt;a href=&#34;https://github.com/tcbn-ai/Docker_python_env&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;publicリポジトリ&lt;/a&gt;で公開している．&lt;/p&gt;
+&lt;h3 id=&#34;1-必要なもの&#34;&gt;1. 必要なもの&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Docker Engineのインストール&lt;/li&gt;
+&lt;li&gt;VSCodeのインストール
+&lt;ul&gt;
+&lt;li&gt;Remote Developementの導入&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-基本構成&#34;&gt;2. 基本構成&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Docker Image
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://hub.docker.com/_/python&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;python&lt;/a&gt;の&lt;a href=&#34;https://github.com/docker-library/python/blob/e0e01b8482ea14352c710134329cdd93ece88317/3.8/buster/Dockerfile&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;3.8.10-buster&lt;/a&gt;を使っている．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ディレクトリ構成
+&lt;pre&gt;&lt;code&gt;|- test_code/   # コードを置いている
+|- .devcontainer/
+    |- devcontainer.json
+    |- docker-compose.yml
+    |- dockerfile
+    |- requirements.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;各種ファイル&#34;&gt;各種ファイル&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;devcontainer.json&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;VSCodeのRemoteを使うときの設定
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.177.0/containers/docker-existing-dockerfile
+{
+  // 名前は任意
+  &amp;quot;name&amp;quot;: &amp;quot;Docker-Python&amp;quot;,
+  // dockercomposefileの場所 (同階層に置いている)
+  &amp;quot;dockerComposeFile&amp;quot;: &amp;quot;docker-compose.yml&amp;quot;,
+  // 使う拡張機能
+  &amp;quot;extensions&amp;quot;: [
+    &amp;quot;ms-python.python&amp;quot;
+  ],
+  // ここに記載している&amp;quot;service&amp;quot;名とdocker-compose.ymlに記載している&amp;quot;service&amp;quot;を一致させる
+  &amp;quot;service&amp;quot;: &amp;quot;python&amp;quot;,
+  // コンテナ内に入ったときのworkdir
+  &amp;quot;workspaceFolder&amp;quot;: &amp;quot;/code&amp;quot;,
+  // VSCodeを閉じたときのアクション
+  &amp;quot;shutdownAction&amp;quot;: &amp;quot;stopCompose&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker-compose.yml&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;複数のコンテナを定義し，実行することができる．&lt;/li&gt;
+&lt;li&gt;今回は，1つのコンテナに対する処理を記述
+&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;version: &amp;quot;3&amp;quot;    # 3が最新版
+services: 
+    python: # ここの名前とdevcontainer.jsonの&amp;quot;service&amp;quot;を一致させる
+        build: .    # 同階層のdockerfileからビルドする
+        command: sleep infinity
+        volumes: 
+            - ../:/code  # 上階層のディレクトリをDocker Container上のworkdirにマウント
+        environment: 
+            SHELL: /bin/bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dockerfile&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;コンテナを作るための処理
+&lt;pre&gt;&lt;code class=&#34;language-dockerfile&#34;&gt;########### Image file ###########
+FROM python:3.8.10-buster
+##################################
+
+########### update and install packages ###########
+# apt-get upgradeに-yを付けないとexit 1になります．追加しました．(5/23)
+RUN apt-get update &amp;amp;&amp;amp; \
+    apt-get -y upgrade &amp;amp;&amp;amp; \
+    apt-get install -y vim git &amp;amp;&amp;amp; \
+    rm -rf /var/lib/apt/lists*
+###################################################
+
+########### create workspace ###########
+RUN mkdir /code
+WORKDIR /code
+ADD ./requirements.txt /code/
+########################################
+
+########### install packages via pip ###########
+RUN pip3 install -r requirements.txt
+ADD . /code/
+################################################
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;requirements.txt&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pip install&lt;/code&gt;するファイル
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;############ Requirements Packages ############
+pylint
+numpy
+scipy
+sympy
+matplotlib
+statsmodels
+sklearn
+pandas
+networkx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-使用時&#34;&gt;3. 使用時&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;test_code&lt;/code&gt;と同階層に自分のコードを格納したフォルダを配置して，VSCodeの左下の&amp;quot;Open Remote Window&amp;quot;を選択．&lt;/li&gt;
+&lt;li&gt;Reopen in Containerを選択．&lt;/li&gt;
+&lt;li&gt;ワークスペースが開いたら，terminalを開き，&lt;code&gt;python *.py&lt;/code&gt;で実行する．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-いろいろ変えたいとき&#34;&gt;4. いろいろ変えたいとき&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pip install&lt;/code&gt;するパッケージを変更したいとき
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;requirements.txt&lt;/code&gt;を書き換える&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Pythonのバージョンを3の別バージョンに変えたいとき
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dockerfile&lt;/code&gt;のイメージファイル (2行目の&lt;code&gt;FROM&lt;/code&gt;以下) を書き換える．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Pythonのバージョンを2にしたいとき
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://hub.docker.com/_/python&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;python&lt;/a&gt;には2系がないので，イメージファイルをUbuntu等にして1からインストールする．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04にDocker Engineをインストールする</title>
+      <link>https://SeeKT.github.io/post/ubuntu_docker/</link>
+      <pubDate>Thu, 08 Jul 2021 18:25:39 +0900</pubDate>
+      <guid>https://SeeKT.github.io/post/ubuntu_docker/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;私が学部4年から修士1年までに使っていたPythonの開発環境はUbuntu上にpipとpipenvを入れ，pipenvで仮想環境を作って使うというものだった．Ubuntuを20にアップグレードしたときにこれまで使っていた仮想環境でプログラムが動かない，ということが起こった．&lt;/p&gt;
+&lt;p&gt;このように，OSに1つの環境を作って動かそうとした際には，更新に伴いプログラムが動かなくなるというリスクがある．さらに，以下のような問題が挙げられる．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;OSが汚れる
+&lt;ul&gt;
+&lt;li&gt;OSに直接インストールするので，複数のバージョンが共存するといったことが起こる．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;問題の切り分けが難しい
+&lt;ul&gt;
+&lt;li&gt;OSのアップグレードの問題なのか，パッケージの問題なのか分からなくなる．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;そんなときDockerに出会う．Dockerの説明は省略するが，イメージは1つのサーバに独立した複数のサーバを同時に構築することができる，というものである．これは良いと思い，研究の開発環境をDocker container上に作ることにした．&lt;/p&gt;
+&lt;p&gt;Ubuntu20.04にDocker Engineをインストールするためのシェルスクリプトを作ったので，この記事で共有する．&lt;/p&gt;
+&lt;h3 id=&#34;1-dockerの利点と欠点&#34;&gt;1. Dockerの利点と欠点&lt;/h3&gt;
+&lt;p&gt;私が思うDockerの利点と欠点を以下に示す．あまり詳しくないエアプ発言かもしれない．&lt;/p&gt;
+&lt;h4 id=&#34;利点&#34;&gt;利点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Dockerfileに開発に必要なパッケージのインストールについて記述できるので，Dockerfileとして記述してしまえば，そのとおりに環境構築ができる．&lt;/li&gt;
+&lt;li&gt;移植しやすい．&lt;/li&gt;
+&lt;li&gt;Python等のバージョンが変わったときもDockerfileの内容を変えることで最新版にアップデートできる．&lt;/li&gt;
+&lt;li&gt;OSのバージョンに依らない．依存関係に関する問題を，パッケージのバージョンにまで絞り込める．&lt;/li&gt;
+&lt;li&gt;OSが汚れない．&lt;/li&gt;
+&lt;li&gt;1つのPCの中に複数の異なる開発環境を構築できる．&lt;/li&gt;
+&lt;li&gt;VSCodeの拡張機能が優秀で，使いやすい．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;欠点&#34;&gt;欠点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Windowsでエラーが出ることが多い気がする．Windowsで同じようなことをしようと思ってもうまく動かないことがある．&lt;/li&gt;
+&lt;li&gt;WindowsではWSL2をバックエンドにしているので，メモリの消費量が多い．まともに動かそうと思うとメモリ16GBはないと厳しい．&lt;/li&gt;
+&lt;li&gt;導入コスト．(自分が賢くないだけだけど) 難しい．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-インストールのためのシェルスクリプト&#34;&gt;2. インストールのためのシェルスクリプト&lt;/h3&gt;
+&lt;p&gt;東京大学の金子邦彦先生のウェブサイトがかなり参考になった．Docker Engineの導入以外にもかなり参考にさせていただいた．&lt;/p&gt;
+&lt;p&gt;次のようなシェルスクリプトを作り，&lt;code&gt;~/install_docker.sh&lt;/code&gt;として保存した．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;#!/bin/bash
+
+# Written by A.Tachibana, 2021/3/19
+
+# Objective
+## To install docker in Ubuntu 20
+
+# Reference
+## https://www.kkaneko.jp/tools/docker/ubuntu_docker.html
+
+############ To execute ############
+# chmod 755 install_docker.sh
+# ./install_docker.sh
+####################################
+
+
+# Require password
+printf &amp;quot;password: &amp;quot;
+read -s password
+
+# Update and Upgrade
+echo &amp;quot;$password&amp;quot; | sudo -S apt update &amp;amp;&amp;amp; sudo -S apt -y upgrade
+
+# Install Docker
+## Delete old version (if exists)
+sudo -S apt -y remove docker docker-engine docker.io containerd docker-ce docker-ce-cli
+sudo -S apt -y autoremove
+## Install required software
+sudo -S apt update
+sudo -S apt -y install apt-transport-https ca-certificates curl software-properties-common
+sudo -S apt -y install linux-image-generic
+## Set docker repository
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+apt-key fingerprint 0EBFCD88
+sudo -S add-apt-repository \
+    &amp;quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -sc) \
+    stable&amp;quot;
+sudo -S apt update
+## Install docker.io
+sudo -S apt -y install docker.io containerd docker-compose
+## Add authority
+sudo -S usermod -aG docker $USER
+## Set autostart
+sudo -S systemctl unmask docker.service
+sudo -S systemctl enable docker
+sudo -S systemctl is-enabled docker
+## let user ubuntu use docker
+sudo gpasswd -a $USER docker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;このファイルに実行権限を与え，実行する．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;chmod 755 install_docker.sh
+./install_docker.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;なお，このシェルスクリプトは，私のサブのGitHubアカウントの&lt;a href=&#34;https://github.com/tcbn-ai/TIL/blob/main/Study_Docker/shellscript/install_docker.sh&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;publicリポジトリ&lt;/a&gt;にアップロードしている．&lt;/p&gt;
+&lt;h4 id=&#34;参考&#34;&gt;参考&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.kkaneko.jp/cc/vm/ubuntu_docker.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Docker Engine のインストールと使用法（Ubuntu 上）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04にRとRStudioをインストールする</title>
+      <link>https://SeeKT.github.io/post/ubuntu_rstudio/</link>
+      <pubDate>Thu, 08 Jul 2021 18:07:46 +0900</pubDate>
+      <guid>https://SeeKT.github.io/post/ubuntu_rstudio/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;授業でRとRStudioを使う必要があったのでインストールした．
+前処理がめんどくさかったので，シェルスクリプトを書いた．&lt;/p&gt;
+&lt;h5 id=&#34;参考&#34;&gt;参考&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://yukiyanai.github.io/jp/resources/docs/install-R_ubuntu.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;RとRStudioのインストールと初期設定 Linux (Ubuntu) 編&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;1-前処理&#34;&gt;1. 前処理&lt;/h3&gt;
+&lt;p&gt;次のようなシェルスクリプトを書き，&lt;code&gt;~/install_R_requirement.sh&lt;/code&gt;として保存した．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;#!/bin/bash
+
+# Written by A.Tachibana, 2021/4/28
+
+# Objective
+## To install R in Ubuntu 20
+## Requirement packages
+
+# Reference
+## https://yukiyanai.github.io/jp/resources/docs/install-R_ubuntu.pdf
+
+############ To execute ############
+# chmod 755 install_R_requirement.sh
+# ./install_R_requirement.sh
+####################################
+
+# Require password
+printf &amp;quot;password: &amp;quot;
+read -s password
+
+# Update and Upgrade
+echo &amp;quot;$password&amp;quot; | sudo -S apt update &amp;amp;&amp;amp; sudo -S apt -y upgrade
+
+# 1. Install tools
+sudo -S apt -y install gdebi-core wget 
+
+# 2. Get fonts
+sudo -S apt -y install fonts-ipaexfont
+fc-cache -f -v
+
+# 3. Install requirement tools
+## requirement tools
+sudo -S apt -y install build-essential libxml2-dev libssl-dev libx11-dev libglu1-mesa-dev libmagick++-dev libudunits2-0 libudunits2-dev libgdal-dev libproj-dev libgmp3-dev curl 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;このファイルに実行権限を与え，実行する．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;chmod 755 install_R_requirement.sh
+./install_R_requirement.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-rとrstudioのインストール&#34;&gt;2. RとRStudioのインストール&lt;/h3&gt;
+&lt;p&gt;次のようなシェルスクリプトを書き，&lt;code&gt;~/install_R.sh&lt;/code&gt;として保存した．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;#!/bin/bash
+
+# Written by A.Tachibana, 2021/4/28
+
+# Objective
+## To install R in Ubuntu 20
+
+# Reference
+## https://yukiyanai.github.io/jp/resources/docs/install-R_ubuntu.pdf
+
+############ To execute ############
+# chmod 755 install_R.sh
+# ./install_R.sh
+    # execute after install_R_requirement.sh
+####################################
+
+# Require password
+printf &amp;quot;password: &amp;quot;
+read -s password
+
+# 1. add repository
+sudo -S apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+sudo -S add-apt-repository &#39;deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/&#39;
+# 2. install R base
+sudo -S apt update
+sudo -S apt -y install r-base 
+# 3. install RStudio
+cd ~/Downloads/
+# 2021/4/28
+wget https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.4.1106-amd64.deb
+sudo -S gdebi rstudio-1.4.1106-amd64.deb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;このファイルに実行権限を与え，実行する．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;chmod 755 install_R.sh
+./install_R.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;注意点&#34;&gt;注意点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;RStudioに関しては2021/4/28時点で最新のものをダウンロードしたが，現在はもっと新しいものが出ていると思う．
+&lt;ul&gt;
+&lt;li&gt;「最新版を持ってくる」ような書き方が分からなくて，頭の悪い書き方をしている．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;install_R.sh&lt;/code&gt;は，&lt;code&gt;install_R_requirement.sh&lt;/code&gt;の実行後に実行する．&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04にTeX Liveをインストールする</title>
+      <link>https://SeeKT.github.io/post/ubuntu_tex/</link>
+      <pubDate>Thu, 08 Jul 2021 18:00:11 +0900</pubDate>
+      <guid>https://SeeKT.github.io/post/ubuntu_tex/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;UbuntuにTeXを入れたときのメモ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;1-やること&#34;&gt;1. やること&lt;/h3&gt;
+&lt;ol start=&#34;0&#34;&gt;
+&lt;li&gt;好きなエディタを入れる&lt;/li&gt;
+&lt;li&gt;TeXLiveを入れる&lt;/li&gt;
+&lt;li&gt;~/.latexmkrcを作る&lt;/li&gt;
+&lt;li&gt;動作テスト&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;好きなエディタを入れる&#34;&gt;好きなエディタを入れる&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;私はTeXの文書を作るときはAtomを使うので，Atomを入れた．
+&lt;ul&gt;
+&lt;li&gt;公式サイト (&lt;a href=&#34;https://atom.io/&#34;&gt;https://atom.io/&lt;/a&gt;) からdebをダウンロードして実行．
+&lt;pre&gt;&lt;code&gt;sudo apt install ./atom-amd64.deb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;パッケージを入れる．
+&lt;ul&gt;
+&lt;li&gt;latex&lt;/li&gt;
+&lt;li&gt;language-latex&lt;/li&gt;
+&lt;li&gt;latexer&lt;/li&gt;
+&lt;li&gt;pdf-view&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;texliveを入れる&#34;&gt;TeXLiveを入れる&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;日本の大学(e.g. NAIST)のリポジトリからダウンロードして中身を展開する．
+&lt;pre&gt;&lt;code&gt;wget http://ftp.naist.jp/pub/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz
+tar -zxvf install-tl-unx.tar.gz
+cd install-tl-[date]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;管理者権限で実行する．リポジトリはダウンロードしたところ．
+&lt;pre&gt;&lt;code&gt;sudo ./install-tl --repository http://ftp.naist.jp/pub/CTAN/systems/texlive/tlnet/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;I&amp;quot;でインストール&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;パスを通す．
+&lt;pre&gt;&lt;code&gt;sudo /usr/local/texlive/2020/bin/x86_64-linux/tlmgr path add
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;これは私の例である．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;TeXLiveのアップデート
+&lt;ul&gt;
+&lt;li&gt;参照するリポジトリの指定
+&lt;pre&gt;&lt;code&gt;sudo tlmgr option repository http://ftp.naist.jp/pub/CTAN/systems/texlive/tlnet/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;アップデート
+&lt;pre&gt;&lt;code&gt;sudo tlmgr update --self --all
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;latexmkrcの作成&#34;&gt;~/.latexmkrcの作成&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;毎回コンパイル(platexしてdvipdfmxして&amp;hellip;)というのは面倒 → latexmkを使うことで，保存する度に自動的にpdfまで生成するようにする．
+&lt;ul&gt;
+&lt;li&gt;参考: &lt;a href=&#34;https://qiita.com/tdrk/items/16f31e45826c57bce412&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;latexmkの薦め&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Ubuntuでは以下のファイルをホームディレクトリ直下(~/.latexmkrc)に配置したところ，正常に動作した．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-perl&#34;&gt;#!/usr/bin/perl
+$latex = &#39;platex -guess-input-enc -src-specials -interaction=nonstopmode -synctex=1&#39;;
+$latex_silent = &#39;platex -interaction=batchmode&#39;;
+$dvips = &#39;dvips&#39;;
+$bibtex = &#39;pbibtex&#39;;
+$makeindex = &#39;mendex -r -c -s jind.ist&#39;;
+$dvi_previewer = &#39;start dviout&#39;;
+$dvipdf = &#39;dvipdfmx %O -o %D %S&#39;;
+$pdf_previewer = &#39;xdg-open&#39;;
+$preview_continuous_mode = 1;
+$pdf_mode = 3;
+$pdf_update_method = 4;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;latexmkについては，
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;vim ~/.latexmkrc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;などとして，上記のようなものを作ればよい．&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;動作テスト&#34;&gt;動作テスト&lt;/h4&gt;
+&lt;h5 id=&#34;platex&#34;&gt;platex&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;test.tex&amp;quot;という名前のファイルをtextestというディレクトリの中に作った．
+&lt;pre&gt;&lt;code class=&#34;language-tex&#34;&gt;\documentclass[dvipdfmx]{jsarticle}
+\title{ {\LaTeX} 動作テスト・サンプルファイル}
+\date{\today}
+\begin{document}
+\maketitle
+\section{test}
+これはテストです．
+\begin{equation}
+  f(x) = 2x + 3
+\end{equation}
+\end{document}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;textestというディレクトリに移動して，以下のコマンドを実行する．
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;platex test.tex &amp;amp;&amp;amp; dvipdfmx test.dvi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;実行後にpdfファイルが問題なく生成されていたら良い．&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;latexmk&#34;&gt;latexmk&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;先程のファイルに対して，
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;latexmk test.tex
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;として，正しくpdfファイルが生成され，変更して保存した後にpdfファイルが更新されたら問題なく導入されている．&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>自己紹介</title>
