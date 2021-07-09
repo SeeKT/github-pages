@@ -3,7 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://tachibana-ai.netlify.app/categories/</loc>
-    <lastmod>2021-07-08T19:15:53+09:00</lastmod>
+    <lastmod>2021-07-09T18:39:46+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/post/</loc>
+    <lastmod>2021-07-09T18:39:46+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/tag/server/</loc>
+    <lastmod>2021-07-09T18:39:46+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/tags/</loc>
+    <lastmod>2021-07-09T18:39:46+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/tag/ubuntu/</loc>
+    <lastmod>2021-07-09T18:39:46+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/category/ubuntu/</loc>
+    <lastmod>2021-07-09T18:39:46+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/post/create_server/</loc>
+    <lastmod>2021-07-09T18:39:46+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/</loc>
+    <lastmod>2021-07-09T18:39:46+09:00</lastmod>
   </url><url>
     <loc>https://tachibana-ai.netlify.app/tag/pc/</loc>
     <lastmod>2021-07-08T19:15:53+09:00</lastmod>
@@ -11,16 +32,7 @@
     <loc>https://tachibana-ai.netlify.app/category/pc/</loc>
     <lastmod>2021-07-08T19:15:53+09:00</lastmod>
   </url><url>
-    <loc>https://tachibana-ai.netlify.app/post/</loc>
-    <lastmod>2021-07-08T19:15:53+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/tags/</loc>
-    <lastmod>2021-07-08T19:15:53+09:00</lastmod>
-  </url><url>
     <loc>https://tachibana-ai.netlify.app/post/myenv/</loc>
-    <lastmod>2021-07-08T19:15:53+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/</loc>
     <lastmod>2021-07-08T19:15:53+09:00</lastmod>
   </url><url>
     <loc>https://tachibana-ai.netlify.app/tag/docker/</loc>
@@ -34,12 +46,6 @@
   </url><url>
     <loc>https://tachibana-ai.netlify.app/post/docker_python/</loc>
     <lastmod>2021-07-08T18:58:51+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/tag/ubuntu/</loc>
-    <lastmod>2021-07-08T18:25:39+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/category/ubuntu/</loc>
-    <lastmod>2021-07-08T18:25:39+09:00</lastmod>
   </url><url>
     <loc>https://tachibana-ai.netlify.app/post/ubuntu_docker/</loc>
     <lastmod>2021-07-08T18:25:39+09:00</lastmod>
