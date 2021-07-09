@@ -13,12 +13,12 @@
     </image>
     
     <item>
-      <title>研究室のファイルサーバを構築したときのログ (Ubuntu18.04)</title>
+      <title>ファイルサーバを構築したときのログ (Ubuntu18.04)</title>
       <link>https://tachibana-ai.netlify.app/post/create_server/</link>
       <pubDate>Fri, 09 Jul 2021 18:39:46 +0900</pubDate>
       <guid>https://tachibana-ai.netlify.app/post/create_server/</guid>
       <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
-&lt;p&gt;2021年1月にこれまで使っていた研究室のファイルサーバが変な挙動を起こしたので，私が新しくファイルサーバを構築した．そのときのログを残す．&lt;/p&gt;
+&lt;p&gt;以前ファイルサーバを構築したので，そのときのログを残す．&lt;/p&gt;
 &lt;p&gt;色々と怪しい部分もあるかもしれないので，一個人の記録として見ていただければ幸いである．&lt;/p&gt;
 &lt;p&gt;以下，LinuxサーバをUbuntu18.04とし，クライアント側はWindows10もしくはUbuntu20.04とする．Windows10の場合はGit Bashが導入済みであるものとする．&lt;/p&gt;
 &lt;ol&gt;
