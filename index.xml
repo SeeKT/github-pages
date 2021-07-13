@@ -5,12 +5,1024 @@
     <link>https://tachibana-ai.netlify.app/</link>
       <atom:link href="https://tachibana-ai.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <description>立ち話</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Fri, 09 Jul 2021 18:39:46 +0900</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Tue, 13 Jul 2021 21:47:32 +0900</lastBuildDate>
     <image>
       <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>立ち話</title>
       <link>https://tachibana-ai.netlify.app/</link>
     </image>
+    
+    <item>
+      <title>古いバージョンのKali linuxをインストールしようとした</title>
+      <link>https://tachibana-ai.netlify.app/post/kali-linux-log/</link>
+      <pubDate>Tue, 13 Jul 2021 21:47:32 +0900</pubDate>
+      <guid>https://tachibana-ai.netlify.app/post/kali-linux-log/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://s-akademeia.sakura.ne.jp/main/books/lab/faq.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ハッキング・ラボのつくりかた&lt;/a&gt;という本を読み進めていたところ，最新版のKali linux 2021.2では実行できない部分があったので (4章, 252ページ等)，書籍の環境である Kali linux 2018.2に合わせることにした．インストールにかなり苦戦した．&lt;/p&gt;
+&lt;p&gt;後から気付いたが，&lt;code&gt;apt update&lt;/code&gt;と&lt;code&gt;apt upgrade&lt;/code&gt;をしてしまうとmetasploitも更新される．苦労してインストールしたが，同一の環境を作ることが目的であれば，実行しない方が良い．私はこの仮想マシンが翌日にグラフィカルモードで起動しなくなったので，消した．&lt;/p&gt;
+&lt;p&gt;このようなことは二度としないと思うが，自分への戒めとして，また，もし今後このような状況があったときに備えて記事に残すが，真似はしない方が良い．可能であれば安定起動版か最新版を入れた方が良いし，わざわざ少し古いバージョンを入れて更新するのは手間である．&lt;/p&gt;
+&lt;h4 id=&#34;01-概要&#34;&gt;0.1. 概要&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;インストール
+&lt;ul&gt;
+&lt;li&gt;DNSサーバに&lt;code&gt;8.8.8.8&lt;/code&gt;を指定する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;署名
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;archive.kali.org&lt;/code&gt;から入手する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;依存関係
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ruby-http-parser.rb&lt;/code&gt;の依存関係
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apt-get install&lt;/code&gt;する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;thin&lt;/code&gt;のエラー
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/var/lib/dpkg/info&lt;/code&gt;にある該当ファイルを削除して，&lt;code&gt;apt install&lt;/code&gt;する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ruby-progressbar&lt;/code&gt;のエラー
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dpkg -i --force-overwrite&lt;/code&gt;する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;1-kali-linux-20182のインストール&#34;&gt;1. Kali linux 2018.2のインストール&lt;/h3&gt;
+&lt;p&gt;ovaがないので，isoファイルをダウンロードする．ここでは，&lt;code&gt;kali-linux-2018.2-amd64.iso&lt;/code&gt;を以下からダウンロードした．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://old.kali.org/kali-images/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Index of /kali-images&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;あとはVirtualboxで仮想マシンを入れるのと同様にすれば良いが，nameserverに&lt;code&gt;8.8.8.8&lt;/code&gt;を指定することを忘れないようにする (名前解決の問題)．&lt;/p&gt;
+&lt;h3 id=&#34;2-インストール後の処理&#34;&gt;2. インストール後の処理&lt;/h3&gt;
+&lt;h4 id=&#34;21-署名&#34;&gt;2.1. 署名&lt;/h4&gt;
+&lt;p&gt;1でインストールしたkali linuxで&lt;code&gt;apt update&lt;/code&gt;しようとすると，&amp;ldquo;The following signatures were invalid&amp;quot;のエラーが出る．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-signatureのエラー&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_1_apt_error.png&#34; alt=&#34;signature&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      signatureのエラー
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;同様のエラーをStackExchangeで探し，同じように解決しようと試みた．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;参考
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://unix.stackexchange.com/questions/421821/invalid-signature-for-kali-linux-repositories-the-following-signatures-were-i&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Invalid signature for Kali Linux repositories : “The following signatures were invalid: EXPKEYSIG ED444FF07D8D0BF6 Kali Linux Repository”&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;gpg --keyserver hkp://keys.gnupg.net --recv-key 7D8D0BF6
+gpg --fingerprint 7D8D0BF6
+gpg -a --export 7D8D0BF6 | apt-key add -
+apt update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;と&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;が紹介されていた．前者でうまくいかなかったので，後者を試した．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-gpgキーを追加する&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_2_key_add.png&#34; alt=&#34;key&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      gpgキーを追加する
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;22-依存関係&#34;&gt;2.2. 依存関係&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;apt update&lt;/code&gt;はできたので，&lt;code&gt;apt upgrade&lt;/code&gt;しようとしたところ，&lt;code&gt;ruby-http-parser.rb&lt;/code&gt;に依存関係の問題があるらしく，できなかった．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-依存関係&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_3_cannot_apt_upgrade.png&#34; alt=&#34;dependencies&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      依存関係
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ruby-http-parser.rb&lt;/code&gt;をインストールすれば良いかもしれない．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;参考
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://5.9.10.113/64784465/kali-the-following-packages-have-unmet-dependencies&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kali &amp;lsquo;the following packages have unmet dependencies&amp;rsquo;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-ruby-http-parserrbのインストール&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_4_apt_listchanges.png&#34; alt=&#34;ruby_parser&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      ruby-http-parser.rbのインストール
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;apt-get install ruby-http-parser.rb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;を実行したところ，上のapt-listchangesが出力された．末尾まで見てqで進めた．途中に質問されたが，そのまま答えた．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-質問&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_5.png&#34; alt=&#34;question&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      質問
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-cron&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_6_cron.png&#34; alt=&#34;cron&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      cron
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;最後まで進めたところ，エラーが出た．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-thinのエラー&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_7.png&#34; alt=&#34;error_thin&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      thinのエラー
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;とりあえず，&lt;code&gt;apt-get clean&lt;/code&gt;と&lt;code&gt;apt-get -f install&lt;/code&gt;をしてみることにしたが，同じエラーが残っている．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-同様のエラー&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_8.png&#34; alt=&#34;same_error&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      同様のエラー
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;同様のエラーを解決している記事を発見したので，以下の記事のようにしてエラーを解消する．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;参考
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://engetu21.hatenablog.com/entry/2014/12/06/004525&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;【LIVA】【Ubuntu server14.04】apt-getでエラー発生（post-installationスクリプトエラー）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ikkuntech.blogspot.com/2012/03/apt-get.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;apt-getのpost-installationスクリプトエラー&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;dpkg --audit
+dpkg --configure thin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-dpkgコマンド&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_9.png&#34; alt=&#34;dpkg_command&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      dpkgコマンド
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;参考サイトによると，&lt;code&gt;/var/lib/dpkg/info&lt;/code&gt;以下の関連するファイルを削除すれば良いらしい．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd /var/lib/dpkg/info
+rm -rf thin.postinst thin.postrm thin.prerm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-ファイルの削除&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_10.png&#34; alt=&#34;remove&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      ファイルの削除
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;この後に&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;dpkg --configure thin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;をすれば良いらしいが，何故かうまくいかなかった．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-thinのsetup&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_11.png&#34; alt=&#34;thin_config&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      thinのsetup
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;仕方ないので，thinをインストールすることにした．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;apt install thin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-thinのインストール&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_12.png&#34; alt=&#34;install_thin&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      thinのインストール
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;エラーが出なかったので，確認する．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;dpkg -s thin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-status&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_13.png&#34; alt=&#34;noterror&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      status
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Status install ok installed&lt;/code&gt;になっているので，良さそう．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;参考
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://serverlog.jp/apt-get-dependence/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;apt-getによる依存関係の解決方法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;apt update&lt;/code&gt;と&lt;code&gt;apt upgrade&lt;/code&gt;を試す．&lt;/p&gt;
+&lt;p&gt;途中で&amp;quot;Configuring macchanger&amp;quot;と&amp;quot;sslh configuration&amp;quot;について聞かれたが，それぞれ&amp;quot;Yes&amp;quot;と&amp;quot;from inetd&amp;quot;にした．&lt;/p&gt;
+&lt;p&gt;また，&amp;ldquo;Configuring base-passwd&amp;quot;というのも聞かれた．今変更しなくても後から変更できるらしいので，&amp;ldquo;No&amp;quot;を選択した．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-エラー&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_14.png&#34; alt=&#34;error2&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      エラー
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;またエラーが出たので，原因を探す．とりあえず，&lt;code&gt;apt-get clean&lt;/code&gt;とかを実行する．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-apt-get-cleanを実行&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_15.png&#34; alt=&#34;apt-get-clean&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      apt-get cleanを実行
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;ruby-cms-scanner: &amp;ldquo;の行から，依存関係の問題があることが分かった．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;apt install ruby-progressbar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;でインストールしようとしたが，先ほどと同様のエラーが出た．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-上と同様のエラー&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_16.png&#34; alt=&#34;error3&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      上と同様のエラー
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;以下のサイトと類似しているエラーだったので，関連debを上書きインストールする方法を試してみた．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;dpkg -i --force-overwrite /var/cache/apt/archives/ruby-progressbar_1.10.1-1_all.deb
+apt --fix-broken install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;参考
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.tizen.moe/entry/2020/12/16/000000&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;apt &amp;ndash;fix-broken installしろと言われた場合の対応&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;ldquo;Configuring postgresql-common&amp;quot;について聞かれたので，&amp;ldquo;Ok&amp;quot;とした．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-apt---fix-broken後&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_17.png&#34; alt=&#34;unerror&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      apt &amp;ndash;fix-broken後
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;いけたように見える．一応&lt;code&gt;apt update&lt;/code&gt;と&lt;code&gt;apt upgrade&lt;/code&gt;を確認する．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-not-upgraded&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_18.png&#34; alt=&#34;not-upgraded&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      not-upgraded
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;not-upgraded&amp;quot;となっているが，一応エラーは消えているようなので，この処理は終了．&lt;/p&gt;
+&lt;h4 id=&#34;23-ネットワーク設定&#34;&gt;2.3. ネットワーク設定&lt;/h4&gt;
+&lt;p&gt;書籍第2章に合わせる．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;アダプター1
+&lt;ul&gt;
+&lt;li&gt;ホストオンリーアダプター&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;アダプター2
+&lt;ul&gt;
+&lt;li&gt;NAT&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Kali linux 2021.2に&lt;code&gt;10.0.0.2&lt;/code&gt;を割り振っているので，Kali linux 2018.2には&lt;code&gt;10.0.0.3&lt;/code&gt;を割り振る．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_19.png&#34; alt=&#34;network_config&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;24-ユーザの追加&#34;&gt;2.4. ユーザの追加&lt;/h4&gt;
+&lt;p&gt;&amp;ldquo;ai&amp;quot;というユーザを追加する．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;useradd -m ai
+passwd ai
+usermod -a -G sudo ai
+chsh -s /bin/bash ai
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-ユーザを追加&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_20.png&#34; alt=&#34;useradd&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      ユーザを追加
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;25-ssh環境&#34;&gt;2.5. ssh環境&lt;/h4&gt;
+&lt;h5 id=&#34;1-sshホスト鍵の再生成&#34;&gt;(1) SSHホスト鍵の再生成&lt;/h5&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd /etc/ssh
+mkdir default_keys
+mv ssh_host_* default_keys/
+dpkg-reconfigure openssh-server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;2-sshdの起動&#34;&gt;(2) sshdの起動&lt;/h5&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;service ssh start
+update-rc.d ssh enable
+apt install sysv-rc-conf -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h5 id=&#34;3-ログインできるか確認&#34;&gt;(3) ログインできるか確認&lt;/h5&gt;
+&lt;p&gt;ローカルから&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh ai@localhost
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-ローカルからssh接続&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_21.png&#34; alt=&#34;ssh&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      ローカルからssh接続
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Windows側から&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh ai@10.0.0.3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-windowsからssh接続&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_22.png&#34; alt=&#34;ssh_win&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      Windowsからssh接続
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;どちらも接続できている．&lt;/p&gt;
+&lt;h5 id=&#34;4-rootログインの許可&#34;&gt;(4) rootログインの許可&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;/etc/ssh/sshd_config&lt;/code&gt;を編集して&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;PermitRootLogin yes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;にする．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-rootログイン&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_23.png&#34; alt=&#34;root&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      rootログイン
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h5 id=&#34;5-公開鍵認証&#34;&gt;(5) 公開鍵認証&lt;/h5&gt;
+&lt;p&gt;Windows側で公開鍵があるディレクトリで，&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;scp .\id_rsa.pub root@10.0.0.3:/root/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;とする．&lt;/p&gt;
+&lt;p&gt;kali linux側で，&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cat id_rsa.pub &amp;gt;&amp;gt; ./.ssh/authorized_keys
+chmod -R 700 ./.ssh/
+chmod -R 600 ./.ssh/authorized_keys
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;を実行．&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/etc/ssh/sshd_config&lt;/code&gt;の&lt;code&gt;PubkeyAuthentication&lt;/code&gt;と&lt;code&gt;AuthorizedKeysFile&lt;/code&gt;のコメントを外す．&lt;/p&gt;
+&lt;p&gt;Windows側の&lt;code&gt;.ssh/config&lt;/code&gt;に以下を追加．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;Host kali_2018
+    HostName 10.0.0.3
+    User root
+    IdentityFile [authorized_keysに対応する秘密鍵のパス]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh kali_2018
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;でログインできることを確認する．&lt;/p&gt;
+&lt;h3 id=&#34;3-まとめ&#34;&gt;3. まとめ&lt;/h3&gt;
+&lt;p&gt;kali linux 2018.2を導入し，初期設定をした．2018を入れたつもりだが，アップグレードされていた．結局消したが，苦労したので戒めとして残した．真似はしない方が良い．&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>書籍を読みながらMetasploitを使ってみて詰まったところ</title>
+      <link>https://tachibana-ai.netlify.app/post/hacking-lab_1/</link>
+      <pubDate>Tue, 13 Jul 2021 21:24:32 +0900</pubDate>
+      <guid>https://tachibana-ai.netlify.app/post/hacking-lab_1/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;最近，&lt;a href=&#34;https://s-akademeia.sakura.ne.jp/main/books/lab/faq.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ハッキング・ラボのつくりかた&lt;/a&gt;という本を読んでいる．ツイートされていた方もいらっしゃったが，書籍第4章のWindowsに紹介されているmeterpreterのプロンプトで&lt;code&gt;run hashdump&lt;/code&gt;や&lt;code&gt;run scraper&lt;/code&gt;が実行できない．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/K88336374/status/1409822251797471238?s=20&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;該当ツイート&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-runのエラー&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2021_1.png&#34; alt=&#34;scraper_error&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      runのエラー
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Meterpreterがスクリプトの実行をサポートしなくなったことが原因の1つだと考えたので，何とか書籍のコードを実行できないか試してみたいと思った．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/DeXhCjktu3ABTLZ/status/1413171321475780608?s=20&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;該当ツイートへのリプライ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/iagox86/metasploit-framework-webexec/blob/master/scripts/meterpreter/enum_chrome.rb&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GitHubのmetasploit-framework-webexec&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;今回は，書籍の環境に合わせることで実行した．もっと良い方法があるはずだが，知識のない私にはこれが限界だった．&lt;/p&gt;
+&lt;h3 id=&#34;1-環境について&#34;&gt;1. 環境について&lt;/h3&gt;
+&lt;h4 id=&#34;11-これまで用いていた環境&#34;&gt;1.1. これまで用いていた環境&lt;/h4&gt;
+&lt;p&gt;私がこれまで使っていた環境を記載する．Virtualbox上で仮想マシンを動かしている．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ホストOS
+&lt;ul&gt;
+&lt;li&gt;Windows11
+&lt;ul&gt;
+&lt;li&gt;IP address (ホストオンリーネットワーク): 10.0.0.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;ゲストOS
+&lt;ul&gt;
+&lt;li&gt;Kali Linux 2021.2
+&lt;ul&gt;
+&lt;li&gt;LANアダプター1 (ホストオンリーネットワーク): 10.0.0.2&lt;/li&gt;
+&lt;li&gt;LANアダプター2 (NAT): DHCP&lt;/li&gt;
+&lt;li&gt;metasploit v6.0.52-dev&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows7 (ターゲット端末)
+&lt;ul&gt;
+&lt;li&gt;LANアダプター1 (ホストオンリーネットワーク): DHCP&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;12-書籍の環境と今回比較のために用いる環境&#34;&gt;1.2. 書籍の環境と今回比較のために用いる環境&lt;/h4&gt;
+&lt;p&gt;書籍では，Kali Linux 2018.2を用いている．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;書籍の環境
+&lt;ul&gt;
+&lt;li&gt;Kali Linux 2018.2
+&lt;ul&gt;
+&lt;li&gt;LANアダプター1 (ホストオンリーネットワーク): 10.0.0.2&lt;/li&gt;
+&lt;li&gt;LANアダプター2 (NAT): DHCP&lt;/li&gt;
+&lt;li&gt;metasploit v4.16.65-dev (書籍pp.240より)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;今回は，1.1で作った環境を壊したくなかったので，Virtualbox上に新しく特定のバージョンのKali linuxをisoファイルからインストールして，それを用いる．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;今回作った環境
+&lt;ul&gt;
+&lt;li&gt;Kali Linux 2018.2
+&lt;ul&gt;
+&lt;li&gt;LANアダプター1 (ホストオンリーネットワーク): 10.0.0.3&lt;/li&gt;
+&lt;li&gt;metasploit v4.16.48-dev&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ここで，Kali Linux 2018.2に関しては，インターネットに接続せず，Windows7との通信のためだけに用いることにする．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;apt update&lt;/code&gt;や&lt;code&gt;apt upgrade&lt;/code&gt;を行うとmetasploitのバージョンが更新される可能性がある．&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apt update&lt;/code&gt;や&lt;code&gt;apt upgrade&lt;/code&gt;をしようとしたときにエラーが出た．何とか改善したが，metasploitのバージョンまで更新された(1敗)．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;また，旧バージョンのisoファイルは，以下からダウンロードした．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://old.kali.org/kali-images/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Index of /kali-images&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-kali-linux-20182での実行&#34;&gt;2. Kali Linux 2018.2での実行&lt;/h3&gt;
+&lt;h4 id=&#34;21-環境構築&#34;&gt;2.1. 環境構築&lt;/h4&gt;
+&lt;p&gt;isoファイルを使って仮想マシンを構築する．途中のDNSサーバを指定するところで，&lt;code&gt;8.8.8.8&lt;/code&gt;を指定するのを忘れない．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;参考
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://hackcrack89.blog.fc2.com/blog-entry-30.html?sp&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kali Linux on Linux Deploy - resolv.confの編集&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;うまくいくと，以下のようなデスクトップとして起動できる．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-デスクトップの起動&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_1.png&#34; alt=&#34;kali_2018_1&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      デスクトップの起動
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;IPアドレスの編集を行う．Virtualbox側でホストオンリーネットワークを指定し，Kali linux側の&lt;code&gt;/etc/network/interfaces&lt;/code&gt;に以下を追加．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;allow-hotplug eth0
+iface eth0 inet static
+address 10.0.0.3
+netmask 255.255.255.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;設定後再起動し，うまく割り振られているか，ホストOSにpingが飛ぶか確認した．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-pingの確認&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_2.png&#34; alt=&#34;kali_2018_2&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      pingの確認
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;22-metasploitの起動と確認&#34;&gt;2.2. metasploitの起動と確認&lt;/h4&gt;
+&lt;p&gt;次に，msfconsoleでmetasploitを起動し，バージョンを確認する．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-metasploitのバージョンの確認&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_3.png&#34; alt=&#34;kali_2018_3&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      metasploitのバージョンの確認
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;v4.16.48-devであることが分かり，書籍よりも前のバージョンであることが分かる．&lt;/p&gt;
+&lt;p&gt;書籍の処理を実行してみる．まず，ペイロードを作成し，実行した．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-ペイロードの実行&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_4.png&#34; alt=&#34;kali_2018_4&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      ペイロードの実行
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;次に，SYSTEM権限を奪取して，&lt;code&gt;run hashdump&lt;/code&gt;を実行した．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-hashdumpの実行&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_5.png&#34; alt=&#34;kali_2018_5&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      hashdumpの実行
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;注意は出たが，止まらずに実行できているようである．期待できそうだったので，&lt;code&gt;run scraper&lt;/code&gt;もやってみる．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-run-scraperの実行&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./kali_2018_6.png&#34; alt=&#34;kali_2018_6&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      run scraperの実行
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;実行できた．&lt;code&gt;run persistence&lt;/code&gt;も実行できた．&lt;/p&gt;
+&lt;h3 id=&#34;3-まとめ&#34;&gt;3. まとめ&lt;/h3&gt;
+&lt;p&gt;書籍の環境に合わせたら一応実行はできた．もっと良い方法があるとは思うが，演習だと思えば&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>ファイルサーバを構築したときのログ (Ubuntu18.04)</title>

@@ -1,0 +1,1341 @@
+<!DOCTYPE html><html lang="ja-jp" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.3.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Ai Tachibana" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="0. はじめに 最近，ハッキング・ラボのつくりかたという本を読んで" />
+
+  
+  <link rel="alternate" hreflang="ja-jp" href="https://tachibana-ai.netlify.app/post/hacking-lab_1/" />
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#3f51b5" />
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous" media="print" onload="this.media='all'">
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.c08a28530f790dced3fa54eaa0bf668e.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_2.png" />
+
+  <link rel="canonical" href="https://tachibana-ai.netlify.app/post/hacking-lab_1/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="立ち話" />
+  <meta property="og:url" content="https://tachibana-ai.netlify.app/post/hacking-lab_1/" />
+  <meta property="og:title" content="書籍を読みながらMetasploitを使ってみて詰まったところ | 立ち話" />
+  <meta property="og:description" content="0. はじめに 最近，ハッキング・ラボのつくりかたという本を読んで" /><meta property="og:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
+    <meta property="twitter:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="ja-jp" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-07-13T21:24:32&#43;09:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-07-13T21:24:32&#43;09:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://tachibana-ai.netlify.app/post/hacking-lab_1/"
+  },
+  "headline": "書籍を読みながらMetasploitを使ってみて詰まったところ",
+  
+  "datePublished": "2021-07-13T21:24:32+09:00",
+  "dateModified": "2021-07-13T21:24:32+09:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Ai Tachibana"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "立ち話",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "0. はじめに 最近，ハッキング・ラボのつくりかたという本を読んで"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>書籍を読みながらMetasploitを使ってみて詰まったところ | 立ち話</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="5ebb7a361430cd8f0e4ccbcec540ce0d" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.8988fb2a4bba758785868cfcb5244555.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="検索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="検索...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">立ち話</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="ナビゲーションの切り替え">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">立ち話</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/post"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>書籍を読みながらMetasploitを使ってみて詰まったところ</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Jul 13, 2021
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 分で読める
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/security/">Security</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h3 id="0-はじめに">0. はじめに</h3>
+<p>最近，<a href="https://s-akademeia.sakura.ne.jp/main/books/lab/faq.html" target="_blank" rel="noopener">ハッキング・ラボのつくりかた</a>という本を読んでいる．ツイートされていた方もいらっしゃったが，書籍第4章のWindowsに紹介されているmeterpreterのプロンプトで<code>run hashdump</code>や<code>run scraper</code>が実行できない．</p>
+<ul>
+<li><a href="https://twitter.com/K88336374/status/1409822251797471238?s=20" target="_blank" rel="noopener">該当ツイート</a></li>
+</ul>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-runのエラー">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./kali_2021_1.png" alt="scraper_error" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      runのエラー
+    </figcaption></figure>
+</p>
+<p>Meterpreterがスクリプトの実行をサポートしなくなったことが原因の1つだと考えたので，何とか書籍のコードを実行できないか試してみたいと思った．</p>
+<ul>
+<li><a href="https://twitter.com/DeXhCjktu3ABTLZ/status/1413171321475780608?s=20" target="_blank" rel="noopener">該当ツイートへのリプライ</a></li>
+<li><a href="https://github.com/iagox86/metasploit-framework-webexec/blob/master/scripts/meterpreter/enum_chrome.rb" target="_blank" rel="noopener">GitHubのmetasploit-framework-webexec</a></li>
+</ul>
+<p>今回は，書籍の環境に合わせることで実行した．もっと良い方法があるはずだが，知識のない私にはこれが限界だった．</p>
+<h3 id="1-環境について">1. 環境について</h3>
+<h4 id="11-これまで用いていた環境">1.1. これまで用いていた環境</h4>
+<p>私がこれまで使っていた環境を記載する．Virtualbox上で仮想マシンを動かしている．</p>
+<ul>
+<li>ホストOS
+<ul>
+<li>Windows11
+<ul>
+<li>IP address (ホストオンリーネットワーク): 10.0.0.1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ゲストOS
+<ul>
+<li>Kali Linux 2021.2
+<ul>
+<li>LANアダプター1 (ホストオンリーネットワーク): 10.0.0.2</li>
+<li>LANアダプター2 (NAT): DHCP</li>
+<li>metasploit v6.0.52-dev</li>
+</ul>
+</li>
+<li>Windows7 (ターゲット端末)
+<ul>
+<li>LANアダプター1 (ホストオンリーネットワーク): DHCP</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="12-書籍の環境と今回比較のために用いる環境">1.2. 書籍の環境と今回比較のために用いる環境</h4>
+<p>書籍では，Kali Linux 2018.2を用いている．</p>
+<ul>
+<li>書籍の環境
+<ul>
+<li>Kali Linux 2018.2
+<ul>
+<li>LANアダプター1 (ホストオンリーネットワーク): 10.0.0.2</li>
+<li>LANアダプター2 (NAT): DHCP</li>
+<li>metasploit v4.16.65-dev (書籍pp.240より)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>今回は，1.1で作った環境を壊したくなかったので，Virtualbox上に新しく特定のバージョンのKali linuxをisoファイルからインストールして，それを用いる．</p>
+<ul>
+<li>今回作った環境
+<ul>
+<li>Kali Linux 2018.2
+<ul>
+<li>LANアダプター1 (ホストオンリーネットワーク): 10.0.0.3</li>
+<li>metasploit v4.16.48-dev</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>ここで，Kali Linux 2018.2に関しては，インターネットに接続せず，Windows7との通信のためだけに用いることにする．</p>
+<ul>
+<li><code>apt update</code>や<code>apt upgrade</code>を行うとmetasploitのバージョンが更新される可能性がある．</li>
+<li><code>apt update</code>や<code>apt upgrade</code>をしようとしたときにエラーが出た．何とか改善したが，metasploitのバージョンまで更新された(1敗)．</li>
+</ul>
+<p>また，旧バージョンのisoファイルは，以下からダウンロードした．</p>
+<ul>
+<li><a href="http://old.kali.org/kali-images/" target="_blank" rel="noopener">Index of /kali-images</a></li>
+</ul>
+<h3 id="2-kali-linux-20182での実行">2. Kali Linux 2018.2での実行</h3>
+<h4 id="21-環境構築">2.1. 環境構築</h4>
+<p>isoファイルを使って仮想マシンを構築する．途中のDNSサーバを指定するところで，<code>8.8.8.8</code>を指定するのを忘れない．</p>
+<ul>
+<li>参考
+<ul>
+<li><a href="http://hackcrack89.blog.fc2.com/blog-entry-30.html?sp" target="_blank" rel="noopener">Kali Linux on Linux Deploy - resolv.confの編集</a></li>
+</ul>
+</li>
+</ul>
+<p>うまくいくと，以下のようなデスクトップとして起動できる．</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-デスクトップの起動">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./kali_2018_1.png" alt="kali_2018_1" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      デスクトップの起動
+    </figcaption></figure>
+</p>
+<p>IPアドレスの編集を行う．Virtualbox側でホストオンリーネットワークを指定し，Kali linux側の<code>/etc/network/interfaces</code>に以下を追加．</p>
+<pre><code class="language-txt">allow-hotplug eth0
+iface eth0 inet static
+address 10.0.0.3
+netmask 255.255.255.0
+</code></pre>
+<p>設定後再起動し，うまく割り振られているか，ホストOSにpingが飛ぶか確認した．</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-pingの確認">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./kali_2018_2.png" alt="kali_2018_2" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      pingの確認
+    </figcaption></figure>
+</p>
+<h4 id="22-metasploitの起動と確認">2.2. metasploitの起動と確認</h4>
+<p>次に，msfconsoleでmetasploitを起動し，バージョンを確認する．</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-metasploitのバージョンの確認">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./kali_2018_3.png" alt="kali_2018_3" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      metasploitのバージョンの確認
+    </figcaption></figure>
+</p>
+<p>v4.16.48-devであることが分かり，書籍よりも前のバージョンであることが分かる．</p>
+<p>書籍の処理を実行してみる．まず，ペイロードを作成し，実行した．</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-ペイロードの実行">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./kali_2018_4.png" alt="kali_2018_4" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      ペイロードの実行
+    </figcaption></figure>
+</p>
+<p>次に，SYSTEM権限を奪取して，<code>run hashdump</code>を実行した．</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-hashdumpの実行">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./kali_2018_5.png" alt="kali_2018_5" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      hashdumpの実行
+    </figcaption></figure>
+</p>
+<p>注意は出たが，止まらずに実行できているようである．期待できそうだったので，<code>run scraper</code>もやってみる．</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-run-scraperの実行">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./kali_2018_6.png" alt="kali_2018_6" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      run scraperの実行
+    </figcaption></figure>
+</p>
+<p>実行できた．<code>run persistence</code>も実行できた．</p>
+<h3 id="3-まとめ">3. まとめ</h3>
+<p>書籍の環境に合わせたら一応実行はできた．もっと良い方法があるとは思うが，演習だと思えば&hellip;</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/hacking-lab/">Hacking-lab</a>
+  
+  <a class="badge badge-light" href="/tag/security/">Security</a>
+  
+  <a class="badge badge-light" href="/tag/kali-linux/">Kali-linux</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://tachibana-ai.netlify.app/post/hacking-lab_1/&amp;text=%e6%9b%b8%e7%b1%8d%e3%82%92%e8%aa%ad%e3%81%bf%e3%81%aa%e3%81%8c%e3%82%89Metasploit%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%a6%e8%a9%b0%e3%81%be%e3%81%a3%e3%81%9f%e3%81%a8%e3%81%93%e3%82%8d" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://tachibana-ai.netlify.app/post/hacking-lab_1/&amp;t=%e6%9b%b8%e7%b1%8d%e3%82%92%e8%aa%ad%e3%81%bf%e3%81%aa%e3%81%8c%e3%82%89Metasploit%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%a6%e8%a9%b0%e3%81%be%e3%81%a3%e3%81%9f%e3%81%a8%e3%81%93%e3%82%8d" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e6%9b%b8%e7%b1%8d%e3%82%92%e8%aa%ad%e3%81%bf%e3%81%aa%e3%81%8c%e3%82%89Metasploit%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%a6%e8%a9%b0%e3%81%be%e3%81%a3%e3%81%9f%e3%81%a8%e3%81%93%e3%82%8d&amp;body=https://tachibana-ai.netlify.app/post/hacking-lab_1/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://tachibana-ai.netlify.app/post/hacking-lab_1/&amp;title=%e6%9b%b8%e7%b1%8d%e3%82%92%e8%aa%ad%e3%81%bf%e3%81%aa%e3%81%8c%e3%82%89Metasploit%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%a6%e8%a9%b0%e3%81%be%e3%81%a3%e3%81%9f%e3%81%a8%e3%81%93%e3%82%8d" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e6%9b%b8%e7%b1%8d%e3%82%92%e8%aa%ad%e3%81%bf%e3%81%aa%e3%81%8c%e3%82%89Metasploit%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%a6%e8%a9%b0%e3%81%be%e3%81%a3%e3%81%9f%e3%81%a8%e3%81%93%e3%82%8d%20https://tachibana-ai.netlify.app/post/hacking-lab_1/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://tachibana-ai.netlify.app/post/hacking-lab_1/&amp;title=%e6%9b%b8%e7%b1%8d%e3%82%92%e8%aa%ad%e3%81%bf%e3%81%aa%e3%81%8c%e3%82%89Metasploit%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e3%81%bf%e3%81%a6%e8%a9%b0%e3%81%be%e3%81%a3%e3%81%9f%e3%81%a8%e3%81%93%e3%82%8d" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://tachibana-ai.netlify.app/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu0297a60047f1d555aef328261639ce70_36929_270x270_fill_q75_lanczos_center.jpg" alt="Ai Tachibana"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://tachibana-ai.netlify.app/">Ai Tachibana</a></h5>
+      <h6 class="card-subtitle">master&rsquo;s student</h6>
+      <p class="card-text">修士2年です．興味があることを少しだけ触ってます．飽きっぽいです．</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/tcbn_ai" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/SeeKT" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>関連項目</h3>
+    <ul>
+      
+      <li><a href="/post/kali-linux-log/">古いバージョンのKali linuxをインストールしようとした</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+  <p class="powered-by">
+    @SeeKT
+  </p>
+  
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> コピー
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> ダウンロード
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/ja/js/wowchemy.min.b14d8c43a5a17e4c4a13ce5913806c4f.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>
