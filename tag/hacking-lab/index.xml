@@ -850,7 +850,11 @@ chmod -R 600 ./.ssh/authorized_keys
 &lt;p&gt;ここで，Kali Linux 2018.2に関しては，インターネットに接続せず，Windows7との通信のためだけに用いることにする．&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;apt update&lt;/code&gt;や&lt;code&gt;apt upgrade&lt;/code&gt;を行うとmetasploitのバージョンが更新される可能性がある．&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;apt update&lt;/code&gt;や&lt;code&gt;apt upgrade&lt;/code&gt;をしようとしたときにエラーが出た．何とか改善したが，metasploitのバージョンまで更新された(1敗)．&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;apt update&lt;/code&gt;や&lt;code&gt;apt upgrade&lt;/code&gt;をしようとしたときにエラーが出た．何とか改善したが，metasploitのバージョンまで更新された(1敗)．
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://tachibana-ai.netlify.app/post/kali-linux-log/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;古いバージョンのKali linuxをインストールしようとした&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;また，旧バージョンのisoファイルは，以下からダウンロードした．&lt;/p&gt;
 &lt;ul&gt;
