@@ -5,12 +5,48 @@
     <link>https://tachibana-ai.netlify.app/post/</link>
       <atom:link href="https://tachibana-ai.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Tue, 13 Jul 2021 21:47:32 +0900</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Sun, 18 Jul 2021 16:18:58 +0900</lastBuildDate>
     <image>
       <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
       <link>https://tachibana-ai.netlify.app/post/</link>
     </image>
+    
+    <item>
+      <title>最適制御問題: 変分法</title>
+      <link>https://tachibana-ai.netlify.app/post/optimal_control_validation/</link>
+      <pubDate>Sun, 18 Jul 2021 16:18:58 +0900</pubDate>
+      <guid>https://tachibana-ai.netlify.app/post/optimal_control_validation/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+
+&lt;p&gt;研究で最適制御問題を扱うことになったが，これまでまともに勉強してこなかったので，勉強する．研究では連続時間の最適制御問題を扱う予定なので，連続時間の最適制御問題の文献を読んでまとめた手書きのメモを公開することにした．&lt;/p&gt;
+
+&lt;p&gt;次の本を参考にしている．4章から7章まで勉強する予定である．&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.coronasha.co.jp/np/isbn/9784339033182/&#34;&gt;大塚，非線形最適制御問題入門，コロナ社，2011&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;01-方針&#34;&gt;0.1. 方針&lt;/h4&gt;
+
+&lt;p&gt;GoodNotesを使ってメモを取りながら，本を読んで数式を追っている．ある程度まとめたらメモを載せることにする．誤字や記述が怪しい箇所，理解が足りていない箇所も多いと思う．&lt;/p&gt;
+
+&lt;p&gt;普段，定理や補題の主張を読み，証明は読み飛ばすか流れだけを見ることが多いので，今回もそうなると思う．&lt;/p&gt;
+
+&lt;h3 id=&#34;1-4章の概要とまとめ&#34;&gt;1. 4章の概要とまとめ&lt;/h3&gt;
+
+&lt;p&gt;4章では，変分法の基本がまとめられている．最適制御問題は，時間の関数である状態 $x(t)$ と入力 $u(t)$ の &lt;strong&gt;汎関数&lt;/strong&gt; である評価関数 $J$ を，&lt;strong&gt;等式制約&lt;/strong&gt; (状態方程式) の下で最小化する問題であり，これは変分問題である．よって，変分法は最適制御問題の基礎になっている．&lt;/p&gt;
+
+&lt;p&gt;以下に，各節の内容をまとめた手書きのメモを掲載する．&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://tachibana-ai.netlify.app/files/optimal_control/Sec4.1.pdf&#34; target=&#34;_blank&#34;&gt;4.1節&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tachibana-ai.netlify.app/files/optimal_control/Sec4.2.pdf&#34; target=&#34;_blank&#34;&gt;4.2節&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tachibana-ai.netlify.app/files/optimal_control/Sec4.3.pdf&#34; target=&#34;_blank&#34;&gt;4.3節&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tachibana-ai.netlify.app/files/optimal_control/Sec4.4.pdf&#34; target=&#34;_blank&#34;&gt;4.4節&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>古いバージョンのKali linuxをインストールしようとした</title>

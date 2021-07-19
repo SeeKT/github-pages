@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="master&#39;s student" />
+  <meta name="description" content="0. はじめに 研究で最適制御問題を扱うことになったが，これまでま" />
 
   
-  <link rel="alternate" hreflang="ja-jp" href="https://tachibana-ai.netlify.app/tags/" />
+  <link rel="alternate" hreflang="ja-jp" href="https://tachibana-ai.netlify.app/post/optimal_control_validation/" />
 
   
 
@@ -285,8 +285,6 @@
   
 
   
-    <link rel="alternate" href="/tags/index.xml" type="application/rss+xml" title="立ち話" />
-  
 
   
     <link rel="manifest" href="/manifest.webmanifest" />
@@ -295,7 +293,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_2.png" />
 
-  <link rel="canonical" href="https://tachibana-ai.netlify.app/tags/" />
+  <link rel="canonical" href="https://tachibana-ai.netlify.app/post/optimal_control_validation/" />
 
   
   
@@ -312,33 +310,82 @@
   <meta property="twitter:card" content="summary" />
   
   <meta property="og:site_name" content="立ち話" />
-  <meta property="og:url" content="https://tachibana-ai.netlify.app/tags/" />
-  <meta property="og:title" content="Tags | 立ち話" />
-  <meta property="og:description" content="master&#39;s student" /><meta property="og:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
+  <meta property="og:url" content="https://tachibana-ai.netlify.app/post/optimal_control_validation/" />
+  <meta property="og:title" content="最適制御問題: 変分法 | 立ち話" />
+  <meta property="og:description" content="0. はじめに 研究で最適制御問題を扱うことになったが，これまでま" /><meta property="og:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
     <meta property="twitter:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="ja-jp" />
   
     
-      <meta property="og:updated_time" content="2021-07-18T16:18:58&#43;09:00" />
+      <meta
+        property="article:published_time"
+        content="2021-07-18T16:18:58&#43;09:00"
+      />
     
+    <meta property="article:modified_time" content="2021-07-19T11:15:58&#43;09:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://tachibana-ai.netlify.app/post/optimal_control_validation/"
+  },
+  "headline": "最適制御問題: 変分法",
+  
+  "datePublished": "2021-07-18T16:18:58+09:00",
+  "dateModified": "2021-07-19T11:15:58+09:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Ai Tachibana"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "立ち話",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "0. はじめに 研究で最適制御問題を扱うことになったが，これまでま"
+}
+</script>
+
+  
+
+  
+
   
 
   
 
 
 
-  
-
-  
 
 
-
-
-
-  <title>Tags | 立ち話</title>
+  <title>最適制御問題: 変分法 | 立ち話</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   "  >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="208b0d9ba516e2003f72d88f68fd184a" >
 
   
   
@@ -498,7 +545,7 @@
         
 
         <li class="nav-item">
-          <a class="nav-link " href="/post"><span>Blog</span></a>
+          <a class="nav-link  active" href="/post"><span>Blog</span></a>
         </li>
 
         
@@ -556,7 +603,9 @@
   </div>
 
   <div class="page-body">
-    
+    <article class="article">
+
+  
 
 
 
@@ -574,54 +623,13 @@
   
   
   
-    
-  
-<div class="universal-wrapper pt-3">
-  <h1>Tags</h1>
+<div class="article-container pt-3">
+  <h1>最適制御問題: 変分法</h1>
 
   
 
-  
-</div>
-
-
-
-<div class="universal-wrapper">
-  
-
-  
   
     
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/tag/tex/" >TeX</a>
-    </div>
-
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
 
 
 <div class="article-metadata">
@@ -634,132 +642,279 @@
     
     
       
+          最終更新
+      
     
-    Jul 8, 2021
+    Jul 19, 2021
   </span>
   
 
   
 
   
-
-  
-  
-  
-  
-  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 分で読める
+  </span>
   
 
   
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/optimal-control/">Optimal control</a></span>
   
 
 </div>
 
-      
-    </div>
-
     
 
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
+
+
+
+
+  
 </div>
 
-    
-  
-    
-      
 
 
+  <div class="article-container">
 
+    <div class="article-style">
+      <h3 id="0-はじめに">0. はじめに</h3>
 
+<p>研究で最適制御問題を扱うことになったが，これまでまともに勉強してこなかったので，勉強する．研究では連続時間の最適制御問題を扱う予定なので，連続時間の最適制御問題の文献を読んでまとめた手書きのメモを公開することにした．</p>
 
+<p>次の本を参考にしている．4章から7章まで勉強する予定である．</p>
 
+<ul>
+<li><a href="https://www.coronasha.co.jp/np/isbn/9784339033182/">大塚，非線形最適制御問題入門，コロナ社，2011</a></li>
+</ul>
 
+<h4 id="01-方針">0.1. 方針</h4>
 
+<p>GoodNotesを使ってメモを取りながら，本を読んで数式を追っている．ある程度まとめたらメモを載せることにする．誤字や記述が怪しい箇所，理解が足りていない箇所も多いと思う．</p>
 
+<p>普段，定理や補題の主張を読み，証明は読み飛ばすか流れだけを見ることが多いので，今回もそうなると思う．</p>
 
+<h3 id="1-4章の概要とまとめ">1. 4章の概要とまとめ</h3>
 
+<p>4章では，変分法の基本がまとめられている．最適制御問題は，時間の関数である状態 $x(t)$ と入力 $u(t)$ の <strong>汎関数</strong> である評価関数 $J$ を，<strong>等式制約</strong> (状態方程式) の下で最小化する問題であり，これは変分問題である．よって，変分法は最適制御問題の基礎になっている．</p>
 
+<p>以下に，各節の内容をまとめた手書きのメモを掲載する．</p>
 
+<ul>
+<li><a href="/files/optimal_control/Sec4.1.pdf" target="_blank">4.1節</a></li>
+<li><a href="/files/optimal_control/Sec4.2.pdf" target="_blank">4.2節</a></li>
+<li><a href="/files/optimal_control/Sec4.3.pdf" target="_blank">4.3節</a></li>
+<li><a href="/files/optimal_control/Sec4.4.pdf" target="_blank">4.4節</a></li>
+</ul>
 
-<div class="media stream-item">
-  <div class="media-body">
-
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/tag/introduction/" >Introduction</a>
     </div>
 
     
 
-    <div class="stream-meta article-metadata">
 
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/optimal-control/">Optimal control</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
       
-
+      
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://tachibana-ai.netlify.app/post/optimal_control_validation/&amp;text=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e5%a4%89%e5%88%86%e6%b3%95" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
     
       
-    
-    Jul 8, 2021
-  </span>
-  
-
-  
-
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-  
-
-</div>
-
       
-    </div>
-
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://tachibana-ai.netlify.app/post/optimal_control_validation/&amp;t=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e5%a4%89%e5%88%86%e6%b3%95" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
     
-
-  </div>
-  <div class="ml-3">
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e5%a4%89%e5%88%86%e6%b3%95&amp;body=https://tachibana-ai.netlify.app/post/optimal_control_validation/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
     
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://tachibana-ai.netlify.app/post/optimal_control_validation/&amp;title=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e5%a4%89%e5%88%86%e6%b3%95" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
     
-  </div>
-</div>
-
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e5%a4%89%e5%88%86%e6%b3%95%20https://tachibana-ai.netlify.app/post/optimal_control_validation/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
     
-  
-
-  
-<nav class="mt-1">
-  <ul class="pagination justify-content-center">
-    
-    <li class="page-item"><a class="page-link" href="/tags/">&laquo;</a></li>
-    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://tachibana-ai.netlify.app/post/optimal_control_validation/&amp;title=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e5%a4%89%e5%88%86%e6%b3%95" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
     
   </ul>
-</nav>
-
-
 </div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://tachibana-ai.netlify.app/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu0297a60047f1d555aef328261639ce70_36929_270x270_fill_q75_lanczos_center.jpg" alt="Ai Tachibana"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://tachibana-ai.netlify.app/">Ai Tachibana</a></h5>
+      <h6 class="card-subtitle">master&rsquo;s student</h6>
+      <p class="card-text">修士2年です．興味があることを少しだけ触ってます．飽きっぽいです．</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/tcbn_ai" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/SeeKT" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  </div>
+</article>
   </div>
 
   <div class="page-footer">
