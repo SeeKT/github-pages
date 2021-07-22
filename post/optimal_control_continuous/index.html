@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="0. はじめに 研究で最適制御問題を扱うことになったが，これまでま" />
+  <meta name="description" content="0. はじめに 先日は，4章の内容をまとめた (最適制御問題: 変分法" />
 
   
-  <link rel="alternate" hreflang="ja-jp" href="https://tachibana-ai.netlify.app/post/optimal_control_validation/" />
+  <link rel="alternate" hreflang="ja-jp" href="https://tachibana-ai.netlify.app/post/optimal_control_continuous/" />
 
   
 
@@ -293,7 +293,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_2.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_2.png" />
 
-  <link rel="canonical" href="https://tachibana-ai.netlify.app/post/optimal_control_validation/" />
+  <link rel="canonical" href="https://tachibana-ai.netlify.app/post/optimal_control_continuous/" />
 
   
   
@@ -310,18 +310,18 @@
   <meta property="twitter:card" content="summary" />
   
   <meta property="og:site_name" content="立ち話" />
-  <meta property="og:url" content="https://tachibana-ai.netlify.app/post/optimal_control_validation/" />
-  <meta property="og:title" content="最適制御問題: 変分法 | 立ち話" />
-  <meta property="og:description" content="0. はじめに 研究で最適制御問題を扱うことになったが，これまでま" /><meta property="og:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
+  <meta property="og:url" content="https://tachibana-ai.netlify.app/post/optimal_control_continuous/" />
+  <meta property="og:title" content="最適制御問題: 連続時間システムの最適制御 | 立ち話" />
+  <meta property="og:description" content="0. はじめに 先日は，4章の内容をまとめた (最適制御問題: 変分法" /><meta property="og:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" />
     <meta property="twitter:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png" /><meta property="og:locale" content="ja-jp" />
   
     
       <meta
         property="article:published_time"
-        content="2021-07-18T16:18:58&#43;09:00"
+        content="2021-07-22T16:14:47&#43;09:00"
       />
     
-    <meta property="article:modified_time" content="2021-07-19T11:15:58&#43;09:00">
+    <meta property="article:modified_time" content="2021-07-22T16:14:47&#43;09:00">
   
 
   
@@ -345,12 +345,12 @@
   "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://tachibana-ai.netlify.app/post/optimal_control_validation/"
+    "@id": "https://tachibana-ai.netlify.app/post/optimal_control_continuous/"
   },
-  "headline": "最適制御問題: 変分法",
+  "headline": "最適制御問題: 連続時間システムの最適制御",
   
-  "datePublished": "2021-07-18T16:18:58+09:00",
-  "dateModified": "2021-07-19T11:15:58+09:00",
+  "datePublished": "2021-07-22T16:14:47+09:00",
+  "dateModified": "2021-07-22T16:14:47+09:00",
   
   "author": {
     "@type": "Person",
@@ -365,7 +365,7 @@
       "url": "https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "0. はじめに 研究で最適制御問題を扱うことになったが，これまでま"
+  "description": "0. はじめに 先日は，4章の内容をまとめた (最適制御問題: 変分法"
 }
 </script>
 
@@ -381,11 +381,11 @@
 
 
 
-  <title>最適制御問題: 変分法 | 立ち話</title>
+  <title>最適制御問題: 連続時間システムの最適制御 | 立ち話</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="208b0d9ba516e2003f72d88f68fd184a" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="fee2353d0612d40b5ffdb02a9140a185" >
 
   
   
@@ -624,7 +624,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>最適制御問題: 変分法</h1>
+  <h1>最適制御問題: 連続時間システムの最適制御</h1>
 
   
 
@@ -642,10 +642,8 @@
     
     
       
-          最終更新
-      
     
-    Jul 19, 2021
+    Jul 22, 2021
   </span>
   
 
@@ -654,7 +652,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    1 分で読める
+    3 分で読める
   </span>
   
 
@@ -690,32 +688,60 @@
     <div class="article-style">
       <h3 id="0-はじめに">0. はじめに</h3>
 
-<p>研究で最適制御問題を扱うことになったが，これまでまともに勉強してこなかったので，勉強する．研究では連続時間の最適制御問題を扱う予定なので，連続時間の最適制御問題の文献を読んでまとめた手書きのメモを公開することにした．</p>
+<p>先日は，4章の内容をまとめた (<a href="https://tachibana-ai.netlify.app/post/optimal_control_validation/">最適制御問題: 変分法</a>)．今回は，5章の内容をまとめる．</p>
 
-<p>次の本を参考にしている．4章から7章まで勉強する予定である．</p>
+<h3 id="1-5章の概要">1. 5章の概要</h3>
 
-<ul>
-<li><a href="https://www.coronasha.co.jp/np/isbn/9784339033182/">大塚，非線形最適制御問題入門，コロナ社，2011</a></li>
-</ul>
+<p>5章では，連続時間システムに対する最適制御問題を扱っている．最適制御問題の基本的な問題設定，変分法から導出した停留条件 (オイラー・ラグランジュ方程式)，局所最適性の十分条件，最適解の摂動についてまとめられている．このブログではオイラー・ラグランジュ方程式までをまとめる (詳しい導出は省略)．詳しい導出とそれ以降の内容は手書きの資料に載せている．</p>
 
-<h4 id="01-方針">0.1. 方針</h4>
+<p>ここで扱う最適制御問題は連続時間システム</p>
 
-<p>GoodNotesを使ってメモを取りながら，本を読んで数式を追っている．ある程度まとめたらメモを載せることにする．誤字や記述が怪しい箇所，理解が足りていない箇所も多いと思う．</p>
+<p><span  class="math">\[\dot{x}(t) = f(x(t), u(t), t) \tag{5.1}\]</span></p>
 
-<p>普段，定理や補題の主張を読み，証明は読み飛ばすか流れだけを見ることが多いので，今回もそうなると思う．</p>
+<p>(ただし，<span  class="math">\(x(t) \in \mathbb{R}^n\)</span>は状態ベクトル，<span  class="math">\(u(t) \in \mathbb{R}^m\)</span>は制御入力ベクトル) に対して，初期時刻<span  class="math">\(t_0\)</span>，終端時刻<span  class="math">\(t_f\)</span>，初期状態<span  class="math">\(x(t_0) = x_0\)</span>が与えられた下で評価関数</p>
 
-<h3 id="1-4章の概要とまとめ">1. 4章の概要とまとめ</h3>
+<p><span  class="math">\[J = \varphi(x(t_f)) + \int_{t_0}^{t_f} L(x(t), u(t), t) dt \tag{5.2}\]</span></p>
 
-<p>4章では，変分法の基本がまとめられている．最適制御問題は，時間の関数である状態 $x(t)$ と入力 $u(t)$ の <strong>汎関数</strong> である評価関数 $J$ を，<strong>等式制約</strong> (状態方程式) の下で最小化する問題であり，これは変分問題である．よって，変分法は最適制御問題の基礎になっている．</p>
+<p>が与えられ，それを最小化するような最適制御<span  class="math">\(u(t)\)</span>を求める，というような問題である．つまり，ここで考える最適制御問題は，関数<span  class="math">\(x(t)\)</span>と<span  class="math">\(u(t)\)</span>の汎関数である評価関数<span  class="math">\(J\)</span>を，等式制約である状態方程式の下で最小化する変分問題である．</p>
+
+<p>等式制約</p>
+
+<p><span  class="math">\[f(x, u, t) - \dot{x} = 0\]</span></p>
+
+<p>に対応するラグランジュ乗数のベクトルを<span  class="math">\(\lambda(t) \in \mathbb{R}^n\)</span>として，制約条件の下での停留条件を求めるための汎関数<span  class="math">\(\overline{J}\)</span>を構成すると，</p>
+
+<p><span  class="math">\[\overline{J} = \varphi(x(t_f)) + \int_{t_0}^{t_f} \{L(x, u, t + \lambda^{\mathrm{T}} (f - \dot{x}) \}dt \tag{5.3}\]</span></p>
+
+<p>となる．ここで，スカラー値関数<span  class="math">\(H\)</span>を</p>
+
+<p><span  class="math">\[H(x, u, \lambda, t) := L(x, u, t) + \lambda^{\mathrm{T}} f(x, u, t)\]</span></p>
+
+<p>と定義する．<span  class="math">\(H\)</span>は最適制御問題の<strong>ハミルトン関数</strong>と呼ばれる．この<span  class="math">\(H\)</span>を用いると，汎関数<span  class="math">\(\overline{J}\)</span>は，以下のように<span  class="math">\(\dot{x}\)</span>の項とそれ以外の項に分けて書き直される．</p>
+
+<p><span  class="math">\[\overline{J} = \varphi(x(t_f)) + \int_{t_0}^{t_f} \left(H(x, u, \lambda, t) - \lambda^{\mathrm{T}}\dot{x}\right)  dt\]</span></p>
+
+<p>上記の問題設定の下で，評価関数 (5.2) を最小にする最適制御 <span  class="math">\(u(t) \ (t_0 \leq t \leq t_f)\)</span> が存在するとし，対応する最適軌道を<span  class="math">\(x(t)\)</span>とすると，<span  class="math">\(n\)</span>次元ベクトル値関数<span  class="math">\(\lambda(t)\)</span>が存在して以下の<strong>オイラー・ラグランジュ方程式</strong>が成り立つ．</p>
+
+<p><span  class="math">\[\dot{x} = f(x, u, t), \ x(t_0) = x_0 \tag{5.4}\]</span></p>
+
+<p><span  class="math">\[\dot{\lambda} = - \left(\frac{\partial H}{\partial x} \right)^{\mathrm{T}}(x, u, \lambda, t), \ \lambda(t_f) = \left( \frac{\partial \varphi}{\partial x} \right)(x(t_f)) \tag{5.5}\]</span></p>
+
+<p><span  class="math">\[\frac{\partial H}{\partial u}(x, u, \lambda, t) = 0 \tag{5.6}\]</span></p>
+
+<p>これは，<span  class="math">\(x(t)\)</span>と<span  class="math">\(u(t)\)</span>の連立微分方程式とみなすことができるが，<span  class="math">\(x(t)\)</span>は初期状態<span  class="math">\(x(t_0)\)</span>が与えられているのに対し，<span  class="math">\(\lambda(t)\)</span>は終端値<span  class="math">\(\lambda(t_f)\)</span>に対する条件が与えられている．このような問題を<strong>2点境界値問題</strong>という．多くの場合，非線形の微分方程式の解析解は得られないので，初期状態を未知のパラメータとして終端条件が成り立つための条件を書き下すことは困難である．</p>
 
 <p>以下に，各節の内容をまとめた手書きのメモを掲載する．</p>
 
 <ul>
-<li><a href="/files/optimal_control/Sec4.1.pdf" target="_blank">4.1節</a></li>
-<li><a href="/files/optimal_control/Sec4.2.pdf" target="_blank">4.2節</a></li>
-<li><a href="/files/optimal_control/Sec4.3.pdf" target="_blank">4.3節</a></li>
-<li><a href="/files/optimal_control/Sec4.4.pdf" target="_blank">4.4節</a></li>
+<li><a href="/files/optimal_control/Sec5.1.pdf" target="_blank">5.1節</a></li>
+<li><a href="/files/optimal_control/Sec5.2.pdf" target="_blank">5.2節</a></li>
+<li><a href="/files/optimal_control/Sec5.3.pdf" target="_blank">5.3節</a></li>
+<li><a href="/files/optimal_control/Sec5.4.pdf" target="_blank">5.4節</a></li>
 </ul>
+
+<h3 id="2-まとめ">2. まとめ</h3>
+
+<p>ここまで読んで，最適制御問題は状態と入力の汎関数である評価関数を等式制約である状態方程式の下で最小化する変分問題であり，最適制御と最適軌道，ラグランジュ乗数に対してオイラー・ラグランジュ方程式が成り立つことは分かったが，その後どうするのかまだ分かっていない．連休中にやる気があれば6章と7章を読みたいと思っている．</p>
 
     </div>
 
@@ -745,7 +771,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://tachibana-ai.netlify.app/post/optimal_control_validation/&amp;text=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e5%a4%89%e5%88%86%e6%b3%95" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://tachibana-ai.netlify.app/post/optimal_control_continuous/&amp;text=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e9%80%a3%e7%b6%9a%e6%99%82%e9%96%93%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -758,7 +784,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://tachibana-ai.netlify.app/post/optimal_control_validation/&amp;t=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e5%a4%89%e5%88%86%e6%b3%95" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://tachibana-ai.netlify.app/post/optimal_control_continuous/&amp;t=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e9%80%a3%e7%b6%9a%e6%99%82%e9%96%93%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -771,7 +797,7 @@
       
       
       <li>
-        <a href="mailto:?subject=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e5%a4%89%e5%88%86%e6%b3%95&amp;body=https://tachibana-ai.netlify.app/post/optimal_control_validation/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e9%80%a3%e7%b6%9a%e6%99%82%e9%96%93%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1&amp;body=https://tachibana-ai.netlify.app/post/optimal_control_continuous/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -784,7 +810,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://tachibana-ai.netlify.app/post/optimal_control_validation/&amp;title=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e5%a4%89%e5%88%86%e6%b3%95" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://tachibana-ai.netlify.app/post/optimal_control_continuous/&amp;title=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e9%80%a3%e7%b6%9a%e6%99%82%e9%96%93%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -797,7 +823,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e5%a4%89%e5%88%86%e6%b3%95%20https://tachibana-ai.netlify.app/post/optimal_control_validation/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e9%80%a3%e7%b6%9a%e6%99%82%e9%96%93%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%20https://tachibana-ai.netlify.app/post/optimal_control_continuous/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -810,7 +836,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://tachibana-ai.netlify.app/post/optimal_control_validation/&amp;title=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e5%a4%89%e5%88%86%e6%b3%95" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://tachibana-ai.netlify.app/post/optimal_control_continuous/&amp;title=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e9%80%a3%e7%b6%9a%e6%99%82%e9%96%93%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -912,7 +938,7 @@
     <h3>関連項目</h3>
     <ul>
       
-      <li><a href="/post/optimal_control_continuous/">最適制御問題: 連続時間システムの最適制御</a></li>
+      <li><a href="/post/optimal_control_validation/">最適制御問題: 変分法</a></li>
       
     </ul>
   </div>
