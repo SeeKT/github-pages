@@ -5,12 +5,39 @@
     <link>https://tachibana-ai.netlify.app/tag/optimal-control/</link>
       <atom:link href="https://tachibana-ai.netlify.app/tag/optimal-control/index.xml" rel="self" type="application/rss+xml" />
     <description>Optimal control</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Thu, 22 Jul 2021 16:14:47 +0900</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Mon, 02 Aug 2021 21:12:28 +0900</lastBuildDate>
     <image>
       <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
       <title>Optimal control</title>
       <link>https://tachibana-ai.netlify.app/tag/optimal-control/</link>
     </image>
+    
+    <item>
+      <title>最適制御問題: 動的計画法と最小原理</title>
+      <link>https://tachibana-ai.netlify.app/post/optimal_control_dp/</link>
+      <pubDate>Mon, 02 Aug 2021 21:12:28 +0900</pubDate>
+      <guid>https://tachibana-ai.netlify.app/post/optimal_control_dp/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+
+&lt;p&gt;先日は，5章の内容をまとめた (&lt;a href=&#34;https://tachibana-ai.netlify.app/post/optimal_control_continuous/&#34;&gt;最適制御問題: 連続時間システムの最適制御&lt;/a&gt;)．少し間が空いてしまったが，今回は6章の内容をまとめる．&lt;/p&gt;
+
+&lt;h3 id=&#34;1-6章の概要&#34;&gt;1. 6章の概要&lt;/h3&gt;
+
+&lt;p&gt;6章では，最適制御問題に動的計画法を適用して，HJB方程式という偏微分方程式を導出している．変分法で導かれた常微分方程式の2点境界値問題であるオイラー・ラグランジュ方程式と，動的計画法から導かれた偏微分方程式であるHJB方程式は何らかのつながりがある．動的計画法から最小原理と呼ばれる条件を経由してオイラー・ラグランジュ方程式が導かれる．&lt;/p&gt;
+
+&lt;p&gt;以下に，各節の内容をまとめた手書きのメモを掲載する．&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://tachibana-ai.netlify.app/files/optimal_control/Sec6.1.pdf&#34; target=&#34;_blank&#34;&gt;6.1節&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tachibana-ai.netlify.app/files/optimal_control/Sec6.2.pdf&#34; target=&#34;_blank&#34;&gt;6.2節&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tachibana-ai.netlify.app/files/optimal_control/Sec6.3.pdf&#34; target=&#34;_blank&#34;&gt;6.3節&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-まとめ&#34;&gt;2. まとめ&lt;/h3&gt;
+
+&lt;p&gt;ここまで読んで，オイラー・ラグランジュ方程式とHJB方程式の関係が何となく分かってきた．実際の数値計算をどうするか，ということで少し詰まってしまって時間がかかっている．&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>最適制御問題: 連続時間システムの最適制御</title>
