@@ -5,12 +5,82 @@
     <link>https://tachibana-ai.netlify.app/tag/pc/</link>
       <atom:link href="https://tachibana-ai.netlify.app/tag/pc/index.xml" rel="self" type="application/rss+xml" />
     <description>PC</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Thu, 08 Jul 2021 19:15:53 +0900</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Fri, 27 Aug 2021 23:32:00 +0900</lastBuildDate>
     <image>
       <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>PC</title>
       <link>https://tachibana-ai.netlify.app/tag/pc/</link>
     </image>
+    
+    <item>
+      <title>大学生と大学院生のとき生活に必要だと思ったもの</title>
+      <link>https://tachibana-ai.netlify.app/post/requirements/</link>
+      <pubDate>Fri, 27 Aug 2021 23:32:00 +0900</pubDate>
+      <guid>https://tachibana-ai.netlify.app/post/requirements/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;最近自分の生活について振り返る機会があった．今回は生活に必要だなと思ったものを何個か挙げていくことにする．&lt;/p&gt;
+&lt;p&gt;私は理系 (情報系? 制御系?) の大学に進学し，そのまま同じ大学の研究科に進学した．私が大学入学時に欲しかった情報を書くことにする．&lt;/p&gt;
+&lt;h4 id=&#34;目次&#34;&gt;目次&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;1 &lt;a href=&#34;#section1&#34;&gt;勉強・研究&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2 &lt;a href=&#34;#section2&#34;&gt;日常生活&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;3 &lt;a href=&#34;#section3&#34;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;1-a-namesection1勉強研究a&#34;&gt;1. &lt;a name=&#34;section1&#34;&gt;勉強・研究&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;勉強と研究に必要だと思ったものをいくつか挙げる．&lt;/p&gt;
+&lt;h5 id=&#34;ある程度スペックの良い-ノートパソコン&#34;&gt;(ある程度スペックの良い) ノートパソコン&lt;/h5&gt;
+&lt;p&gt;学部で使うノートパソコンは最低限，メモリ8GBとSSD256GBは欲しい．特にWindowsを使うことを考えると，徐々に必要なマシンスペックが上がっている中で，比較的快適に使うことのできるスペックの下限がこの程度だと思う．欲を言えば，メモリ16GB以上，SSD512GB以上は欲しい．&lt;/p&gt;
+&lt;p&gt;一般にノートパソコンの寿命は4年ほどと言われている．院進する予定の人であれば，学部4年もしくは修士1年で買い直すのが良いと思う (研究室で買ってくれるかもしれないが)．そのときはスペックを盛ってもいいと思う．計算を回し続けることが必要な場合は，デスクトップPCを買っても良いかもしれない．私は既成品のデスクトップPCを買って色々魔改造をした．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SSD換装．&lt;/li&gt;
+&lt;li&gt;WindowsとUbuntuのデュアルブート．&lt;/li&gt;
+&lt;li&gt;GPU搭載．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;ディスプレイ&#34;&gt;ディスプレイ&lt;/h5&gt;
+&lt;p&gt;私は1人暮らしにTVは不要だと思っている．集金が鬱陶しいし，ニュースを見る分にはインターネットで事足りるし．私はTVを買うくらいなら，モニターを買うのが良いと思っている．23インチのモニターも1万円代で買うことができる．&lt;/p&gt;
+&lt;div class=&#34;iframely-embed&#34;&gt;&lt;div class=&#34;iframely-responsive&#34; style=&#34;padding-bottom: 52.5%; padding-top: 120px;&#34;&gt;&lt;a href=&#34;https://www.amazon.co.jp/gp/product/B06VT3DVBD/ref=ppx_yo_dt_b_asin_title_o06_s01?ie=UTF8&amp;amp;psc=1&#34; data-iframely-url=&#34;//cdn.iframe.ly/NeNbqe3&#34;&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;script async src=&#34;//cdn.iframe.ly/embed.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;p&gt;これは私が買ったモニターである．デュアルモニターにすると作業効率が3倍くらいになると思う (と実感している)．特に，公式ドキュメントを横に置きながらプログラムを書くときなどに重宝している．&lt;/p&gt;
+&lt;h5 id=&#34;キーボード&#34;&gt;キーボード&lt;/h5&gt;
+&lt;p&gt;ノートパソコンのキーボードは打ちづらいと思ったことはないだろうか．私は何度も感じていたが，我慢して使っていた．&lt;/p&gt;
+&lt;p&gt;キーボードの打ちやすさも作業効率に大きく関わってくる (と思っている)．キーボードに5千円くらい課金して作業効率が上がるなら，買うのが良いと思う．私は最近キーボードを購入したが，何故今まで購入しなかったのか，と後悔している．&lt;/p&gt;
+&lt;div class=&#34;iframely-embed&#34;&gt;&lt;div class=&#34;iframely-responsive&#34; style=&#34;padding-bottom: 52.5%; padding-top: 120px;&#34;&gt;&lt;a href=&#34;https://www.amazon.co.jp/gp/product/B08X2HNBVK/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&amp;amp;psc=1&#34; data-iframely-url=&#34;//cdn.iframe.ly/eHag0fT&#34;&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;script async src=&#34;//cdn.iframe.ly/embed.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;p&gt;これは私が最近買ったキーボードである．テンキーレスでコンパクト，打ちやすい，慣れている日本語配列，といった利点からかなり重宝している．ノートパソコンにUSB接続して使うこともできるので，かなり良い．&lt;/p&gt;
+&lt;h5 id=&#34;ノートパソコンスタンド&#34;&gt;ノートパソコンスタンド&lt;/h5&gt;
+&lt;p&gt;ノートパソコンを使っていて，画面が見づらいと思うことがあると思う．例えば机にノートパソコンを置いて使うとすると，視線は下向きになりがちである．&lt;/p&gt;
+&lt;p&gt;その見づらさを解消してくれるものがノートパソコンスタンドである．M1のときにドクターの先輩に紹介してもらったが，ノートパソコンの画面が見やすくなり，かなり良い．&lt;/p&gt;
+&lt;div class=&#34;iframely-embed&#34;&gt;&lt;div class=&#34;iframely-responsive&#34; style=&#34;padding-bottom: 52.5%; padding-top: 120px;&#34;&gt;&lt;a href=&#34;https://www.amazon.co.jp/gp/product/B088H1QQ46/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&amp;amp;psc=1&#34; data-iframely-url=&#34;//cdn.iframe.ly/EWCMfof&#34;&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;script async src=&#34;//cdn.iframe.ly/embed.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;p&gt;これは私が買ったノートパソコンスタンドである (今は在庫切れだが)．ノートパソコンを置くだけでなく，本を置くときにも使えるのが良い．&lt;/p&gt;
+&lt;p&gt;余談だが，就職活動のオンライン面接では，&amp;ldquo;上から目線&amp;rdquo;  にならないようになどという &amp;ldquo;マナー&amp;rdquo; がある．このようなノートパソコンスタンドを使えば，このマナーに違反することはないだろう．&lt;/p&gt;
+&lt;h5 id=&#34;ヘッドセット&#34;&gt;ヘッドセット&lt;/h5&gt;
+&lt;p&gt;COVID-19の影響で，講義や研究活動，就職活動におけるオンラインでの交流が増え，イヤホンを付ける機会が増えたように思う．イヤホンを長時間付けていると耳が痛くならないだろうか．&lt;/p&gt;
+&lt;p&gt;ヘッドセットはそんな悩みを解決してくれると思う．特にゲーミングヘッドセットはデザイン性に優れ，マイクの性能が優れているので良いと思う．&lt;/p&gt;
+&lt;div class=&#34;iframely-embed&#34;&gt;&lt;div class=&#34;iframely-responsive&#34; style=&#34;padding-bottom: 52.5%; padding-top: 120px;&#34;&gt;&lt;a href=&#34;https://www.amazon.co.jp/%E3%82%A8%E3%83%AC%E3%82%B3%E3%83%A0-%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%83%98%E3%83%83%E3%83%89%E3%82%BB%E3%83%83%E3%83%88-%E4%B8%A1%E8%80%B3%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E3%83%98%E3%83%83%E3%83%89-%E9%AB%98%E9%9F%B3%E8%B3%AA%E3%83%A2%E3%83%87%E3%83%AB-HS-G40BK/dp/B07Y3FX2KV/ref=sr_1_1?dchild=1&amp;amp;keywords=HS-G40BK&amp;amp;qid=1630078146&amp;amp;sr=8-1&#34; data-iframely-url=&#34;//cdn.iframe.ly/otclaig&#34;&gt;&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;script async src=&#34;//cdn.iframe.ly/embed.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;p&gt;私はイヤホン専門店でこのヘッドセットを見つけ，つい買ってしまった．買って後悔はしていない．&lt;/p&gt;
+&lt;p&gt;私はこのヘッドセットを就職活動でも利用していた．就活サイトなどでは，「イヤホンやヘッドホンはシンプルなものが良い」であったり，「ヘッドセットはおすすめしない」などと言われているが，就職活動の説明会や面接でこのヘッドセットを付けて行っても何も言われなかったし，むしろ話を展開するために使えたので，このヘッドセットを付けていて良かったと思っている．&lt;/p&gt;
+&lt;h5 id=&#34;ipad&#34;&gt;iPad&lt;/h5&gt;
+&lt;p&gt;オンライン講義になり，講義資料もPDF形式で配布するといった講義も多いように思う．講義ノートを取る際，iPadを使うとかなり良かった．これは様々な人がYouTubeなどで紹介しているので，私から特に追加で言うことは少ない．&lt;/p&gt;
+&lt;p&gt;私が思うiPadを使う利点をいくつか挙げる．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;講義ノートをiPadのアプリで取ることができる．つまり，講義ノートが1つのiPadで完結する．&lt;/li&gt;
+&lt;li&gt;ペンシルが優秀．&lt;/li&gt;
+&lt;li&gt;他のタブレットよりも操作性や性能が良い．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;私は研究室の予算で買ったiPadを使っているので，卒業のタイミングで返す必要がある．社会人になって給料が入ったらすぐ買いたいと思っている．&lt;/p&gt;
+&lt;p&gt;私はタブレットでノートを取るのは良いと思っているが，タブレットで専門書を読むのは好きではない．同時に複数のページを開くことが難しいということが主な理由である．特に専門書では，定義を振り返って読むことが多く，一度に複数のページを開きたいということが多い．現状電子書籍でこれを行うのは難しい．やはり専門書は紙のものに限ると思う (たくさん読む論文は別．印刷した論文が溜まるのが鬱陶しいので)．&lt;/p&gt;
+&lt;h3 id=&#34;2-a-namesection2日常生活a&#34;&gt;2. &lt;a name=&#34;section2&#34;&gt;日常生活&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;私はズボラなので，家事はめんどくさいと感じるタイプである．また，汚れている水回りに触れるのは嫌だと感じるし，虫は大の苦手である．しかし，1人暮らしをする以上，ある程度は我慢しなければならない．&lt;/p&gt;
+&lt;p&gt;そんな私が重宝しているものをいくつか挙げる．&lt;/p&gt;
+&lt;h5 id=&#34;使い捨てのダスター&#34;&gt;使い捨てのダスター&lt;/h5&gt;
+&lt;p&gt;(特にキッチンの) 水回りの掃除で，ステンレスが汚れていたり濡れていたりするときなどに，使うことが多い．大量にあるから汚れたら捨てれば良く，汚くなった水回りの掃除に重宝する．&lt;/p&gt;
+&lt;p&gt;ホームセンターなどに安く売られているので，足りなくなったら買うようにしている．&lt;/p&gt;
+&lt;h5 id=&#34;使い捨てのゴム手袋&#34;&gt;使い捨てのゴム手袋&lt;/h5&gt;
+&lt;p&gt;久しぶりに掃除をするときに，汚れている水回りは素手で触りたくない．そんなときは，使い捨てのゴム手袋をすれば良い．いくら汚れていても素手では触れないからまだマシであろう．&lt;/p&gt;
+&lt;h5 id=&#34;殺虫剤&#34;&gt;殺虫剤&lt;/h5&gt;
+&lt;p&gt;家の中に虫が出ることもあるだろう．小さな虫なら良いが，大きな虫は見るだけで気持ち悪いし，触りたくない．そんなときは遠慮せずに殺虫剤を使うと精神衛生に良いだろう．キンチョールあたりは強力なので，ホームセンターあたりで買って常備しておくと良いだろう．&lt;/p&gt;
+&lt;h3 id=&#34;3-a-namesection3まとめa&#34;&gt;3. &lt;a name=&#34;section3&#34;&gt;まとめ&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;今回は，大学入学時に知っておきたかった，大学生活に必要だと思うものについてまとめた．私と同じような学科の人にはもしかしたら参考になるかもしれない．&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>普段使っているPC周りの環境</title>
