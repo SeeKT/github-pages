@@ -1,0 +1,1375 @@
+<!DOCTYPE html><html lang="ja-jp" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.3.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Ai Tachibana (K. Toda)" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="0. はじめに 先日，6章の内容をまとめた (最適制御問題: 動的計画" />
+
+  
+  <link rel="alternate" hreflang="ja-jp" href="https://tachibana-ai.netlify.app/post/optimal_control_numerical/" />
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#3f51b5" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous" media="print" onload="this.media='all'">
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.c08a28530f790dced3fa54eaa0bf668e.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://tachibana-ai.netlify.app/post/optimal_control_numerical/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="立ち話" />
+  <meta property="og:url" content="https://tachibana-ai.netlify.app/post/optimal_control_numerical/" />
+  <meta property="og:title" content="最適制御問題: 最適制御問題の数値解法 | 立ち話" />
+  <meta property="og:description" content="0. はじめに 先日，6章の内容をまとめた (最適制御問題: 動的計画" /><meta property="og:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="ja-jp" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-08-27T22:55:15&#43;09:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-08-27T22:55:15&#43;09:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://tachibana-ai.netlify.app/post/optimal_control_numerical/"
+  },
+  "headline": "最適制御問題: 最適制御問題の数値解法",
+  
+  "datePublished": "2021-08-27T22:55:15+09:00",
+  "dateModified": "2021-08-27T22:55:15+09:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Ai Tachibana (K. Toda)"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "立ち話",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "0. はじめに 先日，6章の内容をまとめた (最適制御問題: 動的計画"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>最適制御問題: 最適制御問題の数値解法 | 立ち話</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="bafa58e2bfc29930782cd8baafe6f22e" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.8988fb2a4bba758785868cfcb5244555.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="検索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="検索...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">立ち話</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="ナビゲーションの切り替え">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">立ち話</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/post"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>最適制御問題: 最適制御問題の数値解法</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Aug 27, 2021
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    9 分で読める
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/optimal-control/">Optimal control</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h3 id="0-はじめに">0. はじめに</h3>
+<p>先日，6章の内容をまとめた (<a href="https://tachibana-ai.netlify.app/post/optimal_control_dp/" target="_blank" rel="noopener">最適制御問題: 動的計画法と最小原理</a>)．7章の数値解法のあたりでかなり詰まってしまっていた．今回は他の文献も用いてまとめたいと思う．</p>
+<p>理解が間違えている箇所もあるかもしれないので，ミスに気付いたら修正したいと思っている．</p>
+<h4 id="01-目次">0.1. 目次</h4>
+<ul>
+<li>1 <a href="#section1">導入</a>
+<ul>
+<li>1.1 <a href="#section1.1">最適制御のアプローチ</a></li>
+</ul>
+</li>
+<li>2 <a href="#section2">直接法</a>
+<ul>
+<li>2.1 <a href="#section2.1">Direct Single Shooting</a></li>
+<li>2.2 <a href="#section2.2">Collocation</a></li>
+<li>2.3 <a href="#section2.3">Direct Multiple Shooting</a></li>
+</ul>
+</li>
+<li>3 <a href="#section3">実装</a></li>
+<li>4 <a href="#section4">手書きメモ</a></li>
+<li>5 <a href="#section5">まとめ</a></li>
+</ul>
+<h3 id="1-a-namesection1導入a">1. <a name="section1">導入</a></h3>
+<p>ここで扱う最適制御問題は，以下の形式をしているものとする．</p>
+<p>$$\underset{x(\cdot), u(\cdot)}{\mathrm{minimize}} \ \ \varphi(x(T)) + \int_0^T L(x(t), u(t)) dt \tag{1}$$
+subject to
+$$\begin{cases} x(0) - x_0 = 0, &amp; (\text{initial value}) \\ \dot{x}(t) - f(x(t), u(t)) = 0, \ \forall t \in [0, T], &amp; (\text{state equation}) \\ h(x(t), u(t)) \geq 0, \ \forall t \in [0, T], &amp; (\text{path constraints}) \\ r(x(T)) = 0. &amp; (\text{terminal constraints}) \end{cases}$$</p>
+<p>例えば，ロボットがトルクや角度に関する制約を満たしながらある所望の終端状態になるように動作するというものはこのような問題として記述される．</p>
+<h4 id="11-a-namesection11最適制御のアプローチa">1.1. <a name="section1.1">最適制御のアプローチ</a></h4>
+<p>最適制御問題の数値解法として，主に以下の3つのアプローチがある<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>．</p>
+<ol>
+<li>Dynamic programming</li>
+<li>Indirect methods</li>
+<li>Direct methods</li>
+</ol>
+<h5 id="dynamic-programming-動的計画法">Dynamic programming (動的計画法)</h5>
+<ul>
+<li>最適性の原理を使用して任意の時刻$t$および任意の初期状態$x_0$に対するフィードバック制御を再帰的に計算する．</li>
+<li>連続時間の場合，Hamilton-Jacobi-Bellman (HJB) 方程式という状態空間上の偏微分方程式が導かれる．</li>
+<li>近似的に数値計算する方法はあるが，「次元の呪い」によって小さい次元に制限される．</li>
+</ul>
+<h5 id="indirect-methods-間接法">Indirect methods (間接法)</h5>
+<ul>
+<li>無限次元の最適化の必要条件を使用して，常微分方程式の初期値境界値問題を導出する．</li>
+<li>&ldquo;first optimize, then discretize&rdquo;</li>
+<li>変分法</li>
+<li>初期値境界値問題を解くのが難しい．</li>
+</ul>
+<h5 id="direct-methods-直接法">Direct methods (直接法)</h5>
+<ul>
+<li>無限次元の最適化問題を有限次元の非線形計画問題に変換し，非線形計画問題を数値的に解く．</li>
+<li>&ldquo;first discretize, then optimize&rdquo;</li>
+<li>制御軌道の有限次元のパラメータ化に基づく．</li>
+</ul>
+<p>実世界への実装ではdirect methodsが広く用いられている．次節でdirect methodsについて簡単にまとめる．</p>
+<h3 id="2-a-namesection2直接法a">2. <a name="section2">直接法</a></h3>
+<p>直接法は，無限次元の最適制御問題 (1) を有限次元の非線形計画問題 (NLP)
+$$\underset{w}{\text{minimize}} \ a(w) \ \ \text{subject to} \  b(w) = 0, \ c(w) \geq 0 \tag{2}$$
+に帰着させる方法である．ただし，$w$は最適化の自由度を表す有限次元ベクトル，$a$ は微分可能関数 (スカラー)，$b, c$は微分可能関数 (ベクトル) である． 直接法はまず制御軌道をパラメータ化するが，状態軌道の処理方法は&quot;sequential&quot; approach と &ldquo;simultaneous&rdquo; approachに分けられる．</p>
+<h5 id="sequential-approach">Sequential approach</h5>
+<ul>
+<li>状態の軌道$x(t)$は制御入力$u(t)$と初期状態$x_0$の陰関数とみなされる．</li>
+<li>(例) Direct single shooting. ODE solverによるforward simulation.</li>
+<li>Simulationとoptimizationのiterationsは順番に進む．</li>
+<li>離散化された制御入力が得られる．</li>
+</ul>
+<h5 id="simultaneous-approach">Simultaneous approach</h5>
+<ul>
+<li>状態の軌道$x(t)$をNLP内の最適化変数として記述し，ODEモデルを表す等式制約を追加する．</li>
+<li>Simulationとoptimizationは同時に進行する．</li>
+<li>制御入力の軌道に対応する状態の軌道がNLPの解として得られる．</li>
+<li>(例) Direct collocation, direct multiple shooting.</li>
+</ul>
+<p>次に，直接法の代表的な3つの手法，(i) direct single shooting, (ii) direct collocation, (iii) direct multiple shooting の考え方についてまとめる．</p>
+<h4 id="21-a-namesection21direct-single-shootinga">2.1. <a name="section2.1">Direct Single Shooting</a></h4>
+<p>Single shootingではまず，制御入力を離散化する．評価区間$[0, T]$を$0 = t_0 &lt; t_1 &lt; \cdots &lt; t_N = T$の$N$個に分割し，制御入力$u(t)$を
+$$u(t) = q_i \ \ \text{for} \ \ t \in [t_i, t_{i + 1}]$$
+のようにpiecewise constantになるようにする．つまり，$u(t)$は制御パラメータ$q = (q_0, q_1, \ldots, q_{N - 1})$にのみ依存し，$u(t; q)$と書くことができる．よって，初期値問題
+$$x(0) = x_0, \ \dot{x}(t) = f(x(t), u(t; q)), \ \ \forall t \in [0, T]$$
+を考え，$t \in [0, T]$における状態$x(t)$を従属変数として$x(t; q)$と表す．Direct single shootingは例えば下の図のように表される．</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-direct-single-shootingの例">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./direct_single_shooting.png" alt="fig_1" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      Direct single shootingの例
+    </figcaption></figure>
+</p>
+<p>Semi-infinite problemにならないようにするために，Path constraintsも離散化することを考える．例えば，$h(x(t), u(t)) \geq 0$が点$t_i$でのみ成り立つようにする．</p>
+<p>以上をまとめると，以下のような有限次元の非線形計画問題を得る．</p>
+<p>$$\underset{q}{\text{minimize}} \ \ \varphi(x(T; q)) + \int_0^T L(x(t; q), u(t;q)) dt \tag{3}$$
+subject to
+$$\begin{cases} h(x(t_i; q), u(t_i; q)) \geq 0, \ \ i = 0, \ldots, N &amp; (\text{discretized path constraints}) \\ r(x(T; q)) = 0 &amp; (\text{terminal constraints}) \end{cases}$$</p>
+<p>この問題は有限次元の最適化ソルバで解くことができる．例えば，<a href="https://github.com/coin-or/Ipopt" target="_blank" rel="noopener">IPOPT</a><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> (主双対内点法という方法を利用した連続最適化問題を解くライブラリ) などを用いることができる．</p>
+<h5 id="direct-single-shootingの利点">Direct single shootingの利点</h5>
+<ol>
+<li>最先端のODEまたはDAEソルバーを使用できること．</li>
+<li>大規模なODEまたはDAEシステムでも最適化の自由度が少ないこと．</li>
+<li>必要なことが制御入力の自由度の初期推定のみであること．</li>
+</ol>
+<h5 id="direct-single-shootingの欠点">Direct single shootingの欠点</h5>
+<ol>
+<li>初期化で状態の軌道$x$の知識を使用できない．</li>
+<li>ODEの解$x(t; q)$が$q$の非線形性に依存する可能性がある．</li>
+</ol>
+<p>実装の容易さなどからsingle shooting approachは工学的応用の観点ではよく用いられる．</p>
+<h4 id="22-a-namesection22collocationa">2.2. <a name="section2.2">Collocation</a></h4>
+<p>ここでは，collocationの考え方について簡単にまとめる．まず，制御入力と状態を離散化する．特に，制御入力が各$[t_i, t_{i + 1}]$で$q_i$である (piecewise constantである) ように選ぶ．また，点$t_i$における状態が$s_i \approx x(t_i)$であるとする．</p>
+<p>このとき，無限次元のODE
+$$\dot{x}(t) - f(x(t), u(t)) = 0, \ \ t \in [0, T]$$
+は有限個の等式制約
+$$c_i(q_i, s_i, s_i^{\prime}, s_{i + 1}) = 0, \ \ i = 0, \ldots, N - 1$$
+に置き換えられる．ただし，$s_i^{\prime}$は区間$[t_i, t_{i + 1}]$中の &ldquo;collocation points&rdquo; における状態の軌道を表すものとする．これらの点の位置を適切に選択することで，高いオーダーでの近似が達成される．通常$s_i^{\prime}$は直交多項式の零点になるように選ばれる．</p>
+<p>ここでは簡単のため，中間変数$s_i^{\prime}$が存在しない場合について述べる．このとき，追加の等式制約は以下のように表される．
+$$c(q_i, s_i, s_{i + 1}) := \frac{s_{i + 1} - s_i}{t_{i + 1} - t_i} - f\left( \frac{s_i + s_{i + 1}}{2}, q_i \right).$$</p>
+<p>次に，collocation intervals内の積分を近似する．例えば，
+$$l_i(q_i, s_i, s_{i + 1}) := L\left( \frac{s_i + s_{i + 1}}{2}, q_i \right) (t_{i + 1} - t_i) \approx \int_{t_i}^{t_{i + 1}} L(x(t), u(t)) dt$$
+のようにする．このような離散化をすると，巨大だがスパースなNLPを得る．</p>
+<p>$$\underset{s, q}{\text{minimize}} \ \ \varphi(s_N) + \sum_{i = 0}^{N - 1} l(q_i, s_i, s_{i + 1})$$
+subject to
+$$\begin{cases} s_0 - x_0 = 0, &amp; (\text{fixed initial value}) \\ c_i(q_i, s_i, s_{i + 1}) = 0, \ i = 0, \ldots, N - 1, &amp; (\text{discretized ODE model}) \\ h(s_i, q_i) = 0, \ i = 0, \ldots, N, &amp; (\text{discretized path constraints}) \\ r(s_N) = 0. &amp; (\text{terminal constraints}) \end{cases}$$</p>
+<p>この問題は内点法を用いたソルバで解くことができる．効率的なNLPの手法では通常，反復が実行可能に保たれないので，離散化されたODE modelの方程式はNLPの解でのみ満たされる．つまり，simulationとoptimizationが同時に進行する．</p>
+<h5 id="collocation-methodsの利点">Collocation methodsの利点</h5>
+<ol>
+<li>非常にスパースなNLPが得られること．</li>
+<li>初期化で状態軌道$x$の知識を使用できること．</li>
+<li>局所収束が高速であること．</li>
+<li>不安定なシステムを扱うことができること．</li>
+<li>状態と終端制約の処理が容易であること．</li>
+</ol>
+<h5 id="collocation-methodsの欠点">Collocation methodsの欠点</h5>
+<ul>
+<li>離散化の誤差を適応的に制御しようとすると，再度grid化を行う必要があり，NLPの次元を変更する必要があること．
+<ul>
+<li>そのため，collocationのapplicationでは適切な離散化誤差の制御の問題に対処しないことがよくある．</li>
+</ul>
+</li>
+</ul>
+<p>Collocation methodsは実用的な最適制御問題にも使われている．</p>
+<h4 id="23-a-namesection23direct-multiple-shootinga">2.3. <a name="section2.3">Direct Multiple Shooting</a></h4>
+<p>Direct multiple shooting methodは，simultaneous method (e.g. collocation) とsingle shootingの利点を組み合わせ，adaptive, error controlled ODE solversを使えるようにしたものである．</p>
+<p>まず，制御入力を
+$$u(t) = q_i \ \ \text{for} \ \ t \in [t_i, t_{i + 1}]$$
+のようにpicewise constantになるようにする．ただし，$t_i$と$t_{i + 1}$の間隔はsingle shootingと同じになるようにする．</p>
+<p>次に，各時間区間$[t_i, t_{i + 1}]$において独立に，人工的な初期値$s_i$からODEを解く．
+$$\dot{x}_i(t) = f(x_i(t), q_i), \ \ t \in [t_i, t_{i + 1}],$$
+$$x_i(t_i) = s_i.$$
+ここまでで得られる制御入力と軌道は，例えば下の図のようになる．
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-direct-multiple-shootingの例">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./direct_multiple_shooting.png" alt="fig_2" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      Direct Multiple Shootingの例
+    </figcaption></figure>
+</p>
+<p>この初期値問題を数値的に解くことによって，軌道$x(t; s_i, q_i)$を得る．このODEの解の計算と同時に積分
+$$l_i(s_i, q_i) := \int_{t_i}^{t_{i + 1}} L(x_i(t_i; s_i, q_i)) dt$$
+を数値的に計算する．</p>
+<p>人工的な変数$s_i$を物理的に意味のある値に拘束するために，連続性の条件
+$$s_{i + 1} = x_i(t_{i + 1}; s_i, q_i)$$
+を課す．このようにして，single shootingで得られたNLPと等価でありながら，余剰の変数$s_i$を含み，block sparse structureを持つNLPの定式化を得る．</p>
+<p>$$\underset{s, q}{\text{minimize}} \ \ \varphi(s_N) + \sum_{i = 0}^{N - 1} l_i(s_i, q_i) \tag{4}$$
+subject to
+$$\begin{cases} s_0 - x_0 = 0, &amp; (\text{initial value}) \\ s_{i + 1} - x_i(t_{i + 1}; s_i, q_i) = 0, \ \ i = 0, \ldots, N - 1, &amp; (\text{continuity}) \\ h(s_i, q_i) \geq 0, \ \ i = 0, \ldots, N, &amp; (\text{discretized path constraints}) \\ r(s_N) = 0. &amp; (\text{terminal constraints}) \end{cases}$$</p>
+<p>すべての変数を$w := (s_0, q_0, s_1, q_1, \ldots, s_N)$とまとめると，(2)の形式のNLPを得る．</p>
+<p>Direct multiple shootingは，sequential methodとsimultaneous methodの利点を両方持つ．オフラインの最適制御問題の数値計算の他，オンライン最適化やMPCにも応用されている．</p>
+<h3 id="3-a-namesection3実装a">3. <a name="section3">実装</a></h3>
+<p>以下の例題を数値的に解く．
+$$\underset{x(\cdot) \in \mathbb{R}^2, u(\cdot) \in \mathbb{R}}{\text{minimize}} \ \ \int_0^T (x_1^2 + x_2^2 + u^2) dt$$
+subject to
+$$\begin{cases} x(0) = x_0, &amp; (\text{initial value}) \\ \dot{x}_0 = (1 - x_1^2)x_0 - x_1 + u, \ \ \dot{x}_1 = x_0 \ \ t \in [0, T], &amp; (\text{state equation})  \\ x_1 \geq -0.25, |u(t)| \leq 1, \ \ t \in [0, T], &amp; (\text{bounds}) \end{cases}$$
+初期値を$x_0 = [0, 1]^{\mathrm{T}}$とし，$T = 10, N = 20$とする．</p>
+<p><a href="https://web.casadi.org/" target="_blank" rel="noopener">CasADi</a><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> を用いてdirect single shooting methodを実装した．実装したコードは他の記事に載せている．</p>
+<p>実行後得られた最適制御および状態を以下に示す．</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-得られた最適制御と状態">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./direct_single_shooting_2_3.svg" alt="fig_3" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      得られた最適制御と状態
+    </figcaption></figure>
+</p>
+<h3 id="4a-namesection4手書きメモa">4.<a name="section4">手書きメモ</a></h3>
+<p>非線形最適制御問題入門<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>の7章では，最適制御問題の数値解法がいくつか紹介されている．</p>
+<table>
+<thead>
+<tr>
+<th>数値解法</th>
+<th>長所</th>
+<th>短所</th>
+<th>適する用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>勾配法</td>
+<td>$H$の高階導関数が不要</td>
+<td>最適解近傍での収束が遅い</td>
+<td>最適解のおおよその様子を手軽に知りたいとき</td>
+</tr>
+<tr>
+<td>シューティング法</td>
+<td>未知量が有限次元</td>
+<td>計算が発散しやすい</td>
+<td>良好な初期推定解が選べるとき</td>
+</tr>
+<tr>
+<td>入力関数のニュートン法</td>
+<td>最適解近傍での収束が速い</td>
+<td>$H$の2階偏導関数が必要で，各反復での計算量が多い</td>
+<td>最適解を精度よく求めたいとき</td>
+</tr>
+<tr>
+<td>動的計画法</td>
+<td>状態フィードバック制御が得られる</td>
+<td>状態の次元が高いと記憶量が膨大</td>
+<td>状態の次元が低いか，狭い範囲だけ考慮すればよいとき</td>
+</tr>
+</tbody>
+</table>
+<p>以下に手書きメモを掲載する．</p>
+<ul>
+<li><a href="/files/optimal_control/Sec7.1.pdf" target="_blank">7.1節</a></li>
+<li><a href="/files/optimal_control/Sec7.2.pdf" target="_blank">7.2節</a></li>
+<li><a href="/files/optimal_control/Sec7.3.pdf" target="_blank">7.3節</a></li>
+<li><a href="/files/optimal_control/Sec7.4-7.6.pdf" target="_blank">7.4 - 7.6節</a></li>
+</ul>
+<h3 id="5a-namesection5まとめa">5.<a name="section5">まとめ</a></h3>
+<p>この記事では，最適制御の数値解法について簡単にまとめ，例題を数値的に解いた．理解が間違えている箇所があるかもしれないので，もう一度確認したいと思っている．</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>M. Diehl, et al., &ldquo;<a href="https://www.researchgate.net/publication/29603798_Fast_Direct_Multiple_Shooting_Algorithms_for_Optimal_Robot_Control" target="_blank" rel="noopener">Fast direct multiple shooting algorithms for optimal robot control</a>,&rdquo; Fast motions in biomechanics and robotics, pp. 66-93, Springer, 2006.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>A. Wächter and L. T. Biegler, &ldquo;<a href="https://link.springer.com/article/10.1007%2Fs10107-004-0559-y" target="_blank" rel="noopener">On the Implementation of a Primal-Dual Interior Point Filter Line Search Algorithm for Large-Scale Nonlinear Programming</a>,&rdquo; Mathematical Programming vol. 106, no. 1, pp. 25-57, 2006 (<a href="http://www.optimization-online.org/DB_HTML/2004/03/836.html" target="_blank" rel="noopener">preprint</a>)&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>J. A. E.Andersson, et al, &ldquo;<a href="https://link.springer.com/article/10.1007/s12532-018-0139-4" target="_blank" rel="noopener">CasADi - A software framework for nonlinear optimization and potimal control</a>,&rdquo; Mathematical Programming Computation, In Press, 2018.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>大塚，<a href="https://www.coronasha.co.jp/np/isbn/9784339033182/" target="_blank" rel="noopener">非線形最適制御問題入門</a>，コロナ社，2011.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/optimal-control/">Optimal control</a>
+  
+  <a class="badge badge-light" href="/tag/python/">Python</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://tachibana-ai.netlify.app/post/optimal_control_numerical/&amp;text=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c%e3%81%ae%e6%95%b0%e5%80%a4%e8%a7%a3%e6%b3%95" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://tachibana-ai.netlify.app/post/optimal_control_numerical/&amp;t=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c%e3%81%ae%e6%95%b0%e5%80%a4%e8%a7%a3%e6%b3%95" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c%e3%81%ae%e6%95%b0%e5%80%a4%e8%a7%a3%e6%b3%95&amp;body=https://tachibana-ai.netlify.app/post/optimal_control_numerical/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://tachibana-ai.netlify.app/post/optimal_control_numerical/&amp;title=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c%e3%81%ae%e6%95%b0%e5%80%a4%e8%a7%a3%e6%b3%95" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c%e3%81%ae%e6%95%b0%e5%80%a4%e8%a7%a3%e6%b3%95%20https://tachibana-ai.netlify.app/post/optimal_control_numerical/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://tachibana-ai.netlify.app/post/optimal_control_numerical/&amp;title=%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c:%20%e6%9c%80%e9%81%a9%e5%88%b6%e5%be%a1%e5%95%8f%e9%a1%8c%e3%81%ae%e6%95%b0%e5%80%a4%e8%a7%a3%e6%b3%95" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://tachibana-ai.netlify.app/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu0297a60047f1d555aef328261639ce70_36929_270x270_fill_q75_lanczos_center.jpg" alt="Ai Tachibana (K. Toda)"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://tachibana-ai.netlify.app/">Ai Tachibana (K. Toda)</a></h5>
+      <h6 class="card-subtitle">master&rsquo;s student</h6>
+      <p class="card-text">修士2年です．興味があることを少しだけ触ってます．飽きっぽいです．</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/tcbn_ai" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/SeeKT" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>関連項目</h3>
+    <ul>
+      
+      <li><a href="/post/optimal_control_direct_method/">最適制御問題: 直接法 (プログラム)</a></li>
+      
+      <li><a href="/post/optimal_control_dp/">最適制御問題: 動的計画法と最小原理</a></li>
+      
+      <li><a href="/post/optimal_control_continuous/">最適制御問題: 連続時間システムの最適制御</a></li>
+      
+      <li><a href="/post/optimal_control_validation/">最適制御問題: 変分法</a></li>
+      
+      <li><a href="/post/docker_python/">Python3の開発環境をDocker containerとして作る</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+  <p class="powered-by">
+    @SeeKT
+  </p>
+  
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> コピー
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> ダウンロード
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/ja/js/wowchemy.min.120e0494fe9f2992d5054e0fc6185fae.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>

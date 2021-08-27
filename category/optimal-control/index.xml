@@ -5,12 +5,472 @@
     <link>https://tachibana-ai.netlify.app/category/optimal-control/</link>
       <atom:link href="https://tachibana-ai.netlify.app/category/optimal-control/index.xml" rel="self" type="application/rss+xml" />
     <description>Optimal control</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Mon, 02 Aug 2021 21:12:28 +0900</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Fri, 27 Aug 2021 23:15:59 +0900</lastBuildDate>
     <image>
-      <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Optimal control</title>
       <link>https://tachibana-ai.netlify.app/category/optimal-control/</link>
     </image>
+    
+    <item>
+      <title>最適制御問題: 直接法 (プログラム)</title>
+      <link>https://tachibana-ai.netlify.app/post/optimal_control_direct_method/</link>
+      <pubDate>Fri, 27 Aug 2021 23:15:59 +0900</pubDate>
+      <guid>https://tachibana-ai.netlify.app/post/optimal_control_direct_method/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;最適制御問題: 最適制御問題の数値解放 のdirect single shootingを実装したものを載せる．&lt;/p&gt;
+&lt;h3 id=&#34;1-コード&#34;&gt;1. コード&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;########## Packages ##########
+from casadi import *
+import numpy as np
+import os 
+import matplotlib.pyplot as plt 
+##############################
+
+########### plt ##########
+plt.rcParams[&amp;quot;font.family&amp;quot;] = &amp;quot;serif&amp;quot;       # fonts
+plt.rcParams[&amp;quot;font.serif&amp;quot;] = &amp;quot;Times New Roman&amp;quot;
+plt.rcParams[&amp;quot;font.size&amp;quot;] = 18              
+plt.rcParams[&amp;quot;mathtext.cal&amp;quot;] = &amp;quot;serif&amp;quot;      
+plt.rcParams[&amp;quot;mathtext.rm&amp;quot;] = &amp;quot;serif&amp;quot;       
+plt.rcParams[&amp;quot;mathtext.it&amp;quot;] = &amp;quot;serif:italic&amp;quot;
+plt.rcParams[&amp;quot;mathtext.bf&amp;quot;] = &amp;quot;serif:bold&amp;quot;  
+plt.rcParams[&amp;quot;mathtext.fontset&amp;quot;] = &amp;quot;cm&amp;quot;     
+###########################
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Direct_single_shooting():
+    &amp;quot;&amp;quot;&amp;quot;
+    Solve optimal control problem numerically using direct single shooting method.
+    &amp;quot;&amp;quot;&amp;quot;
+    def __init__(self, T, N):
+        self.T = T  # time horizon
+        self.N = N  # number of control intervals
+    
+    def model_equation(self, x0, x1, u):
+        &amp;quot;&amp;quot;&amp;quot;
+        model equation
+        dx_0/dt = (1 - x_1^2)x_0 - x_1 + u
+        dx_1/dt = x_0
+        &amp;quot;&amp;quot;&amp;quot;
+        return vertcat((1 - x1**2)*x0 - x1 + u, x0)
+    
+    def stage_cost(self, x0, x1, u):
+        &amp;quot;&amp;quot;&amp;quot;
+        stage cost
+        L(x, u) = x_0^2 + x_1^2 + u^2
+        &amp;quot;&amp;quot;&amp;quot;
+        return x0**2 + x1**2 + u**2 
+    
+    def discrete_dynamics(self, x0, x1, u):
+        &amp;quot;&amp;quot;&amp;quot;
+        Formulate discrete time dynamics
+        &amp;quot;&amp;quot;&amp;quot;
+        x = vertcat(x0, x1)
+        xdot = self.model_equation(x0, x1, u)
+        L = self.stage_cost(x0, x1, u)
+        # CVODES from the SUNDIALS suite
+        dae = {&#39;x&#39;: x, &#39;p&#39;: u, &#39;ode&#39;: xdot, &#39;quad&#39;: L}
+        opts = {&#39;tf&#39;: self.T/self.N}
+        F = integrator(&#39;F&#39;, &#39;cvodes&#39;, dae, opts)
+        return F 
+    
+    def nlp(self, x0, x1, u, xinit):
+        &amp;quot;&amp;quot;&amp;quot;
+        Formulate and solve the NLP
+        Given
+        - x, u: MX.sym 
+        - xinit: initial value of x
+        &amp;quot;&amp;quot;&amp;quot;
+        # discrete time dynamics
+        F = self.discrete_dynamics(x0, x1, u)
+
+        # empty
+        w = []
+        w0 = []
+        lbw = []
+        ubw = []
+        J = 0 
+        g = []
+        lbg = []
+        ubg = []
+
+        # Formulate the NLP
+        Xk = MX(xinit)
+        for k in range(self.N):
+            # New NLP variable for the control
+            Uk = MX.sym(&#39;U_&#39; + str(k))
+            w += [Uk]
+            lbw += [-1]         # lower bound of u
+            ubw += [1]          # upper bound of u
+            w0 += [0]
+
+            # Integrate till the end of the interval
+            Fk = F(x0=Xk, p=Uk)
+            Xk = Fk[&#39;xf&#39;]
+            J = J + Fk[&#39;qf&#39;]
+
+            # Add inequality constraints
+            g += [Xk[0]]
+            lbg += [-0.25]         # lower bound of x 
+            ubg += [inf]          # upper bound of x
+        
+        # Create an NLP slver
+        prob = {&#39;f&#39;: J, &#39;x&#39;: vertcat(*w), &#39;g&#39;: vertcat(*g)}
+        solver = nlpsol(&#39;solver&#39;, &#39;ipopt&#39;, prob)
+
+        # Solve the NLP 
+        sol = solver(x0=w0, lbx=lbw, ubx=ubw, lbg=lbg, ubg=ubg)
+        return sol 
+    
+    def plot_solution(self, x0, x1, u, xinit):
+        &amp;quot;&amp;quot;&amp;quot;
+        Plot the solution
+        Given
+        - x, u: MX.sym 
+        - xinit: initial value of x
+        &amp;quot;&amp;quot;&amp;quot;
+        F = self.discrete_dynamics(x0, x1, u)
+        sol = self.nlp(x0, x1, u, xinit)
+        u_opt = sol[&#39;x&#39;]
+        x_opt = [xinit]
+        for k in range(self.N):
+            Fk = F(x0=x_opt[-1], p=u_opt[k])
+            x_opt.append(Fk[&#39;xf&#39;].full())
+        x0_opt = [r[0] for r in x_opt]
+        x1_opt = [r[1] for r in x_opt]
+
+        tgrid = [self.T/self.N*k for k in range(self.N + 1)]
+
+        fig = plt.figure(figsize=(10, 7.5))
+        ax = fig.add_subplot(1,1,1)
+        ax.plot(tgrid, x0_opt, &#39;--&#39;, label=r&#39;$x_0$&#39;)
+        ax.plot(tgrid, x1_opt, &#39;-&#39;, label=r&#39;$x_1$&#39;)
+        ax.step(tgrid, vertcat(DM.nan(1), u_opt), &#39;-.&#39;, label=r&#39;$u$&#39;)
+        ax.legend(loc=&#39;best&#39;)
+        ax.set_xlabel(r&#39;$t$&#39;); ax.set_ylabel(r&#39;$x_0, x_1, u$&#39;)
+        ax.set_xlim([0, self.T])
+        ax.grid(True)
+        plt.show()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;########## Parameters ##########
+T = 10
+N = 20
+################################
+
+########## Instance ##########
+direct_single_shooting = Direct_single_shooting(T=T, N=N)
+##############################
+
+########## figure ##########
+x0 = MX.sym(&#39;x0&#39;)
+x1 = MX.sym(&#39;x1&#39;)
+u = MX.sym(&#39;u&#39;)
+xinit = [0, 1]
+direct_single_shooting.plot_solution(x0=x0, x1=x1, u=u, xinit=xinit)
+############################
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;このコードを実行して得られた図を記事にしている．&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>最適制御問題: 最適制御問題の数値解法</title>
+      <link>https://tachibana-ai.netlify.app/post/optimal_control_numerical/</link>
+      <pubDate>Fri, 27 Aug 2021 22:55:15 +0900</pubDate>
+      <guid>https://tachibana-ai.netlify.app/post/optimal_control_numerical/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;先日，6章の内容をまとめた (&lt;a href=&#34;https://tachibana-ai.netlify.app/post/optimal_control_dp/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;最適制御問題: 動的計画法と最小原理&lt;/a&gt;)．7章の数値解法のあたりでかなり詰まってしまっていた．今回は他の文献も用いてまとめたいと思う．&lt;/p&gt;
+&lt;p&gt;理解が間違えている箇所もあるかもしれないので，ミスに気付いたら修正したいと思っている．&lt;/p&gt;
+&lt;h4 id=&#34;01-目次&#34;&gt;0.1. 目次&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;1 &lt;a href=&#34;#section1&#34;&gt;導入&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;1.1 &lt;a href=&#34;#section1.1&#34;&gt;最適制御のアプローチ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;2 &lt;a href=&#34;#section2&#34;&gt;直接法&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;2.1 &lt;a href=&#34;#section2.1&#34;&gt;Direct Single Shooting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2.2 &lt;a href=&#34;#section2.2&#34;&gt;Collocation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2.3 &lt;a href=&#34;#section2.3&#34;&gt;Direct Multiple Shooting&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;3 &lt;a href=&#34;#section3&#34;&gt;実装&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;4 &lt;a href=&#34;#section4&#34;&gt;手書きメモ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;5 &lt;a href=&#34;#section5&#34;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;1-a-namesection1導入a&#34;&gt;1. &lt;a name=&#34;section1&#34;&gt;導入&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;ここで扱う最適制御問題は，以下の形式をしているものとする．&lt;/p&gt;
+&lt;p&gt;$$\underset{x(\cdot), u(\cdot)}{\mathrm{minimize}} \ \ \varphi(x(T)) + \int_0^T L(x(t), u(t)) dt \tag{1}$$
+subject to
+$$\begin{cases} x(0) - x_0 = 0, &amp;amp; (\text{initial value}) \\ \dot{x}(t) - f(x(t), u(t)) = 0, \ \forall t \in [0, T], &amp;amp; (\text{state equation}) \\ h(x(t), u(t)) \geq 0, \ \forall t \in [0, T], &amp;amp; (\text{path constraints}) \\ r(x(T)) = 0. &amp;amp; (\text{terminal constraints}) \end{cases}$$&lt;/p&gt;
+&lt;p&gt;例えば，ロボットがトルクや角度に関する制約を満たしながらある所望の終端状態になるように動作するというものはこのような問題として記述される．&lt;/p&gt;
+&lt;h4 id=&#34;11-a-namesection11最適制御のアプローチa&#34;&gt;1.1. &lt;a name=&#34;section1.1&#34;&gt;最適制御のアプローチ&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;最適制御問題の数値解法として，主に以下の3つのアプローチがある&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;．&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dynamic programming&lt;/li&gt;
+&lt;li&gt;Indirect methods&lt;/li&gt;
+&lt;li&gt;Direct methods&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;dynamic-programming-動的計画法&#34;&gt;Dynamic programming (動的計画法)&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;最適性の原理を使用して任意の時刻$t$および任意の初期状態$x_0$に対するフィードバック制御を再帰的に計算する．&lt;/li&gt;
+&lt;li&gt;連続時間の場合，Hamilton-Jacobi-Bellman (HJB) 方程式という状態空間上の偏微分方程式が導かれる．&lt;/li&gt;
+&lt;li&gt;近似的に数値計算する方法はあるが，「次元の呪い」によって小さい次元に制限される．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;indirect-methods-間接法&#34;&gt;Indirect methods (間接法)&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;無限次元の最適化の必要条件を使用して，常微分方程式の初期値境界値問題を導出する．&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;first optimize, then discretize&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;変分法&lt;/li&gt;
+&lt;li&gt;初期値境界値問題を解くのが難しい．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;direct-methods-直接法&#34;&gt;Direct methods (直接法)&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;無限次元の最適化問題を有限次元の非線形計画問題に変換し，非線形計画問題を数値的に解く．&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;first discretize, then optimize&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;制御軌道の有限次元のパラメータ化に基づく．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;実世界への実装ではdirect methodsが広く用いられている．次節でdirect methodsについて簡単にまとめる．&lt;/p&gt;
+&lt;h3 id=&#34;2-a-namesection2直接法a&#34;&gt;2. &lt;a name=&#34;section2&#34;&gt;直接法&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;直接法は，無限次元の最適制御問題 (1) を有限次元の非線形計画問題 (NLP)
+$$\underset{w}{\text{minimize}} \ a(w) \ \ \text{subject to} \  b(w) = 0, \ c(w) \geq 0 \tag{2}$$
+に帰着させる方法である．ただし，$w$は最適化の自由度を表す有限次元ベクトル，$a$ は微分可能関数 (スカラー)，$b, c$は微分可能関数 (ベクトル) である． 直接法はまず制御軌道をパラメータ化するが，状態軌道の処理方法は&amp;quot;sequential&amp;quot; approach と &amp;ldquo;simultaneous&amp;rdquo; approachに分けられる．&lt;/p&gt;
+&lt;h5 id=&#34;sequential-approach&#34;&gt;Sequential approach&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;状態の軌道$x(t)$は制御入力$u(t)$と初期状態$x_0$の陰関数とみなされる．&lt;/li&gt;
+&lt;li&gt;(例) Direct single shooting. ODE solverによるforward simulation.&lt;/li&gt;
+&lt;li&gt;Simulationとoptimizationのiterationsは順番に進む．&lt;/li&gt;
+&lt;li&gt;離散化された制御入力が得られる．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;simultaneous-approach&#34;&gt;Simultaneous approach&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;状態の軌道$x(t)$をNLP内の最適化変数として記述し，ODEモデルを表す等式制約を追加する．&lt;/li&gt;
+&lt;li&gt;Simulationとoptimizationは同時に進行する．&lt;/li&gt;
+&lt;li&gt;制御入力の軌道に対応する状態の軌道がNLPの解として得られる．&lt;/li&gt;
+&lt;li&gt;(例) Direct collocation, direct multiple shooting.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;次に，直接法の代表的な3つの手法，(i) direct single shooting, (ii) direct collocation, (iii) direct multiple shooting の考え方についてまとめる．&lt;/p&gt;
+&lt;h4 id=&#34;21-a-namesection21direct-single-shootinga&#34;&gt;2.1. &lt;a name=&#34;section2.1&#34;&gt;Direct Single Shooting&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Single shootingではまず，制御入力を離散化する．評価区間$[0, T]$を$0 = t_0 &amp;lt; t_1 &amp;lt; \cdots &amp;lt; t_N = T$の$N$個に分割し，制御入力$u(t)$を
+$$u(t) = q_i \ \ \text{for} \ \ t \in [t_i, t_{i + 1}]$$
+のようにpiecewise constantになるようにする．つまり，$u(t)$は制御パラメータ$q = (q_0, q_1, \ldots, q_{N - 1})$にのみ依存し，$u(t; q)$と書くことができる．よって，初期値問題
+$$x(0) = x_0, \ \dot{x}(t) = f(x(t), u(t; q)), \ \ \forall t \in [0, T]$$
+を考え，$t \in [0, T]$における状態$x(t)$を従属変数として$x(t; q)$と表す．Direct single shootingは例えば下の図のように表される．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-direct-single-shootingの例&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./direct_single_shooting.png&#34; alt=&#34;fig_1&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      Direct single shootingの例
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Semi-infinite problemにならないようにするために，Path constraintsも離散化することを考える．例えば，$h(x(t), u(t)) \geq 0$が点$t_i$でのみ成り立つようにする．&lt;/p&gt;
+&lt;p&gt;以上をまとめると，以下のような有限次元の非線形計画問題を得る．&lt;/p&gt;
+&lt;p&gt;$$\underset{q}{\text{minimize}} \ \ \varphi(x(T; q)) + \int_0^T L(x(t; q), u(t;q)) dt \tag{3}$$
+subject to
+$$\begin{cases} h(x(t_i; q), u(t_i; q)) \geq 0, \ \ i = 0, \ldots, N &amp;amp; (\text{discretized path constraints}) \\ r(x(T; q)) = 0 &amp;amp; (\text{terminal constraints}) \end{cases}$$&lt;/p&gt;
+&lt;p&gt;この問題は有限次元の最適化ソルバで解くことができる．例えば，&lt;a href=&#34;https://github.com/coin-or/Ipopt&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;IPOPT&lt;/a&gt;&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; (主双対内点法という方法を利用した連続最適化問題を解くライブラリ) などを用いることができる．&lt;/p&gt;
+&lt;h5 id=&#34;direct-single-shootingの利点&#34;&gt;Direct single shootingの利点&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;最先端のODEまたはDAEソルバーを使用できること．&lt;/li&gt;
+&lt;li&gt;大規模なODEまたはDAEシステムでも最適化の自由度が少ないこと．&lt;/li&gt;
+&lt;li&gt;必要なことが制御入力の自由度の初期推定のみであること．&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;direct-single-shootingの欠点&#34;&gt;Direct single shootingの欠点&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;初期化で状態の軌道$x$の知識を使用できない．&lt;/li&gt;
+&lt;li&gt;ODEの解$x(t; q)$が$q$の非線形性に依存する可能性がある．&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;実装の容易さなどからsingle shooting approachは工学的応用の観点ではよく用いられる．&lt;/p&gt;
+&lt;h4 id=&#34;22-a-namesection22collocationa&#34;&gt;2.2. &lt;a name=&#34;section2.2&#34;&gt;Collocation&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;ここでは，collocationの考え方について簡単にまとめる．まず，制御入力と状態を離散化する．特に，制御入力が各$[t_i, t_{i + 1}]$で$q_i$である (piecewise constantである) ように選ぶ．また，点$t_i$における状態が$s_i \approx x(t_i)$であるとする．&lt;/p&gt;
+&lt;p&gt;このとき，無限次元のODE
+$$\dot{x}(t) - f(x(t), u(t)) = 0, \ \ t \in [0, T]$$
+は有限個の等式制約
+$$c_i(q_i, s_i, s_i^{\prime}, s_{i + 1}) = 0, \ \ i = 0, \ldots, N - 1$$
+に置き換えられる．ただし，$s_i^{\prime}$は区間$[t_i, t_{i + 1}]$中の &amp;ldquo;collocation points&amp;rdquo; における状態の軌道を表すものとする．これらの点の位置を適切に選択することで，高いオーダーでの近似が達成される．通常$s_i^{\prime}$は直交多項式の零点になるように選ばれる．&lt;/p&gt;
+&lt;p&gt;ここでは簡単のため，中間変数$s_i^{\prime}$が存在しない場合について述べる．このとき，追加の等式制約は以下のように表される．
+$$c(q_i, s_i, s_{i + 1}) := \frac{s_{i + 1} - s_i}{t_{i + 1} - t_i} - f\left( \frac{s_i + s_{i + 1}}{2}, q_i \right).$$&lt;/p&gt;
+&lt;p&gt;次に，collocation intervals内の積分を近似する．例えば，
+$$l_i(q_i, s_i, s_{i + 1}) := L\left( \frac{s_i + s_{i + 1}}{2}, q_i \right) (t_{i + 1} - t_i) \approx \int_{t_i}^{t_{i + 1}} L(x(t), u(t)) dt$$
+のようにする．このような離散化をすると，巨大だがスパースなNLPを得る．&lt;/p&gt;
+&lt;p&gt;$$\underset{s, q}{\text{minimize}} \ \ \varphi(s_N) + \sum_{i = 0}^{N - 1} l(q_i, s_i, s_{i + 1})$$
+subject to
+$$\begin{cases} s_0 - x_0 = 0, &amp;amp; (\text{fixed initial value}) \\ c_i(q_i, s_i, s_{i + 1}) = 0, \ i = 0, \ldots, N - 1, &amp;amp; (\text{discretized ODE model}) \\ h(s_i, q_i) = 0, \ i = 0, \ldots, N, &amp;amp; (\text{discretized path constraints}) \\ r(s_N) = 0. &amp;amp; (\text{terminal constraints}) \end{cases}$$&lt;/p&gt;
+&lt;p&gt;この問題は内点法を用いたソルバで解くことができる．効率的なNLPの手法では通常，反復が実行可能に保たれないので，離散化されたODE modelの方程式はNLPの解でのみ満たされる．つまり，simulationとoptimizationが同時に進行する．&lt;/p&gt;
+&lt;h5 id=&#34;collocation-methodsの利点&#34;&gt;Collocation methodsの利点&lt;/h5&gt;
+&lt;ol&gt;
+&lt;li&gt;非常にスパースなNLPが得られること．&lt;/li&gt;
+&lt;li&gt;初期化で状態軌道$x$の知識を使用できること．&lt;/li&gt;
+&lt;li&gt;局所収束が高速であること．&lt;/li&gt;
+&lt;li&gt;不安定なシステムを扱うことができること．&lt;/li&gt;
+&lt;li&gt;状態と終端制約の処理が容易であること．&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h5 id=&#34;collocation-methodsの欠点&#34;&gt;Collocation methodsの欠点&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;離散化の誤差を適応的に制御しようとすると，再度grid化を行う必要があり，NLPの次元を変更する必要があること．
+&lt;ul&gt;
+&lt;li&gt;そのため，collocationのapplicationでは適切な離散化誤差の制御の問題に対処しないことがよくある．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Collocation methodsは実用的な最適制御問題にも使われている．&lt;/p&gt;
+&lt;h4 id=&#34;23-a-namesection23direct-multiple-shootinga&#34;&gt;2.3. &lt;a name=&#34;section2.3&#34;&gt;Direct Multiple Shooting&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Direct multiple shooting methodは，simultaneous method (e.g. collocation) とsingle shootingの利点を組み合わせ，adaptive, error controlled ODE solversを使えるようにしたものである．&lt;/p&gt;
+&lt;p&gt;まず，制御入力を
+$$u(t) = q_i \ \ \text{for} \ \ t \in [t_i, t_{i + 1}]$$
+のようにpicewise constantになるようにする．ただし，$t_i$と$t_{i + 1}$の間隔はsingle shootingと同じになるようにする．&lt;/p&gt;
+&lt;p&gt;次に，各時間区間$[t_i, t_{i + 1}]$において独立に，人工的な初期値$s_i$からODEを解く．
+$$\dot{x}_i(t) = f(x_i(t), q_i), \ \ t \in [t_i, t_{i + 1}],$$
+$$x_i(t_i) = s_i.$$
+ここまでで得られる制御入力と軌道は，例えば下の図のようになる．
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-direct-multiple-shootingの例&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./direct_multiple_shooting.png&#34; alt=&#34;fig_2&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      Direct Multiple Shootingの例
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;この初期値問題を数値的に解くことによって，軌道$x(t; s_i, q_i)$を得る．このODEの解の計算と同時に積分
+$$l_i(s_i, q_i) := \int_{t_i}^{t_{i + 1}} L(x_i(t_i; s_i, q_i)) dt$$
+を数値的に計算する．&lt;/p&gt;
+&lt;p&gt;人工的な変数$s_i$を物理的に意味のある値に拘束するために，連続性の条件
+$$s_{i + 1} = x_i(t_{i + 1}; s_i, q_i)$$
+を課す．このようにして，single shootingで得られたNLPと等価でありながら，余剰の変数$s_i$を含み，block sparse structureを持つNLPの定式化を得る．&lt;/p&gt;
+&lt;p&gt;$$\underset{s, q}{\text{minimize}} \ \ \varphi(s_N) + \sum_{i = 0}^{N - 1} l_i(s_i, q_i) \tag{4}$$
+subject to
+$$\begin{cases} s_0 - x_0 = 0, &amp;amp; (\text{initial value}) \\ s_{i + 1} - x_i(t_{i + 1}; s_i, q_i) = 0, \ \ i = 0, \ldots, N - 1, &amp;amp; (\text{continuity}) \\ h(s_i, q_i) \geq 0, \ \ i = 0, \ldots, N, &amp;amp; (\text{discretized path constraints}) \\ r(s_N) = 0. &amp;amp; (\text{terminal constraints}) \end{cases}$$&lt;/p&gt;
+&lt;p&gt;すべての変数を$w := (s_0, q_0, s_1, q_1, \ldots, s_N)$とまとめると，(2)の形式のNLPを得る．&lt;/p&gt;
+&lt;p&gt;Direct multiple shootingは，sequential methodとsimultaneous methodの利点を両方持つ．オフラインの最適制御問題の数値計算の他，オンライン最適化やMPCにも応用されている．&lt;/p&gt;
+&lt;h3 id=&#34;3-a-namesection3実装a&#34;&gt;3. &lt;a name=&#34;section3&#34;&gt;実装&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;以下の例題を数値的に解く．
+$$\underset{x(\cdot) \in \mathbb{R}^2, u(\cdot) \in \mathbb{R}}{\text{minimize}} \ \ \int_0^T (x_1^2 + x_2^2 + u^2) dt$$
+subject to
+$$\begin{cases} x(0) = x_0, &amp;amp; (\text{initial value}) \\ \dot{x}_0 = (1 - x_1^2)x_0 - x_1 + u, \ \ \dot{x}_1 = x_0 \ \ t \in [0, T], &amp;amp; (\text{state equation})  \\ x_1 \geq -0.25, |u(t)| \leq 1, \ \ t \in [0, T], &amp;amp; (\text{bounds}) \end{cases}$$
+初期値を$x_0 = [0, 1]^{\mathrm{T}}$とし，$T = 10, N = 20$とする．&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://web.casadi.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CasADi&lt;/a&gt;&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; を用いてdirect single shooting methodを実装した．実装したコードは他の記事に載せている．&lt;/p&gt;
+&lt;p&gt;実行後得られた最適制御および状態を以下に示す．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-得られた最適制御と状態&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./direct_single_shooting_2_3.svg&#34; alt=&#34;fig_3&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      得られた最適制御と状態
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;4a-namesection4手書きメモa&#34;&gt;4.&lt;a name=&#34;section4&#34;&gt;手書きメモ&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;非線形最適制御問題入門&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;の7章では，最適制御問題の数値解法がいくつか紹介されている．&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;数値解法&lt;/th&gt;
+&lt;th&gt;長所&lt;/th&gt;
+&lt;th&gt;短所&lt;/th&gt;
+&lt;th&gt;適する用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;勾配法&lt;/td&gt;
+&lt;td&gt;$H$の高階導関数が不要&lt;/td&gt;
+&lt;td&gt;最適解近傍での収束が遅い&lt;/td&gt;
+&lt;td&gt;最適解のおおよその様子を手軽に知りたいとき&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;シューティング法&lt;/td&gt;
+&lt;td&gt;未知量が有限次元&lt;/td&gt;
+&lt;td&gt;計算が発散しやすい&lt;/td&gt;
+&lt;td&gt;良好な初期推定解が選べるとき&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;入力関数のニュートン法&lt;/td&gt;
+&lt;td&gt;最適解近傍での収束が速い&lt;/td&gt;
+&lt;td&gt;$H$の2階偏導関数が必要で，各反復での計算量が多い&lt;/td&gt;
+&lt;td&gt;最適解を精度よく求めたいとき&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;動的計画法&lt;/td&gt;
+&lt;td&gt;状態フィードバック制御が得られる&lt;/td&gt;
+&lt;td&gt;状態の次元が高いと記憶量が膨大&lt;/td&gt;
+&lt;td&gt;状態の次元が低いか，狭い範囲だけ考慮すればよいとき&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;以下に手書きメモを掲載する．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://tachibana-ai.netlify.app/files/optimal_control/Sec7.1.pdf&#34; target=&#34;_blank&#34;&gt;7.1節&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tachibana-ai.netlify.app/files/optimal_control/Sec7.2.pdf&#34; target=&#34;_blank&#34;&gt;7.2節&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tachibana-ai.netlify.app/files/optimal_control/Sec7.3.pdf&#34; target=&#34;_blank&#34;&gt;7.3節&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://tachibana-ai.netlify.app/files/optimal_control/Sec7.4-7.6.pdf&#34; target=&#34;_blank&#34;&gt;7.4 - 7.6節&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5a-namesection5まとめa&#34;&gt;5.&lt;a name=&#34;section5&#34;&gt;まとめ&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;この記事では，最適制御の数値解法について簡単にまとめ，例題を数値的に解いた．理解が間違えている箇所があるかもしれないので，もう一度確認したいと思っている．&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;M. Diehl, et al., &amp;ldquo;&lt;a href=&#34;https://www.researchgate.net/publication/29603798_Fast_Direct_Multiple_Shooting_Algorithms_for_Optimal_Robot_Control&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Fast direct multiple shooting algorithms for optimal robot control&lt;/a&gt;,&amp;rdquo; Fast motions in biomechanics and robotics, pp. 66-93, Springer, 2006.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;A. Wächter and L. T. Biegler, &amp;ldquo;&lt;a href=&#34;https://link.springer.com/article/10.1007%2Fs10107-004-0559-y&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;On the Implementation of a Primal-Dual Interior Point Filter Line Search Algorithm for Large-Scale Nonlinear Programming&lt;/a&gt;,&amp;rdquo; Mathematical Programming vol. 106, no. 1, pp. 25-57, 2006 (&lt;a href=&#34;http://www.optimization-online.org/DB_HTML/2004/03/836.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;preprint&lt;/a&gt;)&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;J. A. E.Andersson, et al, &amp;ldquo;&lt;a href=&#34;https://link.springer.com/article/10.1007/s12532-018-0139-4&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CasADi - A software framework for nonlinear optimization and potimal control&lt;/a&gt;,&amp;rdquo; Mathematical Programming Computation, In Press, 2018.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;大塚，&lt;a href=&#34;https://www.coronasha.co.jp/np/isbn/9784339033182/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;非線形最適制御問題入門&lt;/a&gt;，コロナ社，2011.&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+    </item>
     
     <item>
       <title>最適制御問題: 動的計画法と最小原理</title>
