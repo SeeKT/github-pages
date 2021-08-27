@@ -888,7 +888,7 @@ $$\underset{x(\cdot) \in \mathbb{R}^2, u(\cdot) \in \mathbb{R}}{\text{minimize}}
 subject to
 $$\begin{cases} x(0) = x_0, &amp; (\text{initial value}) \\ \dot{x}_0 = (1 - x_1^2)x_0 - x_1 + u, \ \ \dot{x}_1 = x_0 \ \ t \in [0, T], &amp; (\text{state equation})  \\ x_1 \geq -0.25, |u(t)| \leq 1, \ \ t \in [0, T], &amp; (\text{bounds}) \end{cases}$$
 初期値を$x_0 = [0, 1]^{\mathrm{T}}$とし，$T = 10, N = 20$とする．</p>
-<p><a href="https://web.casadi.org/" target="_blank" rel="noopener">CasADi</a><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> を用いてdirect single shooting methodを実装した．実装したコードは他の記事に載せている．</p>
+<p><a href="https://web.casadi.org/" target="_blank" rel="noopener">CasADi</a><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> を用いてdirect single shooting methodを実装した．実装したコードは<a href="https://tachibana-ai.netlify.app/post/optimal_control_direct_method/" target="_blank" rel="noopener">最適制御問題: 直接法 (プログラム)</a> に載せている．</p>
 <p>実行後得られた最適制御および状態を以下に示す．</p>
 <p>
 

@@ -18,7 +18,7 @@
       <pubDate>Fri, 27 Aug 2021 23:15:59 +0900</pubDate>
       <guid>https://tachibana-ai.netlify.app/post/optimal_control_direct_method/</guid>
       <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
-&lt;p&gt;最適制御問題: 最適制御問題の数値解放 のdirect single shootingを実装したものを載せる．&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://tachibana-ai.netlify.app/post/optimal_control_numerical/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;最適制御問題: 最適制御問題の数値解法&lt;/a&gt; のdirect single shootingを実装したものを載せる．&lt;/p&gt;
 &lt;h3 id=&#34;1-コード&#34;&gt;1. コード&lt;/h3&gt;
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;########## Packages ##########
 from casadi import *
@@ -169,7 +169,6 @@ xinit = [0, 1]
 direct_single_shooting.plot_solution(x0=x0, x1=x1, u=u, xinit=xinit)
 ############################
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;このコードを実行して得られた図を記事にしている．&lt;/p&gt;
 </description>
     </item>
     
@@ -380,7 +379,7 @@ $$\underset{x(\cdot) \in \mathbb{R}^2, u(\cdot) \in \mathbb{R}}{\text{minimize}}
 subject to
 $$\begin{cases} x(0) = x_0, &amp;amp; (\text{initial value}) \\ \dot{x}_0 = (1 - x_1^2)x_0 - x_1 + u, \ \ \dot{x}_1 = x_0 \ \ t \in [0, T], &amp;amp; (\text{state equation})  \\ x_1 \geq -0.25, |u(t)| \leq 1, \ \ t \in [0, T], &amp;amp; (\text{bounds}) \end{cases}$$
 初期値を$x_0 = [0, 1]^{\mathrm{T}}$とし，$T = 10, N = 20$とする．&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://web.casadi.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CasADi&lt;/a&gt;&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; を用いてdirect single shooting methodを実装した．実装したコードは他の記事に載せている．&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://web.casadi.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CasADi&lt;/a&gt;&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; を用いてdirect single shooting methodを実装した．実装したコードは&lt;a href=&#34;https://tachibana-ai.netlify.app/post/optimal_control_direct_method/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;最適制御問題: 直接法 (プログラム)&lt;/a&gt; に載せている．&lt;/p&gt;
 &lt;p&gt;実行後得られた最適制御および状態を以下に示す．&lt;/p&gt;
 &lt;p&gt;
 
