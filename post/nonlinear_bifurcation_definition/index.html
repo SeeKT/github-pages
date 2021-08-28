@@ -1,0 +1,1441 @@
+<!DOCTYPE html><html lang="ja-jp" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.3.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Ai Tachibana (K. Toda)" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="0. はじめに この記事では，文献1の第2章の内容をまとめた． 目次" />
+
+  
+  <link rel="alternate" hreflang="ja-jp" href="https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_definition/" />
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#3f51b5" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous" media="print" onload="this.media='all'">
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.c08a28530f790dced3fa54eaa0bf668e.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_definition/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="立ち話" />
+  <meta property="og:url" content="https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_definition/" />
+  <meta property="og:title" content="力学系の分岐現象: 力学系の定義 | 立ち話" />
+  <meta property="og:description" content="0. はじめに この記事では，文献1の第2章の内容をまとめた． 目次" /><meta property="og:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="ja-jp" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-08-28T12:26:44&#43;09:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-08-28T12:26:44&#43;09:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_definition/"
+  },
+  "headline": "力学系の分岐現象: 力学系の定義",
+  
+  "datePublished": "2021-08-28T12:26:44+09:00",
+  "dateModified": "2021-08-28T12:26:44+09:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Ai Tachibana (K. Toda)"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "立ち話",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "0. はじめに この記事では，文献1の第2章の内容をまとめた． 目次"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>力学系の分岐現象: 力学系の定義 | 立ち話</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="671faea112129d1211c32a23ef18e3fe" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.8988fb2a4bba758785868cfcb5244555.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="検索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="検索...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">立ち話</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="ナビゲーションの切り替え">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">立ち話</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/post"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>力学系の分岐現象: 力学系の定義</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Aug 28, 2021
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    8 分で読める
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/nonlinear-systems/">Nonlinear Systems</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h3 id="0-はじめに">0. はじめに</h3>
+<p>この記事では，文献<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>の第2章の内容をまとめた．</p>
+<h5 id="目次">目次</h5>
+<ul>
+<li>1 <a href="#section1">連続時間力学系</a></li>
+<li>2 <a href="#section2">離散時間力学系</a></li>
+<li>3 <a href="#section3">ポアンカレ写像</a>
+<ul>
+<li>3.1 <a href="#section3.1">自律系のポアンカレ写像</a></li>
+<li>3.2 <a href="#section3.2">非自律系のポアンカレ写像</a></li>
+</ul>
+</li>
+<li>4 <a href="#section4">補足: プログラム</a></li>
+</ul>
+<h3 id="1-a-namesection1連続時間力学系--ベクトル場-a">1. <a name="section1">連続時間力学系 ― ベクトル場 ―</a></h3>
+<p>この節では，通常の微分積分学の教科書で扱われる微分方程式の定義と，力学系理論で扱われる微分方程式との関係について扱う．独立変数を$t$とする．</p>
+<h6 id="def-21">Def 2.1</h6>
+<ol>
+<li>$F: D \ (\subset \mathbb{R}^{n + 2}) \to \mathbb{R}$: ($n + 2$) 変数実数値関数 $(n \geq 1)$
+$$
+F(t, x, x^{\prime}, \ldots, x^{(n)}) = 0 \tag{2.1}
+$$
+を <strong>$n$階常微分方程式</strong> という．</li>
+<li>$f: D_0 \ (\subset \mathbb{R}^{n + 1}) \to \mathbb{R}$: ($n + 1$) 変数実数値関数
+$$
+x^{(n)} = f(t, x, x^{\prime}, \ldots, x^{(n - 1)}) \tag{2.2}
+$$
+を <strong>正規形の$n$階常微分方程式</strong> という．</li>
+<li>$f_1, \ldots, f_n: D_0 \ (\subset \mathbb{R}^{n + 1}) \to \mathbb{R}$に対して，
+$$
+\begin{cases}
+\frac{dx_1}{dt} = f_1(t, x_1, \ldots, x_n) \\ \cdots \\ \frac{dx_n}{dt} = f_n(t, x_1, \ldots, x_n)
+\end{cases} \tag{2.3}
+$$
+を <strong>$1$階連立常微分方程式</strong> (<strong>常微分方程式系</strong>) という．</li>
+</ol>
+<p>$1$階連立常微分方程式は，$\boldsymbol{x} = (x_1, \ldots, x_n) \in \mathbb{R}^n$ および写像 $g: \mathbb{R} \times \mathbb{R}^n \to \mathbb{R}^n$,
+$$
+g(t, \boldsymbol{x}) = (f_1(t, x_1, \ldots, x_n), \ldots, f_n(t, x_1, \ldots, x_n)) \tag{2.4}
+$$
+によって，
+$$
+\frac{d \boldsymbol{x}}{dt} = g(t, \boldsymbol{x}) \tag{2.5}
+$$
+のように表される ($\mathbb{R}^n$における常微分方程式)．以下，$\dot{\boldsymbol{x}} := d\boldsymbol{x}/dt$とする．常微分方程式は，連続時間力学系を表現する代表的なモデルである．以降，常微分方程式をODEと略記する．</p>
+<p>ODE (2.5) において，写像$g$が時間$t$を陽に含むか含まないかは，力学系理論での扱いに違いが生じる．写像$g$が時間$t$を陽に含まない場合を <strong>自律系</strong> といい，写像$g$が時間$t$を陽に含む一般の場合 (<strong>非自律系</strong>) と区別する．</p>
+<h6 id="def-22-自律系">Def 2.2 (自律系)</h6>
+<ol>
+<li>$\boldsymbol{x} := (x_1, \ldots, x_n) \in \mathbb{R}^n$とする．$f: D \ (\subset \mathbb{R}^n) \to \mathbb{R}$を，
+$$
+f(\boldsymbol{x}) = (f_1(\boldsymbol{x}), \ldots, f_n(\boldsymbol{x}))^{\mathrm{T}} \tag{2.6}
+$$
+とする．このとき，ODE
+$$
+\dot{\boldsymbol{x}}  = f(\boldsymbol{x}) \tag{2.7}
+$$
+$$
+\Longleftrightarrow \begin{cases}
+\dot{x}_1 = f_1(x_1, \ldots, x_n) \\ \cdots \\ \dot{x}_n = f_n(x_1, \ldots, x_n)
+\end{cases} \tag{2.8}
+$$
+を <strong>自律系</strong> という．</li>
+<li>$D$を相空間，$D$の各点$\boldsymbol{x}$にベクトル$f(\boldsymbol{x})$を対応させる写像
+$$
+f: \boldsymbol{x} \mapsto f(\boldsymbol{x}) \tag{2.9}
+$$
+をベクトル場という．ベクトル場はODEを幾何学的に表現したもの．力学系の理論ではベクトル場はODEと同じ意味で使われることが多い．</li>
+<li>区間 $I \subset \mathbb{R}$ で定義された曲線 $\boldsymbol{x}: I \to \mathbb{R}^n$ が
+$$
+\dot{\boldsymbol{x}} = f(\boldsymbol{x}(t)) \tag{2.10}
+$$
+を満たすとき，$\boldsymbol{x}$はODE (2.7)の解 (解曲線) であるという．$\boldsymbol{x}(0)$: 初期値．ODEの解 $\boldsymbol{x}$ は，ベクトル場の <strong>軌道</strong> (orbit) とも呼ばれる．</li>
+<li>$I \subset \mathbb{R}$ を $0$ を含む開区間，$D \subset \mathbb{R}^n$ とする．写像 $\varphi: I \times D \to \mathbb{R}^n$ が $\varphi(0, \boldsymbol{x}_0) = \boldsymbol{x}_0$ を満たし，各 $\boldsymbol{x}_0 \in D$ を固定するとき，
+$$
+\frac{d \varphi(t, \boldsymbol{x}_0)}{dt} = f(\varphi(t, \boldsymbol{x}_0)) \tag{2.11}
+$$
+を満たすならば，$\varphi$はODE (2.7)の <strong>流れ</strong> (flow) であるという (ベクトル場(2.9)の流れとも呼ばれる)．</li>
+</ol>
+<h6 id="ex-21-2次元自律微分方程式">Ex 2.1 (2次元自律微分方程式)</h6>
+<p>ここで，自律系について理解するために，2次元自律系微分方程式の例を考える．</p>
+<ol>
+<li>$\boldsymbol{x} = (x, y)$, $f: \mathbb{R}^2 \to \mathbb{R}^2$を
+$$
+f(\boldsymbol{x}) = (f_1(x, y), f_2(x, y)) = (y, -x) \tag{2.12}
+$$
+で定義．このとき，
+$$
+\begin{cases}
+\dot{x} = y \\ \dot{y} = -x
+\end{cases} \tag{2.13}
+$$
+は$f$によって与えられる自律系のODE．</li>
+<li>ベクトル場は，$(x, y) \mapsto (y, -x)$である．相空間は$\mathbb{R}^2$．
+ベクトル場は以下の図のようになる．
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-自律系のベクトル場の例">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/2.1_autonomous.svg" alt="fig_1" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      自律系のベクトル場の例
+    </figcaption></figure>
+</li>
+<li>曲線$\boldsymbol{x}: \mathbb{R} \to \mathbb{R}^2$を
+$$
+\boldsymbol{x}(t) = (x_0 \cos t + y_0 \sin t, -x_0 \sin t + y_0 \cos t) \tag{2.14}
+$$
+で定義すれば，$\boldsymbol{x}$は初期値$(x_0, y_0)$を持つ解曲線となる．</li>
+<li>$\varphi: \mathbb{R} \times \mathbb{R}^2 \to \mathbb{R}^2$を
+$$
+\varphi(t, x_0, y_0) = (x_0 \cos t + y_0 \sin t, -x_0 \sin t + y_0 \cos t) = (x_t, y_t) \tag{2.15}
+$$
+と定義．$\varphi$は上のODEの流れである．</li>
+</ol>
+<p>次に，非自律系微分方程式について．</p>
+<h6 id="def-23-非自律系">Def 2.3 (非自律系)</h6>
+<ol>
+<li>$g: I \times D \to \mathbb{R}^n$とする．
+<ul>
+<li>$I \subset \mathbb{R}$, $D \subset \mathbb{R}^n$
+$$
+g(t, \boldsymbol{x}) = (g_1(t, \boldsymbol{x}), \ldots, g_n(t, \boldsymbol{x}))^{\mathrm{T}} \tag{2.19}
+$$
+このとき，ODE
+$$
+\dot{\boldsymbol{x}} = g(t, \boldsymbol{x}) \tag{2.20}
+$$
+$$
+\Longleftrightarrow \begin{cases}
+\dot{x}_1 = g_1(t, x_1, \ldots, x_n) \\ \cdots \\ \dot{x}_n = g_n(t, x_1, \ldots, x_n)
+\end{cases} \tag{2.21}
+$$
+を <strong>非自律系</strong> (non-autonomous system) という．</li>
+</ul>
+</li>
+<li>$I \times D$: 拡大相空間．
+$$
+(t, \boldsymbol{x}) \mapsto (1, g(t, \boldsymbol{x})) \tag{2.22}
+$$
+をベクトル場という．</li>
+<li>曲線$\boldsymbol{x}: I \to \mathbb{R}^n$が
+$$
+\dot{\boldsymbol{x}} = g(t, \boldsymbol{x}(t)) \tag{2.23}
+$$
+を満たすとき，$\boldsymbol{x}$はODE (2.20) の解 (解曲線) という．$\boldsymbol{x}(t_0)$: 初期値．</li>
+<li>$\varphi: \mathbb{R} \times \mathbb{R} \times \mathbb{R}^n \to \mathbb{R}^n$ が $\varphi(t_0, t_0, \boldsymbol{x}_0) = \boldsymbol{x}_0$ を満たし，各 $(t_0, \boldsymbol{x}_0) \in I \times D$ を固定するとき
+$$
+\frac{d \varphi(t, t_0, \boldsymbol{x}_0)}{dt} = g(t, \varphi(t, t_0, \boldsymbol{x}_0)) \tag{2.24}
+$$
+を満たすならば，$\varphi$はODE (2.20) の <strong>流れ</strong> であるという．</li>
+</ol>
+<h6 id="ex-22-1次元非自律微分方程式">Ex 2.2 (1次元非自律微分方程式)</h6>
+<ol>
+<li>$(t, x) \in \mathbb{R} \times \mathbb{R}$, $g: \mathbb{R} \times \mathbb{R} \to \mathbb{R}$ を
+$$
+g(x, t) = xt \tag{2.25}
+$$
+で定義．このとき，
+$$
+\dot{x} = g(t, x) = xt \tag{2.26}
+$$
+は$g$によって与えられる非自律系のODE．</li>
+<li>ベクトル場は$(t, x) \mapsto (1, xt)$．拡大相空間は$\mathbb{R} \times \mathbb{R}$．
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-非自律系のベクトル場の例">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/2.2_non_autonomous.svg" alt="fig_2" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      非自律系のベクトル場の例
+    </figcaption></figure>
+</li>
+<li>曲線$\boldsymbol{x}: \mathbb{R} \to \mathbb{R}$を
+$$
+\boldsymbol{x}(t) = x_0 \exp\left(\frac{1}{2}(t^2 - t_0^2) \right) \tag{2.27}
+$$
+で定義すれば，$\boldsymbol{x}$は$t = t_0$のとき，$x_0$を初期値とする解曲線となる．</li>
+<li>写像$\varphi: \mathbb{R} \times \mathbb{R} \times \mathbb{R} \to \mathbb{R}$を，
+$$
+\varphi(t, t_0, x_0) = x_0 \exp\left( \frac{1}{2}(t^2 - t_0^2) \right) \tag{2.28}
+$$
+で定義．この$\varphi$は上のODEの流れである．</li>
+</ol>
+<h3 id="2-a-namesection2離散時間力学系--写像-a">2. <a name="section2">離散時間力学系 ― 写像 ―</a></h3>
+<p>離散時間力学系を表現する代表的な数学モデルは離散時間差分方程式である．</p>
+<h6 id="def-24">Def 2.4</h6>
+<ol>
+<li>
+<p>$\boldsymbol{x} = (x_1, \ldots, x_n)^{\mathrm{T}} \in \mathbb{R}^n$, $f: \mathbb{R}^n \to \mathbb{R}^n$: 連続写像.
+$$
+f(\boldsymbol{x}) = (f_1(\boldsymbol{x}), \ldots, f_n(\boldsymbol{x}))^{\mathrm{T}} \tag{2.30}
+$$
+このとき，離散時間差分方程式
+$$
+\boldsymbol{x}(t + 1) = f(\boldsymbol{x}(t)), \ \ (t = 0, 1, 2, \ldots) \tag{2.31}
+$$
+$$
+\Longleftrightarrow \begin{cases}
+x_1(t + 1) = f_1(x_1(t), \ldots, x_n(t)) \\ \cdots \\ x_n(t + 1) = f_n(x_1(t), \ldots, x_n(t))
+\end{cases} \tag{2.32}
+$$
+を <strong>離散時間力学系</strong> という．単に <strong>写像</strong> ということもある．</p>
+</li>
+<li>
+<p>点 $\boldsymbol{x}_0 \in \mathbb{R}^n$ に対して，</p>
+<p>$$\boldsymbol{x}_{t + 1} = f(\boldsymbol{x}_t), \ \ (t = 0, 1, 2, \ldots) \tag{2.33}$$
+で与えられる ${\boldsymbol{x}_t: \ t = 0, 1, 2, \ldots}$ を点 $\boldsymbol{x}_0$ を通る <strong>正の半軌道</strong> という．</p>
+</li>
+<li>
+<p>$f$が同相写像 (逆写像$f^{-1}$が存在し，逆写像も連続) であるとき，<strong>可逆系</strong> といい，そうでないとき，<strong>非可逆系</strong> という．可逆系の場合には，時間の負の時間方向 (過去) への軌道も考えることができる．
+点$\boldsymbol{x}_0 \in \mathbb{R}^n$に対して，</p>
+<p>$$
+\boldsymbol{x}_{t - 1} = f^{-1}(\boldsymbol{x}_t) \ \ (t = 0, -1, -2, \ldots) \tag{2.34}
+$$
+で与えられる点列${\boldsymbol{x}_t: \ t = -1, -2, \ldots}$を${\boldsymbol{x}_t: \ t = 0, 1, 2}$に加えて得られる点列${\boldsymbol{x}_t: \ t = 0, \pm 1, \pm 2, \ldots}$を$\boldsymbol{x}_0$を通る <strong>軌道</strong> という．</p>
+</li>
+</ol>
+<h3 id="3-a-namesection3ポアンカレ写像a">3. <a name="section3">ポアンカレ写像</a></h3>
+<p>連続時間力学系における周期軌道の解析は，1次元低い次元の空間における離散時間力学系の解析に帰着されることがある．この離散時間力学系はポアンカレ写像と呼ばれる．</p>
+<h4 id="31-a-namesection31自律系のポアンカレ写像a">3.1. <a name="section3.1">自律系のポアンカレ写像</a></h4>
+<p>3次元自律系ベクトル場</p>
+<p>$$
+\dot{\boldsymbol{x}} = f(\boldsymbol{x}), \ \ \boldsymbol{x} \in \mathbb{R}^3 \tag{2.35}
+$$</p>
+<p>を考える．このベクトル場が周期軌道 $\Gamma$ を持つとする．
+このとき，$\Gamma$ と1点 $\boldsymbol{p}$ で横断的に交わる2次元平面 $\Sigma$ をとる．</p>
+<p>$\rightsquigarrow$ $\boldsymbol{p}$ は流れ $\varphi$ に沿って動く時，再び $\Sigma$ 上の点 $\boldsymbol{p}$ を打つ．</p>
+<p>$\rightsquigarrow$ $\boldsymbol{p}$ に十分近い $\Sigma$ 上の点 $\boldsymbol{q}$ が流れに沿って動くとき， $\boldsymbol{p}$ の近くの点 $\boldsymbol{q}^{\prime}$ を打つと考えられる ($\because$ 解の連続性，$\Sigma$ が $\Gamma$ に横断的であること)．</p>
+<p>上記のようにして， $\Sigma$ 上の $\boldsymbol{p}$ の近傍 $U$ から $\Sigma$ への写像が定義できる．</p>
+<h6 id="def-25">Def 2.5</h6>
+<p>$U$: $\Sigma$ における $\boldsymbol{p}$ の近傍．$\boldsymbol{q} \in U$ に対して，$\boldsymbol{q}^{\prime}$ を流れ $\varphi$ によって</p>
+<p>$$
+\boldsymbol{q}^{\prime} = \varphi(T, \boldsymbol{q}), \ \ T = \min \{t &gt; 0 \ | \ \varphi(t, \boldsymbol{q}) \in \Sigma  \} \tag{2.36}
+$$</p>
+<p>で定義する．この写像</p>
+<p>$$
+P: U \ni \boldsymbol{q} \mapsto \boldsymbol{q}^{\prime} \in \Sigma \tag{2.37}
+$$</p>
+<p>を自律系ベクトル場の <strong>ポアンカレ写像</strong> といい，$\Sigma$ を <strong>ポアンカレ断面</strong> という．</p>
+<h6 id="remark">Remark</h6>
+<ul>
+<li>
+<p>ポアンカレ写像は有界な領域$U$で定義された写像</p>
+<p>$\rightsquigarrow$ $\boldsymbol{q}$に対して$P$で繰り返し変換すると，像が$U$の外に出てしまうことがある．</p>
+<p>$\rightsquigarrow$ 自律系のポアンカレ写像は，局所的に定義された離散時間力学系．</p>
+</li>
+<li>
+<p>ポアンカレ写像を使用する場面</p>
+<ul>
+<li>
+<p>パラメータを持つベクトル場の周期軌道の安定性の変化や分岐を調べるとき</p>
+<p>$\rightsquigarrow$ 周期軌道の安定性や分岐は，ポアンカレ写像の不動点$\boldsymbol{p}$の安定性や分岐に帰着される</p>
+<ul>
+<li>あらかじめ定めたポアンカレ断面がパラメータのどの範囲で有効に働くかは，ベクトル場や周期軌道の性質に依存する</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="32-a-namesection32非自律系のポアンカレ写像a">3.2. <a name="section3.2">非自律系のポアンカレ写像</a></h4>
+<p>時間に関して周期 $T$ の周期性を持つ2次元の非自律ベクトル場を考える．</p>
+<p>$$
+\dot{\boldsymbol{x}} = g(t, \boldsymbol{x}), \ \ \boldsymbol{x} \in \mathbb{R}^2 \tag{2.38}
+$$
+$$
+g(t, \boldsymbol{x}) = g(t + T, \boldsymbol{x}) \tag{2.39}
+$$</p>
+<p>このベクトル場の流れを，$\varphi: \mathbb{R} \times \mathbb{R} \times \mathbb{R}^2 \to \mathbb{R}^2$ とする．</p>
+<h6 id="def-26">Def 2.6</h6>
+<p>$\boldsymbol{x} \in \mathbb{R}^2$に対して，$\varphi(T, 0, \boldsymbol{x}) \in \mathbb{R}^2$を対応させる写像
+$$
+P: \mathbb{R}^2 \ni \boldsymbol{x} \mapsto \varphi(T, 0, \boldsymbol{x}) \in \mathbb{R}^2 \tag{2.40}
+$$
+を非自律系の <strong>ポアンカレ写像</strong> (<strong>ストロボ写像</strong>) という．</p>
+<p>ベクトル場の解 $\boldsymbol{x}: \mathbb{R} \to \mathbb{R}^2$ が $t = 0$ のとき $\boldsymbol{x} = \boldsymbol{x}_0$ を初期値とし，</p>
+<p>$$
+\boldsymbol{x}(t) = \boldsymbol{x}(t + T), \ \ t \in \mathbb{R}  \tag{2.41}
+$$</p>
+<p>を満たすとき，$\boldsymbol{x}(0) = \boldsymbol{x}_0$ はポアンカレ写像 $P$ の不動点となる ($P(\boldsymbol{x}_0) = \boldsymbol{x}_0$)．</p>
+<p>また，解 $\boldsymbol{x}: \mathbb{R} \to \mathbb{R}^2$ が $t = 0$ のとき， $\boldsymbol{x} = \boldsymbol{x}_0$ を初期値とし，</p>
+<p>$$
+\boldsymbol{x}(t) \neq \boldsymbol{x}(t + T) \tag{2.43}
+$$
+$$
+\boldsymbol{x}(t) = \boldsymbol{x}(t + 2T) \tag{2.44}
+$$
+を満たすとき，$\boldsymbol{x}(0) = \boldsymbol{x}_0$ はポアンカレ写像 $P$ の2周期点となる．</p>
+<p>$\rightsquigarrow$ 非自律系ベクトル場の基本周期 $T$ の整数倍の周期を持つ解曲線の解析を，ポアンカレ写像の周期点の解析に帰着させることができる．</p>
+<p>自律系と非自律系のポアンカレ写像は，以下の図のように表される．
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-ポアンカレ写像">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/poincare.svg" alt="fig_3" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      ポアンカレ写像
+    </figcaption></figure>
+</p>
+<h3 id="4-a-namesection4補足-プログラムa">4. <a name="section4">補足: プログラム</a></h3>
+<p>自律系と非自律系のベクトル場を描画する際に用いたプログラムはGitHub<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>に上げている．</p>
+<h3 id="5-a-namesection5まとめa">5. <a name="section5">まとめ</a></h3>
+<p>この記事では，力学系の定義についてまとめ，ベクトル場を描画した．</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>小室，<a href="https://www.saiensu.co.jp/book_support/sgc-17/" target="_blank" rel="noopener">基礎からの力学系</a>，サイエンス社，2002.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://github.com/tcbn-ai/TIL/tree/main/Study_Nonlinear_systems/code" target="_blank" rel="noopener">https://github.com/tcbn-ai/TIL/tree/main/Study_Nonlinear_systems/code</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/nonlinear-systems/">Nonlinear systems</a>
+  
+  <a class="badge badge-light" href="/tag/python/">Python</a>
+  
+  <a class="badge badge-light" href="/tag/c-/">C&#43;&#43;</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_definition/&amp;text=%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%88%86%e5%b2%90%e7%8f%be%e8%b1%a1:%20%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%ae%9a%e7%be%a9" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_definition/&amp;t=%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%88%86%e5%b2%90%e7%8f%be%e8%b1%a1:%20%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%ae%9a%e7%be%a9" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%88%86%e5%b2%90%e7%8f%be%e8%b1%a1:%20%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%ae%9a%e7%be%a9&amp;body=https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_definition/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_definition/&amp;title=%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%88%86%e5%b2%90%e7%8f%be%e8%b1%a1:%20%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%ae%9a%e7%be%a9" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%88%86%e5%b2%90%e7%8f%be%e8%b1%a1:%20%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%ae%9a%e7%be%a9%20https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_definition/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_definition/&amp;title=%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%88%86%e5%b2%90%e7%8f%be%e8%b1%a1:%20%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%ae%9a%e7%be%a9" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://tachibana-ai.netlify.app/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu0297a60047f1d555aef328261639ce70_36929_270x270_fill_q75_lanczos_center.jpg" alt="Ai Tachibana (K. Toda)"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://tachibana-ai.netlify.app/">Ai Tachibana (K. Toda)</a></h5>
+      <h6 class="card-subtitle">master&rsquo;s student</h6>
+      <p class="card-text">修士2年です．興味があることを少しだけ触ってます．飽きっぽいです．</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/tcbn_ai" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/SeeKT" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>関連項目</h3>
+    <ul>
+      
+      <li><a href="/post/nonlinear_bifurcation_example/">力学系の分岐現象: いろいろな力学系</a></li>
+      
+      <li><a href="/post/nonlinear_bifurcation_introduction/">力学系の分岐現象: 導入</a></li>
+      
+      <li><a href="/post/optimal_control_direct_method/">最適制御問題: 直接法 (プログラム)</a></li>
+      
+      <li><a href="/post/optimal_control_numerical/">最適制御問題: 最適制御問題の数値解法</a></li>
+      
+      <li><a href="/post/docker_python/">Python3の開発環境をDocker containerとして作る</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+  <p class="powered-by">
+    @SeeKT
+  </p>
+  
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> コピー
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> ダウンロード
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/ja/js/wowchemy.min.120e0494fe9f2992d5054e0fc6185fae.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>

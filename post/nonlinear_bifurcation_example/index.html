@@ -1,0 +1,2118 @@
+<!DOCTYPE html><html lang="ja-jp" >
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.3.0 for Hugo" />
+  
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Ai Tachibana (K. Toda)" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="0. はじめに この記事では，文献1の第3章の内容を簡単にまとめた" />
+
+  
+  <link rel="alternate" hreflang="ja-jp" href="https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_example/" />
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    <meta name="theme-color" content="#3f51b5" />
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.0/css/academicons.min.css" integrity="sha512-W4yqoT1+8NLkinBLBZko+dFB2ZbHsYLDdr50VElllRcNt2Q4/GSs6u71UHKxB7S6JEMCp5Ve4xjh3eGQl/HRvg==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous" media="print" onload="this.media='all'">
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/github.min.css" crossorigin="anonymous" title="hl-light" media="print" onload="this.media='all'">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" media="print" onload="this.media='all'" disabled>
+        
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.c08a28530f790dced3fa54eaa0bf668e.css" />
+
+  
+
+
+
+  
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+    <link rel="manifest" href="/manifest.webmanifest" />
+  
+
+  <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
+
+  <link rel="canonical" href="https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_example/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary" />
+  
+  <meta property="og:site_name" content="立ち話" />
+  <meta property="og:url" content="https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_example/" />
+  <meta property="og:title" content="力学系の分岐現象: いろいろな力学系 | 立ち話" />
+  <meta property="og:description" content="0. はじめに この記事では，文献1の第3章の内容を簡単にまとめた" /><meta property="og:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+    <meta property="twitter:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="ja-jp" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2021-08-28T17:11:39&#43;09:00"
+      />
+    
+    <meta property="article:modified_time" content="2021-08-28T17:11:39&#43;09:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_example/"
+  },
+  "headline": "力学系の分岐現象: いろいろな力学系",
+  
+  "datePublished": "2021-08-28T17:11:39+09:00",
+  "dateModified": "2021-08-28T17:11:39+09:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Ai Tachibana (K. Toda)"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "立ち話",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "0. はじめに この記事では，文献1の第3章の内容を簡単にまとめた"
+}
+</script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  <title>力学系の分岐現象: いろいろな力学系 | 立ち話</title>
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="096c3ad4f6516cfb29b1e2a15c625b29" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.8988fb2a4bba758785868cfcb5244555.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="検索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="検索...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container-xl">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">立ち話</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="ナビゲーションの切り替え">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">立ち話</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+            
+            
+            
+              
+            
+            
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/post"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+      
+      
+        
+      
+
+      
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  </div>
+
+  <div class="page-body">
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>力学系の分岐現象: いろいろな力学系</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Aug 28, 2021
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    7 分で読める
+  </span>
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/nonlinear-systems/">Nonlinear Systems</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h3 id="0-はじめに">0. はじめに</h3>
+<p>この記事では，文献<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>の第3章の内容を簡単にまとめた．</p>
+<h5 id="目次">目次</h5>
+<ul>
+<li>1 <a href="#section1">物体の落下</a></li>
+<li>2 <a href="#section2">単振動</a></li>
+<li>3 <a href="#section3">ダフィング方程式</a></li>
+<li>4 <a href="#section4">二重振り子</a></li>
+<li>5 <a href="#section5">1階微分方程式</a></li>
+<li>6 <a href="#section6">2階微分方程式</a></li>
+<li>7 <a href="#section7">ストレンジアトラクタ</a></li>
+<li>8 <a href="#section8">まとめ</a></li>
+</ul>
+<h3 id="1-a-namesection1物体の落下a">1. <a name="section1">物体の落下</a></h3>
+<p>原点 $O$ から鉛直上向きに $x$ 軸を取り，高さ $x_0$ の点から初速度 $v_0$ で投げ上げた質量 $m$ の物体の運動を考える．</p>
+<ol>
+<li>空気抵抗を無視した場合
+$$
+m \frac{d^2x}{dt^2} = -mg \tag{3.1}
+$$
+$\rightsquigarrow$ $dx/dt = v$とおくと，
+$$
+\begin{cases}
+\frac{dx}{dt} = v \\ \frac{dv}{dt} = -g
+\end{cases} \tag{3.2}
+$$
+$\rightsquigarrow$ 2次元自律ベクトル場．時刻 $t = 0$ のとき，$x = x_0, v = v_0$ を通る軌道は，
+$$
+\begin{cases}
+x(t) = \frac{1}{2}gt^2 + v_0t + x_0 \\ v(t) = -gt + v_0
+\end{cases} \tag{3.3}
+$$
+で与えられる．
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-空気抵抗がないときのベクトル場">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.1_nonresistance_vector_field.svg" alt="fig1" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      空気抵抗がないときのベクトル場
+    </figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-空気抵抗がないときの流れ">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.1_nonresistance_flow.svg" alt="fig2" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      空気抵抗がないときの流れ
+    </figcaption></figure>
+</li>
+<li>速度に比例する空気抵抗がある場合 (比例定数: $\gamma$)
+$$
+\begin{cases}
+\frac{dx}{dt} = v \\ \frac{dv}{dt} = -g - \gamma v
+\end{cases} \tag{3.4}
+$$
+である．
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-空気抵抗があるときのベクトル場">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.1_resistance_vector_field.svg" alt="fig3" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      空気抵抗があるときのベクトル場
+    </figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-空気抵抗があるときの流れ">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.1_resistance_flow.svg" alt="fig4" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      空気抵抗があるときの流れ
+    </figcaption></figure>
+</li>
+</ol>
+<h3 id="2-a-namesection2単振動a">2. <a name="section2">単振動</a></h3>
+<p>質点の運動が一直線上にあり，加速度が常にその直線上の一定点に向かい，大きさがその定点からの距離に比例している運動．</p>
+<ul>
+<li>$L$: バネの自然長，$m$: おもりの質量，$O$: 原点(固定端)，$k$: ばね定数</li>
+<li>$L_0$: おもりに働く重力とばねの変形がつりあう位置
+$$
+k(L_0 - L) = mg \tag{3.5}
+$$</li>
+<li>$y$: $L_0$からの変位
+$$
+y = x - L_0 \tag{3.6}
+$$</li>
+</ul>
+<ol>
+<li>バネの質量が無視でき，空気抵抗などによる減衰がないとき
+$$
+m \frac{d^2 x}{dt^2} = -k(x - L) + mg \tag{3.7}
+$$
+$$
+\Longleftrightarrow m \frac{d^2y}{dt^2} = -ky \tag{3.8}
+$$
+$$
+\Longleftrightarrow \begin{cases}
+\frac{dy}{dt} = v \\ \frac{dv}{dt} = - \frac{k}{m}y
+\end{cases} \tag{3.9}
+$$
+$\rightsquigarrow$ 2次元自律系．ODEの一般解は，
+$$
+y = a \sin(\omega_0 t + \alpha), \ \omega_0 = \frac{k}{m}. \tag{3.10}
+$$
+ただし，$a, \alpha$ は任意定数．時刻 $t = 0$ で $y = y_0, v = v_0$ を通る解の場合，$a, \alpha$ は，
+$$
+\begin{cases}
+y_0 = a \sin \alpha \\ v_0 = \frac{ak}{m} \cos \alpha
+\end{cases} \tag{3.11}
+$$
+から定まる．
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-空気抵抗がないときのベクトル場">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.2_nonresistance_vector_field.svg" alt="fig5" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      空気抵抗がないときのベクトル場
+    </figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-空気抵抗がないときの流れ">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.2_nonresistance_flow.svg" alt="fig6" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      空気抵抗がないときの流れ
+    </figcaption></figure>
+</li>
+<li>速さに比例する抵抗力 (粘性抵抗) が働く場合 ($c$: 比例定数)
+$$
+m \frac{d^2y}{dt^2} = -ky - c \frac{dy}{dt} \tag{3.12}
+$$
+$$
+\Longleftrightarrow \begin{cases}
+\frac{dy}{dt} = v \\ \frac{dv}{dt} = -\frac{k}{m}y - \frac{c}{m}v
+\end{cases} \tag{3.13}
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-空気抵抗があるときのベクトル場">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.2_resistance_vector_field.svg" alt="fig7" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      空気抵抗があるときのベクトル場
+    </figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-空気抵抗があるときの流れ">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.2_resistance_flow.svg" alt="fig8" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      空気抵抗があるときの流れ
+    </figcaption></figure>
+</li>
+<li>おもりに鉛直方向の周期的外力が働く場合．周期的外力が
+$$
+F_{\mathrm{ex}} = B \sin \Omega t \tag{3.14}
+$$
+で与えられる場合，運動方程式は，
+$$
+m \frac{d^2y}{dt^2} = -ky + B \sin \Omega t \tag{3.15}
+$$
+$$
+\Longleftrightarrow \begin{cases}
+\frac{dy}{dt} = v \\ \frac{dv}{dt} = - \frac{k}{m}y + \frac{B}{m} \sin \Omega t
+\end{cases} \tag{3.16}
+$$
+$\rightsquigarrow$ 2次元の非自律系ベクトル場．
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-外力が働くときの軌道-拡大相空間">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.2_withforce_flow.svg" alt="fig9" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      外力が働くときの軌道 (拡大相空間)
+    </figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-外力が働くときの軌道">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.2_withforce_flow_2d.svg" alt="fig10" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      外力が働くときの軌道
+    </figcaption></figure>
+</li>
+<li>鉛直方向の周期的外力に加え，さらに粘性抵抗も働く場合．
+$$
+m \frac{d^2y}{dt^2} = -ky - c \frac{dy}{dt} + B \sin \Omega t \tag{3.17}
+$$
+$$
+\Longleftrightarrow \begin{cases}
+\frac{dy}{dt} = v \\ \frac{dv}{dt} = - \frac{k}{m}y - \frac{c}{m}v + \frac{B}{m} \sin \Omega t
+\end{cases} \tag{3.18}
+$$</li>
+<li>質点に直接外力は作用しないが，振動系の支台に周期的に変わる変位が加わる場合．ばねを支持する台が上下に
+$$
+x_1 = B \sin \Omega t \tag{3.19}
+$$
+で振動するとする．ただし，$y$ はおもりのつりあいの位置からの変位であるので，$y - x_1$ は支台に対するおもりの相対変位である．運動方程式は，
+$$
+m \frac{d^2y}{dt^2} = -k(y - x_1) \tag{3.20}
+$$
+$$
+\Longleftrightarrow m\frac{d^2 y}{dt^2} = -k(y - B \sin \Omega t) \tag{3.21}
+$$
+$$
+\Longleftrightarrow \begin{cases}
+\frac{dy}{dt} = v \\ \frac{dv}{dt} = - \frac{k}{m}y + \frac{kB}{m} \sin \Omega t
+\end{cases} \tag{3.22}
+$$
+$\rightsquigarrow$ おもりに鉛直方向の周期的外力
+$$
+F_{\mathrm{ex}} = kB \sin \Omega t \tag{3.23}
+$$
+が働く場合と同じ．</li>
+</ol>
+<h3 id="3-a-namesection3ダフィング-duffing-方程式a">3. <a name="section3">ダフィング (Duffing) 方程式</a></h3>
+<ul>
+<li>減衰的な駆動振動子のモデル
+$$
+\frac{d^2 x}{dt^2} + \delta \frac{dx}{dt} + \alpha x + \beta x^3 = \gamma \cos \Omega t  \tag{3.24}
+$$
+$$
+\Longleftrightarrow \begin{cases}
+\frac{dx}{dt} = v \\ \frac{dv}{dt} = -\alpha x - \beta x^3 - \delta v + \gamma \cos \Omega t
+\end{cases} \tag{3.25}
+$$
+<ul>
+<li>$\alpha$: 剛性の大きさ</li>
+<li>$\beta$: 復元力に含まれる非線形性</li>
+<li>$\gamma$: 周期駆動力の振幅</li>
+<li>$\Omega$: 周期駆動力の周波数</li>
+<li>$\delta$: 減衰の大きさ</li>
+</ul>
+</li>
+</ul>
+<p>Duffing方程式のパラメータを次のように設定する．</p>
+<ul>
+<li>$\alpha = -1, \beta = 1, \gamma = 1, \delta = 0.2, \Omega = 0.4\pi$</li>
+</ul>
+<p>また，初期状態 $x(0), v(0)$ を次のようにする．</p>
+<ol>
+<li>$x(0) = 0, v(0) = 0.05$</li>
+<li>$x(0) = 0, v(0) = 0.06$</li>
+</ol>
+<p>このとき，</p>
+<ul>
+<li>状態 $x$ の時間応答</li>
+<li>$x-v$ 空間 (相空間) の軌道</li>
+<li>$t-x-v$ 空間 (拡大相空間) の軌道</li>
+</ul>
+<p>を示す．</p>
+<h6 id="状態-x-の時間応答">状態 $x$ の時間応答</h6>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-1の場合の時間応答">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.3_time_response_1.svg" alt="fig11" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      1の場合の時間応答
+    </figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-2の場合の時間応答">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.3_time_response_2.svg" alt="fig12" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      2の場合の時間応答
+    </figcaption></figure>
+</p>
+<p>初期速度がわずかに異なると，状態の時間応答が大きく異なっていることがわかる．このように，初期値の非常に小さな差が将来の軌道に大きな影響を及ぼすという点で，カオス的な振る舞いであるといえる．</p>
+<h6 id="x-v-空間-相空間-の軌道">$x-v$ 空間 (相空間) の軌道</h6>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-1の場合の軌道">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.3_flow_1.svg" alt="fig13" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      1の場合の軌道
+    </figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-2の場合の軌道">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.3_flow_2.svg" alt="fig14" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      2の場合の軌道
+    </figcaption></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-1の場合の軌道-gif">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.3_duffing.gif" alt="gif1" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      1の場合の軌道 (gif)
+    </figcaption></figure>
+</p>
+<h6 id="t-x-v-空間-拡大相空間-の軌道">$t-x-v$ 空間 (拡大相空間) の軌道</h6>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-1の場合の軌道">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.3_expand_flow_1.svg" alt="fig15" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      1の場合の軌道
+    </figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-2の場合の軌道">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.3_expand_flow_2.svg" alt="fig16" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      2の場合の軌道
+    </figcaption></figure>
+</p>
+<h3 id="4-a-namesection4二重振り子a">4. <a name="section4">二重振り子</a></h3>
+<p>別の機会に書きたいと思っている．今回は略．</p>
+<h3 id="5-a-namesection51階微分方程式a">5. <a name="section5">1階微分方程式</a></h3>
+<p>$x$を独立変数，$y$を未知関数とする1階微分方程式が
+$$
+\frac{dy}{dx} = \frac{f(x, y)}{g(x, y)} \tag{3.33}
+$$
+で与えられているとする．</p>
+<p>$\rightsquigarrow$ $x \rightarrow t$とすると，1次元非自律ベクトル場が得られる．
+$$
+\frac{dy}{dt} = \frac{f(t, y)}{g(t, y)} \tag{3.34}
+$$
+$\rightsquigarrow$ 別の見方をする．</p>
+<p>$x, y$が媒介変数$t$の関数であることを考えると，
+$$
+\frac{dy}{dx} = \frac{\frac{dy}{dt}}{\frac{dx}{dt}} \tag{3.35}
+$$
+が成り立つ．</p>
+<p>$\rightsquigarrow$ 2次元の自律ベクトル場
+$$
+\begin{cases}
+\frac{dx}{dt} = g(x, y) \\ \frac{dy}{dt} = f(x, y)
+\end{cases} \tag{3.36}
+$$
+を考えると，解曲線 $(x(t), y(t))$ はODE (3.33) の解となる．</p>
+<h6 id="ex-31-変数分離形微分方程式">Ex 3.1. 変数分離形微分方程式</h6>
+<p>$$
+\frac{dy}{dx} = \frac{f(x)}{g(y)} \tag{3.37}
+$$
+を変数分離形という．一般解は
+$$
+\int g(y) dy = \int f(x) dx + c \tag{3.38}
+$$
+で与えられる．</p>
+<p>$$
+\frac{dy}{dx} = \frac{-(1 - x)y}{(1 - y)x} \tag{3.39}
+$$
+は変数分離形である．これは，次の2次元自律ベクトル場で表現される．
+$$
+\begin{cases}
+\frac{dx}{dt} = (1 - y)x \\ \frac{dy}{dt} = -(1 - x)y
+\end{cases} \tag{3.40}
+$$</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-ベクトル場">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.5_vector_field_1.svg" alt="fig17" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      ベクトル場
+    </figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-流れの例">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.5_flow_1.svg" alt="fig18" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      流れの例
+    </figcaption></figure>
+</p>
+<h6 id="ex-32-同次形微分方程式">Ex 3.2. 同次形微分方程式</h6>
+<p>$$
+\frac{dy}{dx} = f\left( \frac{x}{y} \right) \tag{3.41}
+$$
+変数変換
+$$
+\frac{y}{x} = v \tag{3.42}
+$$
+で変数分離形になる．</p>
+<p>$$
+\frac{dy}{dx} = \frac{-y^2}{x(x - y)} \tag{3.43}
+$$
+は同次形．これは次の2次元自律ベクトル場で表現される．
+$$
+\begin{cases}
+\frac{dx}{dt} = x(x - y) \\ \frac{dy}{dt} = -y^2
+\end{cases} \tag{3.44}
+$$</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-ベクトル場">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.5_vector_field_2.svg" alt="fig19" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      ベクトル場
+    </figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-流れの例">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.5_flow_2.svg" alt="fig20" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      流れの例
+    </figcaption></figure>
+</p>
+<h6 id="ex-33-線形微分方程式">Ex 3.3. 線形微分方程式</h6>
+<p>$$
+\frac{dy}{dx} + P(x)y = Q(x) \tag{3.45}
+$$
+一般解は，
+$$
+y = e^{-\int P dx} \left(\int Q e^{\int P dx} dx + c \right) \tag{3.46}
+$$</p>
+<p>$$
+\frac{dy}{dx} = \frac{\cos^2 x + y \sin x}{\cos x} \tag{3.47}
+$$
+は線形微分方程式．これは次の2次元自律ベクトル場で表現できる．
+$$
+\begin{cases}
+\frac{dx}{dt} = \cos x \\ \frac{dy}{dt} = \cos^2 x + y \sin x
+\end{cases} \tag{3.48}
+$$</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-ベクトル場">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.5_vector_field_3.svg" alt="fig21" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      ベクトル場
+    </figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-流れの例">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.5_flow_3.svg" alt="fig22" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      流れの例
+    </figcaption></figure>
+</p>
+<h6 id="ex-34-ベルヌーイの微分方程式">Ex 3.4. ベルヌーイの微分方程式</h6>
+<p>$$
+\frac{dy}{dx} + P(x)y = Q(x)y^n \ (n \neq 0, 1) \tag{3.49}
+$$
+変数変換
+$$
+z = y^{1 - n} \tag{3.50}
+$$
+によって線形微分方程式になる．</p>
+<p>$$
+\frac{dy}{dx} = \frac{-y + x^3 y^3}{x} \tag{3.51}
+$$
+はベルヌーイの微分方程式．これは次の2次元自律ベクトル場として表現される．
+$$
+\begin{cases}
+\frac{dx}{dt} = x \\ \frac{dy}{dt} = -y + x^3 y^3
+\end{cases} \tag{3.52}
+$$</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-ベクトル場">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.5_vector_field_4.svg" alt="fig23" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      ベクトル場
+    </figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-流れの例">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.5_flow_4.svg" alt="fig24" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      流れの例
+    </figcaption></figure>
+</p>
+<h6 id="ex-35-完全微分方程式">Ex 3.5. 完全微分方程式</h6>
+<p>$$
+P(x, y)dx + Q(x, y)dy = 0 \tag{3.53}
+$$
+の左辺がある関数 $u(x, y)$ の全微分 $du = u_x dx + u_y dy$ になっているとき，完全微分方程式という．一般解は，
+$$
+\int_a^x P(x, y) dx + \int_b^y Q(x, y)dy = c \tag{3.54}
+$$
+で与えられる．$a,b$: 定数，$c$: 任意定数．</p>
+<p>$$
+\frac{dy}{dx} = \frac{-x^3 -2xy - y}{y^3 + x^2 + x} \tag{3.55}
+$$
+は完全微分方程式．これは次の2次元自律ベクトル場で表現される．
+$$
+\begin{cases}
+\frac{dx}{dt} = y^3 + x^2 + x \\ \frac{dy}{dt} = -x^3 - 2xy - y
+\end{cases} \tag{3.56}
+$$</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-ベクトル場">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.5_vector_field_5.svg" alt="fig25" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      ベクトル場
+    </figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-流れの例">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.5_flow_5.svg" alt="fig26" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      流れの例
+    </figcaption></figure>
+</p>
+<h3 id="6-a-namesection62階微分方程式a">6. <a name="section6">2階微分方程式</a></h3>
+<p>$x$ を独立変数，$y$ を未知関数とする2階微分方程式が
+$$
+\frac{d^2y}{dx^2} = \frac{f(x, y, y^{\prime})}{g(x, y, y^{\prime})} \tag{3.57}
+$$
+で与えられているとする．$x, y$ が媒介変数 $t$ の関数であると考えると，
+$$
+\frac{dy^{\prime}}{dx} = \frac{\frac{dy^{\prime}}{dt}}{\frac{dx}{dt}} \tag{3.58}
+$$
+$$
+\frac{dy}{dx} = y^{\prime} = \frac{\frac{dy}{dt}}{\frac{dx}{dt}} \tag{3.59}
+$$
+が成り立つ．</p>
+<p>3次元のベクトル場
+$$
+\begin{cases}
+\frac{dx}{dt} = g(x, y, y^{\prime}) \\ \frac{dy}{dt} = y^{\prime}g(x, y, y^{\prime}) \\ \frac{dy^{\prime}}{dt} = f(x, y, y^{\prime})
+\end{cases} \tag{3.60}
+$$
+を考えると，解曲線 $(x(t), y(t), y^{\prime}(t))$ は微分方程式(3.60)の解となる．</p>
+<h6 id="ex-36">Ex 3.6.</h6>
+<p>$$
+\frac{d^2y}{dx^2} = -y \tag{3.61}
+$$
+は，$dy/dx = z$ とおくことで，次の3次元自律ベクトル場に表現される．
+$$
+\begin{cases}
+\frac{dx}{dt} = 1 \\ \frac{dy}{dt} = z \\ \frac{dz}{dt} = -y
+\end{cases} \tag{3.62}
+$$</p>
+<p>(3.61)の一般解は，
+$$
+y = A \cos x + B \sin x \tag{3.63}
+$$
+で与えられる．</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-流れの例">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.6_flow_1.svg" alt="center" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      流れの例
+    </figcaption></figure>
+</p>
+<h3 id="7-a-namesection7ストレンジアトラクタを持つ3次元自律ベクトル場a">7. <a name="section7">ストレンジアトラクタを持つ3次元自律ベクトル場</a></h3>
+<ul>
+<li>アトラクタ
+<ul>
+<li>力学系の相空間で，周囲の軌道を引き寄せて逃さない性質を持つ不変集合</li>
+<li>点アトラクタ，周期アトラクタ，準周期アトラクタ</li>
+</ul>
+</li>
+<li>ストレンジアトラクタ
+<ul>
+<li>1960年代にコンピュータの発達・普及により従来知られていなかったアトラクタが多く見つかった．</li>
+</ul>
+</li>
+</ul>
+<h6 id="ex-38-ローレンツアトラクタ">Ex 3.8. ローレンツアトラクタ</h6>
+<p>$$
+\begin{cases}
+\frac{dx}{dt} = -\sigma (x - y) \\ \frac{dy}{dt} = -y - xz + rx \\ \frac{dz}{dt} = xy - bz
+\end{cases} \tag{3.68}
+$$</p>
+<p>温度差のある上下の境界を持つ容器に入った流体の流れをモデル化したもの．</p>
+<ul>
+<li>$x$: 流れの関数をフーリエ展開したときの係数に対応．対流の強さを表す．</li>
+<li>$y$: 上昇流と下降流の温度差</li>
+<li>$z$: 上下方向の温度差</li>
+<li>$\sigma$: ブランドル数，$r$: レイリー数，$b$: 容器の高さと幅の比から定まる数</li>
+</ul>
+<p>$\rightsquigarrow (\sigma, r, b) = (10, 28, 8/3)$ のとき，ローレンツアトラクタ．</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-ローレンツアトラクタの解軌道-gif">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/3.7_lorenz.gif" alt="gif2" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      ローレンツアトラクタの解軌道 (gif)
+    </figcaption></figure>
+</p>
+<h3 id="8-a-namesection8まとめa">8. <a name="section8">まとめ</a></h3>
+<p>この記事では，さまざまな力学系についてまとめ，ベクトル場や解軌道を図示した．プログラムは，GitHub (C++<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, Jupyter Notebook<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>) に上げている．</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>小室，<a href="https://www.saiensu.co.jp/book_support/sgc-17/" target="_blank" rel="noopener">基礎からの力学系</a>，サイエンス社，2002.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://github.com/tcbn-ai/TIL/tree/main/Study_Nonlinear_systems/code" target="_blank" rel="noopener">https://github.com/tcbn-ai/TIL/tree/main/Study_Nonlinear_systems/code</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://github.com/tcbn-ai/TIL/tree/main/Study_Nonlinear_systems/ipython_notebook" target="_blank" rel="noopener">https://github.com/tcbn-ai/TIL/tree/main/Study_Nonlinear_systems/ipython_notebook</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/nonlinear-systems/">Nonlinear systems</a>
+  
+  <a class="badge badge-light" href="/tag/python/">Python</a>
+  
+  <a class="badge badge-light" href="/tag/c-/">C&#43;&#43;</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_example/&amp;text=%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%88%86%e5%b2%90%e7%8f%be%e8%b1%a1:%20%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e3%81%aa%e5%8a%9b%e5%ad%a6%e7%b3%bb" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_example/&amp;t=%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%88%86%e5%b2%90%e7%8f%be%e8%b1%a1:%20%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e3%81%aa%e5%8a%9b%e5%ad%a6%e7%b3%bb" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%88%86%e5%b2%90%e7%8f%be%e8%b1%a1:%20%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e3%81%aa%e5%8a%9b%e5%ad%a6%e7%b3%bb&amp;body=https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_example/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_example/&amp;title=%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%88%86%e5%b2%90%e7%8f%be%e8%b1%a1:%20%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e3%81%aa%e5%8a%9b%e5%ad%a6%e7%b3%bb" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%88%86%e5%b2%90%e7%8f%be%e8%b1%a1:%20%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e3%81%aa%e5%8a%9b%e5%ad%a6%e7%b3%bb%20https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_example/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_example/&amp;title=%e5%8a%9b%e5%ad%a6%e7%b3%bb%e3%81%ae%e5%88%86%e5%b2%90%e7%8f%be%e8%b1%a1:%20%e3%81%84%e3%82%8d%e3%81%84%e3%82%8d%e3%81%aa%e5%8a%9b%e5%ad%a6%e7%b3%bb" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://tachibana-ai.netlify.app/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu0297a60047f1d555aef328261639ce70_36929_270x270_fill_q75_lanczos_center.jpg" alt="Ai Tachibana (K. Toda)"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://tachibana-ai.netlify.app/">Ai Tachibana (K. Toda)</a></h5>
+      <h6 class="card-subtitle">master&rsquo;s student</h6>
+      <p class="card-text">修士2年です．興味があることを少しだけ触ってます．飽きっぽいです．</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/tcbn_ai" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/SeeKT" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>関連項目</h3>
+    <ul>
+      
+      <li><a href="/post/nonlinear_bifurcation_definition/">力学系の分岐現象: 力学系の定義</a></li>
+      
+      <li><a href="/post/nonlinear_bifurcation_introduction/">力学系の分岐現象: 導入</a></li>
+      
+      <li><a href="/post/optimal_control_direct_method/">最適制御問題: 直接法 (プログラム)</a></li>
+      
+      <li><a href="/post/optimal_control_numerical/">最適制御問題: 最適制御問題の数値解法</a></li>
+      
+      <li><a href="/post/docker_python/">Python3の開発環境をDocker containerとして作る</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+  
+
+  
+
+  
+  <p class="powered-by">
+    @SeeKT
+  </p>
+  
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://wowchemy.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Wowchemy</a> — the free, <a href="https://github.com/wowchemy/wowchemy-hugo-modules" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> コピー
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> ダウンロード
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      
+
+      
+      
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/highlight.min.js" integrity="sha512-TDKKr+IvoqZnPzc3l35hdjpHD0m+b2EC2SrLEgKDRWpxf2rFCxemkgvJ5kfU48ip+Y+m2XVKyOCD85ybtlZDmw==" crossorigin="anonymous"></script>
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.2.0/languages/r.min.js" crossorigin="anonymous"></script>
+        
+      
+
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+      
+      <script id="search-hit-fuse-template" type="text/x-template">
+        <div class="search-hit" id="summary-{{key}}">
+          <div class="search-hit-content">
+            <div class="search-hit-name">
+              <a href="{{relpermalink}}">{{title}}</a>
+              <div class="article-metadata search-hit-type">{{type}}</div>
+              <p class="search-hit-description">{{snippet}}</p>
+            </div>
+          </div>
+        </div>
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    <script src="/js/bootstrap.bundle.min.6aed84840afc03ab4d5750157f69c120.js"></script>
+
+    
+    
+      
+      
+      
+      
+      
+      
+      
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+      
+      
+    
+    
+    <script src="/ja/js/wowchemy.min.120e0494fe9f2992d5054e0fc6185fae.js"></script>
+
+    
+
+
+
+
+
+
+</body>
+</html>
