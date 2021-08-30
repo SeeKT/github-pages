@@ -5,12 +5,136 @@
     <link>https://tachibana-ai.netlify.app/post/</link>
       <atom:link href="https://tachibana-ai.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Sat, 28 Aug 2021 17:11:39 +0900</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Mon, 30 Aug 2021 09:15:39 +0900</lastBuildDate>
     <image>
       <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Posts</title>
       <link>https://tachibana-ai.netlify.app/post/</link>
     </image>
+    
+    <item>
+      <title>RStudio ServerをDockerで使うときのメモ</title>
+      <link>https://tachibana-ai.netlify.app/post/docker_r/</link>
+      <pubDate>Mon, 30 Aug 2021 09:15:39 +0900</pubDate>
+      <guid>https://tachibana-ai.netlify.app/post/docker_r/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;RとRStudioもDocker containerとして使えれば少しめんどくさかったインストール工程 (&lt;a href=&#34;https://tachibana-ai.netlify.app/post/ubuntu_rstudio/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ubuntu20.04にRとRStudioをインストールする&lt;/a&gt;) をやらなくても良いのではないだろうか，と考えた．&lt;/p&gt;
+&lt;p&gt;調べたところ，RockerというものでRStudio ServerをDockerで使えるらしい&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;．&lt;/p&gt;
+&lt;p&gt;今回は備忘録として，Rockerを使ったときのメモを残すことにした．&lt;/p&gt;
+&lt;h3 id=&#34;1-準備&#34;&gt;1. 準備&lt;/h3&gt;
+&lt;p&gt;最低限必要なことは，Docker Engineのインストールである．UbuntuへのDocker Engineのインストールは以前記事にした&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;．WindowsやMacについては他にも様々な記事があると思う．&lt;/p&gt;
+&lt;h3 id=&#34;2-使い方&#34;&gt;2. 使い方&lt;/h3&gt;
+&lt;p&gt;今回は，&lt;a href=&#34;https://hub.docker.com/r/rocker/tidyverse&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;rocker/tidyverse&lt;/code&gt;&lt;/a&gt; を使う．おそらく&lt;code&gt;rocker/verse&lt;/code&gt; なども同様の方法でできると思う．&lt;/p&gt;
+&lt;p&gt;まず，イメージファイルをローカルなマシンに落とす．これは，&lt;code&gt;docker pull&lt;/code&gt; コマンドを用いればよい．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker pull rocker/tidyverse
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;イメージファイルがあるかどうかは，次のコマンドで調べられる．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker image ls | grep tidyverse
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;例えば，私のマシンで実行すると以下のように出力された．確かに &lt;code&gt;rocker/tidyverse&lt;/code&gt; のイメージファイルがあることがわかる．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;tcbn@tcbn-V530-15ICR:~$ docker image ls | grep tidyverse
+rocker/tidyverse                                latest                  63d48e0c8338   9 days ago      2.41GB
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;イメージファイルがある状態で，以下のように &lt;code&gt;docker run&lt;/code&gt; コマンドを実行すればバックグラウンドでRStudio Serverが立ち上がる．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;docker run --rm -d -p 8787:8787 -e PASSWORD=[yourpasswordhere] -v [mountdir]:/home/rstudio rocker/tidyverse
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ここで，それぞれのオプションは以下のようなものである．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--rm&lt;/code&gt;: コンテナの終了後にコンテナを削除する．&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-d&lt;/code&gt;: 端末から切り離してバックグラウンドで実行する．&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p&lt;/code&gt;: ポートマッピングを設定する．
+&lt;pre&gt;&lt;code&gt;-p [port number (host)]:[port number (container)]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-e&lt;/code&gt;: 環境変数を設定する．&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-v&lt;/code&gt;: ボリュームをマウントする．
+&lt;pre&gt;&lt;code&gt;-v [host directory]:[container directory]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;このコマンドの実行後，&lt;code&gt;http://localhost:8787/&lt;/code&gt; にアクセスすればユーザ名とパスワードの入力画面が出てくる．そこで，ユーザ名に &lt;code&gt;rstudio&lt;/code&gt; を入力し，パスワードに &lt;code&gt;-e&lt;/code&gt; で指定したパスワードを入力する．&lt;/p&gt;
+&lt;p&gt;実際に私のマシンでやってみる．&lt;code&gt;~/r_sample&lt;/code&gt; というディレクトリをマウントする．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;tcbn@tcbn-V530-15ICR:~/r_sample$ ls
+requirements.r  test.r
+tcbn@tcbn-V530-15ICR:~/r_sample$ docker run --rm -d -p 8787:8787 -e PASSWORD=mypassword -v $(pwd):/home/rstudio rocker/tidyverse
+83136d6a3c656386e74d14899e0ad55d4b10603ade1bad0dfe7dbde88e07e75c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;この状態で，&lt;code&gt;http://localhost:8787/&lt;/code&gt; にアクセスすると，以下のようにユーザ名とパスワードの入力画面が出てくる．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-ユーザ名とパスワードの入力画面&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./fig/input_userinfo.png&#34; alt=&#34;fig1&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      ユーザ名とパスワードの入力画面
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;ユーザ名に &lt;code&gt;rstudio&lt;/code&gt;，パスワードに指定したパスワードを入力し，サインインすると，次のような画面になる．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-rstudio-server&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./fig/rstudio_server.png&#34; alt=&#34;fig2&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      RStudio Server
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;先程見た&lt;code&gt;~/rsample&lt;/code&gt; がマウントされていることがわかる．あとは必要なパッケージをインストールするなどしたら使えるようになる．&lt;/p&gt;
+&lt;p&gt;コンテナ内のRStudio Server側でrのソースコードを書き換えるとそれがマウントしたローカルなディレクトリにも反映される．&lt;/p&gt;
+&lt;p&gt;今起動しているDocker containerを &lt;code&gt;docker ps&lt;/code&gt; コマンドで見ると，&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;tcbn@tcbn-V530-15ICR:~/r_sample$ docker ps
+CONTAINER ID   IMAGE              COMMAND   CREATED         STATUS         PORTS                                       NAMES
+83136d6a3c65   rocker/tidyverse   &amp;quot;/init&amp;quot;   7 minutes ago   Up 7 minutes   0.0.0.0:8787-&amp;gt;8787/tcp, :::8787-&amp;gt;8787/tcp   inspiring_nash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;となっている．コンテナを &lt;code&gt;docker stop&lt;/code&gt; コマンドで終了した後に &lt;code&gt;docker ps -a&lt;/code&gt; コマンドでコンテナ一覧を見る．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;tcbn@tcbn-V530-15ICR:~/r_sample$ docker stop inspiring_nash 
+inspiring_nash
+tcbn@tcbn-V530-15ICR:~/r_sample$ docker ps -a | grep tidyverse
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;--rm&lt;/code&gt; オプションで指定したとおり，終了後のコンテナが削除されている．&lt;/p&gt;
+&lt;h3 id=&#34;3-まとめ&#34;&gt;3. まとめ&lt;/h3&gt;
+&lt;p&gt;今回は，RStudio ServerをDockerで使うときのやり方を簡単にまとめた．例えば，&lt;code&gt;rocker/tidyverse&lt;/code&gt; をイメージファイルに指定してDockerfileを作り，使いやすい環境を作るといったこともできる．&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://jsta.github.io/r-docker-tutorial/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R Docker tutorial&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://tachibana-ai.netlify.app/post/ubuntu_docker/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ubuntu20.04にDocker Engineをインストールする&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+    </item>
     
     <item>
       <title>力学系の分岐現象: いろいろな力学系</title>
@@ -2089,7 +2213,7 @@ $$\begin{cases} x(0) = x_0, &amp;amp; (\text{initial value}) \\ \dot{x}_0 = (1 -
 &lt;p&gt;1つ目の理由は，本屋のバイトが楽そうだったからである．レジ打ち，掃除，予約注文くらいできれば良いのかなと思っていた．2つ目の理由は，高校まで普通に読書が好きで (氷菓という作品の影響)，本屋なら苦痛なくバイトできるのではないか，と考えたからである．&lt;/p&gt;
 &lt;h4 id=&#34;12-バイト体験と印象に残っているエピソード&#34;&gt;1.2. バイト体験と印象に残っているエピソード&lt;/h4&gt;
 &lt;p&gt;本屋のバイトでは，レジに入ることよりも，雑誌を回収して並べるというような肉体労働が多かった．イメージしていた本屋のバイトとは違ったような気がした．&lt;/p&gt;
-&lt;p&gt;バイトをしていて一番印象に残っているエピソードがあるので，紹介したいと思う．かなり汚いので話だが，ご容赦願いたい．&lt;/p&gt;
+&lt;p&gt;バイトをしていて一番印象に残っているエピソードがあるので，紹介したいと思う．かなり汚い話だが，ご容赦願いたい．&lt;/p&gt;
 &lt;p&gt;バイトを初めて半年ほど経過した頃のこと．閉店作業をしている際，店の外のベンチに男が座っていた．流石にどいてもらわないと片づけられないな，と思い，声をかけようとしたところ，男の前に茶色くて嫌なにおいのするブツが落ちていた．頭に疑問符を浮かべながら近づくと異臭がした．これはやばい&amp;hellip;と思い，男に「もう店終わるので帰ってもらっていいですか？」と言って帰し，社長に報告した．社長に「片づけといて」と言われたので，水で流すなどして片づけた．&lt;/p&gt;
 &lt;p&gt;その茶色いブツは明らかに人間のモノではあったが，その男のものだったのかは分からない．監視カメラがついていない角度だったので，状況が分からない．だが，落ちている異臭を放っている誰のモノか分からないブツを片づける，という強烈な体験をしたことは5年ほど経過した今でも忘れられない．&lt;/p&gt;
 &lt;h4 id=&#34;13-辞めようと思った理由&#34;&gt;1.3. 辞めようと思った理由&lt;/h4&gt;
@@ -3825,7 +3949,7 @@ networkx
 &lt;li&gt;導入コスト．(自分が賢くないだけだけど) 難しい．&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;2-インストールのためのシェルスクリプト&#34;&gt;2. インストールのためのシェルスクリプト&lt;/h3&gt;
-&lt;p&gt;東京大学の金子邦彦先生のウェブサイトがかなり参考になった．Docker Engineの導入以外にもかなり参考にさせていただいた．&lt;/p&gt;
+&lt;p&gt;福山大学の&lt;a href=&#34;https://www.kkaneko.jp/tools/docker/ubuntu_docker.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;金子邦彦先生のウェブサイト&lt;/a&gt; がかなり参考になった．Docker Engineの導入以外にもかなり参考にさせていただいた．&lt;/p&gt;
 &lt;p&gt;次のようなシェルスクリプトを作り，&lt;code&gt;~/install_docker.sh&lt;/code&gt;として保存した．&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;#!/bin/bash
 

@@ -220,7 +220,7 @@ directory mode = 0777
 &lt;li&gt;導入コスト．(自分が賢くないだけだけど) 難しい．&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;2-インストールのためのシェルスクリプト&#34;&gt;2. インストールのためのシェルスクリプト&lt;/h3&gt;
-&lt;p&gt;東京大学の金子邦彦先生のウェブサイトがかなり参考になった．Docker Engineの導入以外にもかなり参考にさせていただいた．&lt;/p&gt;
+&lt;p&gt;福山大学の&lt;a href=&#34;https://www.kkaneko.jp/tools/docker/ubuntu_docker.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;金子邦彦先生のウェブサイト&lt;/a&gt; がかなり参考になった．Docker Engineの導入以外にもかなり参考にさせていただいた．&lt;/p&gt;
 &lt;p&gt;次のようなシェルスクリプトを作り，&lt;code&gt;~/install_docker.sh&lt;/code&gt;として保存した．&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;#!/bin/bash
 
