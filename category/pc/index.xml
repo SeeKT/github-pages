@@ -5,12 +5,192 @@
     <link>https://tachibana-ai.netlify.app/category/pc/</link>
       <atom:link href="https://tachibana-ai.netlify.app/category/pc/index.xml" rel="self" type="application/rss+xml" />
     <description>PC</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Thu, 08 Jul 2021 19:15:53 +0900</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Sat, 04 Sep 2021 17:26:46 +0900</lastBuildDate>
     <image>
       <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>PC</title>
       <link>https://tachibana-ai.netlify.app/category/pc/</link>
     </image>
+    
+    <item>
+      <title>研究室に入った後今までお世話になっている神サイト/ツールたち</title>
+      <link>https://tachibana-ai.netlify.app/post/good_references/</link>
+      <pubDate>Sat, 04 Sep 2021 17:26:46 +0900</pubDate>
+      <guid>https://tachibana-ai.netlify.app/post/good_references/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;研究室に残す予定のものをまとめているときに，色々と参考にしたウェブサイトや記事，使ったツールなどを記録しておこうと思った．&lt;/p&gt;
+&lt;h5 id=&#34;目次&#34;&gt;目次&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;1 &lt;a href=&#34;#section1&#34;&gt;Ubuntu関連&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2 &lt;a href=&#34;#section2&#34;&gt;Python関連&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;3 &lt;a href=&#34;#section3&#34;&gt;Docker関連&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;4 &lt;a href=&#34;#section4&#34;&gt;進捗管理関連&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;5 &lt;a href=&#34;#section5&#34;&gt;文献管理関連&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;6 &lt;a href=&#34;#section6&#34;&gt;論文関連&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;7 &lt;a href=&#34;#section7&#34;&gt;プレゼン関連&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;8 &lt;a href=&#34;#section8&#34;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;1-a-namesection1ubuntu関連a&#34;&gt;1. &lt;a name=&#34;section1&#34;&gt;Ubuntu関連&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.kkaneko.jp/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;金子邦彦研究室&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;OSやアプリケーションのインストールの方法がとても丁寧にまとめられている (&lt;a href=&#34;https://www.kkaneko.jp/tools/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;インストール，運用&lt;/a&gt;)．&lt;/li&gt;
+&lt;li&gt;個人的には，新しいアプリケーションを使おうとするときに一番苦労するのがインストールなので，このように丁寧にまとめられていてとても助かった．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;stackoverflow&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;UbuntuなどのオープンソースのOSを使っているときは，エラーが出た際のトラブルシューティングは自分で何とかしなければならない．&lt;/li&gt;
+&lt;li&gt;出力されたエラーログを stackoverflow で検索すると，大抵自分と同じエラーが出た人の質問が出てくるので，かなり参考になる．&lt;/li&gt;
+&lt;li&gt;また，プログラムを書いているときに，パッケージの依存関係のエラーが出ることがあるが，このようなときも同様にエラーログを調べられる．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://linuxfan.info/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Linux Fan Info&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Ubuntuを使うときにインストール直後にやった方が良いことや，パッケージのインストールの方法などが日本語で説明されているのが良い．&lt;/li&gt;
+&lt;li&gt;特にUbuntuを使い始めた頃はかなり役立った．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-a-namesection2python関連a&#34;&gt;2. &lt;a name=&#34;section2&#34;&gt;Python関連&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://python.atelierkobato.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python 数値計算プログラミング&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;数値計算のためのパッケージの解説がとても丁寧なのが良い．&lt;/li&gt;
+&lt;li&gt;Matplotlibの解説もあるのが最高．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://note.nkmk.me/python-post-summary/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;note.mkmk.me Python関連記事まとめ&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Pythonの基本的な使い方，特に組み込み関数の使い方が丁寧にまとめられているのが良い．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-a-namesection3docker関連a&#34;&gt;3. &lt;a name=&#34;section3&#34;&gt;Docker関連&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/minato-naka/items/e9cd026747693759800c&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dockerで環境構築するための最低限の概念理解&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Dockerの概念を理解するための助けになった．&lt;/li&gt;
+&lt;li&gt;図を用いて説明してくれているので，イメージしやすい．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/gold-kou/items/44860fbda1a34a001fc1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;いまさらだけどDockerに入門したので分かりやすくまとめてみた&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;とても丁寧にまとめられている．&lt;/li&gt;
+&lt;li&gt;コマンドの実行例を載せてくれているので，したい処理に対してどのようなコマンドを実行すればよいかわかる．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/Yuki_Oshima/items/d3b52c553387685460b0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;VS CodeでDocker開発コンテナを便利に使おう&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;VSCodeの拡張機能の使い方が書いている．&lt;/li&gt;
+&lt;li&gt;この拡張機能を使うと，コンテナ内の開発をローカルで行っているようにできる (remote sshとかremote wslみたいな感じ) ので，おすすめ．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;4-a-namesection4進捗管理関連a&#34;&gt;4. &lt;a name=&#34;section4&#34;&gt;進捗管理関連&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Git&lt;/a&gt;, &lt;a href=&#34;https://github.co.jp/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GitHub&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;書いているコードの管理や執筆している論文の管理．&lt;/li&gt;
+&lt;li&gt;自宅のPCと研究室内のPCでのデータの同期にも使える．&lt;/li&gt;
+&lt;li&gt;VSCodeやAtomの拡張機能を使えばリポジトリの管理が楽．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://evernote.com/intl/jp&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Evernote&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;私は各週や日のタスクや目標をチェックボックスに書き，やる必要があることと無理してやらなくてもいいことを区別するために使っていた．&lt;/li&gt;
+&lt;li&gt;複数端末でログインできるのも良い (アプリをダウンロードせずブラウザから入れば端末制限に引っかからない)．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;5-a-namesection5文献管理関連a&#34;&gt;5. &lt;a name=&#34;section5&#34;&gt;文献管理関連&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.elsevier.com/ja-jp/solutions/mendeley&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mendeley&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;ある程度の容量を無料で使えるのが強い．&lt;/li&gt;
+&lt;li&gt;引用のためのbibファイルを作るときに楽．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.papershipapp.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PaperShip&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;iPadで論文を読むときに便利．&lt;/li&gt;
+&lt;li&gt;Mendeleyとのアカウント連携ができる．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://chrome.google.com/webstore/detail/bibtex-entry-from-url/mgpmgkhhbjgkpnanlmlhibjfgpdpgjec?hl=ja&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BibTeX entry from URL&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Chromeの拡張機能で，URLからbibtexの形式を取得できるもの．&lt;/li&gt;
+&lt;li&gt;記事やウェブサイトを引用するときに重宝する．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;6-a-namesection6論文関連a&#34;&gt;6. &lt;a name=&#34;section6&#34;&gt;論文関連&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://ocoshite.me/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;minoblog&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;研究の方向性に迷っていたときにこのブログを読み，非常に感銘を受けた．&lt;/li&gt;
+&lt;li&gt;特に以下の2つの記事はおすすめ．
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://ocoshite.me/how-to-read-scientific-articles&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;【超重要】研究室に配属された学生が最初に学ぶべき論文の読み方【4つのポイント】&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ocoshite.me/the-importance-and-benefits-of-reading-scientific-articles&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;【なぜ論文を読むのか？】研究におけるメリットと重要性【アイデアは知識から】&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/sei88888/2020-dot-06-dot-01-m1mian-qiang-hui-lun-wen-falsedu-mifang-shu-kifang-yan-jiu-shi-falseguo-gosifang&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Seitaro Shinagawa, 2020.06.01 M1勉強会 論文の読み方・書き方・研究室の過ごし方&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;論文の読み方に関しては，特に「速読」と「精読」の部分が素晴らしいと思った．本当に参考になった．&lt;/li&gt;
+&lt;li&gt;論文の書き方もとても参考になる．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://yoshitakaushiku.net/how_to_write_references.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;参考文献の書き方&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;恥ずかしながら，私はM1まで教授に参考文献の書き方を直されていた．&lt;/li&gt;
+&lt;li&gt;このサイトは，参考文献の書き方のルールがまとめられていて，論文を執筆するときの参考になった．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://app.grammarly.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Grammarly&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Googleアカウントがあれば使うことができる優秀なスペルチェッカー．&lt;/li&gt;
+&lt;li&gt;自分で書いているときにはなかなか気付けないスペルや文法のミスを指摘してくれるので，論文執筆時に重宝する．&lt;/li&gt;
+&lt;li&gt;専門用語もミスとして指摘することがあるが，それ以外は素晴らしいツールだと思う．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.deepl.com/ja/translator&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DeepL&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;論文執筆時に英語の表現が思いつかないときや，論文を読んでいるときに意味がつかめないときにかなり使える．&lt;/li&gt;
+&lt;li&gt;精度が良い．&lt;/li&gt;
+&lt;li&gt;論文をDeepLを使って書くことについて色々言われているが，全部DeepLを使うのではなく，どうしても思いつかない表現で使うというような使い方をすれば良いのではないだろうか．&lt;/li&gt;
+&lt;li&gt;Grammarlyと組み合わせるとある程度マシな英語が書けると思う．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;特に上2つのような素晴らしいブログやスライドを見ると，自分が底辺に思えてきます．&lt;/p&gt;
+&lt;h3 id=&#34;7-a-namesection7プレゼン関連a&#34;&gt;7. &lt;a name=&#34;section7&#34;&gt;プレゼン関連&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.slideshare.net/ShinnosukeTakamichi/ss-48987441&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;研究発表のためのプレゼンテーション技術&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;プレゼンを構成する要素が分かりやすく書かれている．&lt;/li&gt;
+&lt;li&gt;私はこの記事を参考にスライドの構成を考えている．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ocoshite.me/how-to-make-a-good-presentation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;わかりやすい研究発表をするための3つの手順【スライド・話し方】&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;minonさんの記事．&lt;/li&gt;
+&lt;li&gt;スライドの作り方の他，発表の仕方などもとても参考になる．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://obsproject.com/ja/download&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OBS Studio&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;最近はオンライン学会が増えてきたり，学会発表がビデオ投稿のみであるものが多くなったりしている．また，学会発表の練習のために，自分の発表を録音して聞くことが有効だと考えられる (これはminonさんの記事でも挙げられている)．&lt;/li&gt;
+&lt;li&gt;発表の録画に役立つのがOBS Studioである．録画が非常に容易に行えるのが良い．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;8-a-namesection8まとめa&#34;&gt;8. &lt;a name=&#34;section8&#34;&gt;まとめ&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;この記事では，研究室に入った後から今までお世話になっている神のウェブサイトや記事，ツールをまとめた．他にも良いものがある (見つける) と思うので，気付いたらこの記事も更新していきたいと思う．&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>普段使っているPC周りの環境</title>
