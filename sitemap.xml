@@ -2,8 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://tachibana-ai.netlify.app/post/blog_lab/</loc>
+    <lastmod>2021-09-08T18:46:10+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/tag/blog/</loc>
+    <lastmod>2021-09-08T18:46:10+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/category/blog/</loc>
+    <lastmod>2021-09-08T18:46:10+09:00</lastmod>
+  </url><url>
     <loc>https://tachibana-ai.netlify.app/categories/</loc>
-    <lastmod>2021-09-04T17:26:46+09:00</lastmod>
+    <lastmod>2021-09-08T18:46:10+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/post/</loc>
+    <lastmod>2021-09-08T18:46:10+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/tags/</loc>
+    <lastmod>2021-09-08T18:46:10+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/</loc>
+    <lastmod>2021-09-08T18:46:10+09:00</lastmod>
   </url><url>
     <loc>https://tachibana-ai.netlify.app/tag/docker/</loc>
     <lastmod>2021-09-04T17:26:46+09:00</lastmod>
@@ -14,19 +32,10 @@
     <loc>https://tachibana-ai.netlify.app/category/pc/</loc>
     <lastmod>2021-09-04T17:26:46+09:00</lastmod>
   </url><url>
-    <loc>https://tachibana-ai.netlify.app/post/</loc>
-    <lastmod>2021-09-04T17:26:46+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/tags/</loc>
-    <lastmod>2021-09-04T17:26:46+09:00</lastmod>
-  </url><url>
     <loc>https://tachibana-ai.netlify.app/tag/ubuntu/</loc>
     <lastmod>2021-09-04T17:26:46+09:00</lastmod>
   </url><url>
     <loc>https://tachibana-ai.netlify.app/post/good_references/</loc>
-    <lastmod>2021-09-04T17:26:46+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/</loc>
     <lastmod>2021-09-04T17:26:46+09:00</lastmod>
   </url><url>
     <loc>https://tachibana-ai.netlify.app/category/docker/</loc>
@@ -58,12 +67,6 @@
   </url><url>
     <loc>https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_introduction/</loc>
     <lastmod>2021-09-04T16:26:25+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/tag/blog/</loc>
-    <lastmod>2021-08-30T09:28:24+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/category/blog/</loc>
-    <lastmod>2021-08-30T09:28:24+09:00</lastmod>
   </url><url>
     <loc>https://tachibana-ai.netlify.app/post/requirements/</loc>
     <lastmod>2021-08-27T23:32:00+09:00</lastmod>
