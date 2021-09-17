@@ -40,7 +40,7 @@ $$ -5.12 \leq x_i \leq 5.12, \ \ i = 1, \ldots, n. $$&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Global minimum
-$$ f(0, \ldots, 0) = 0 $$&lt;/p&gt;
+$$ f(0, \ldots, 0) = 0. $$&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h5 id=&#34;ackley-function&#34;&gt;Ackley function&lt;/h5&gt;
@@ -55,11 +55,17 @@ $$ -5 \leq x, y \leq 5. $$&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Global minimum
-$$ f(0, 0) = 0 $$&lt;/p&gt;
+$$ f(0, 0) = 0. $$&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;2-プロットしたもの&#34;&gt;2. プロットしたもの&lt;/h3&gt;
-&lt;p&gt;実装した ipynb を変換したものを置いている．&lt;/p&gt;
+&lt;p&gt;実装した ipynb を html に変換したものを以下に置いている (少し重いかもしれない)．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://tachibana-ai.netlify.app/post/python_plotly/test_function_blog.html&#34;&gt;実装したコード&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;関数の表面がどうなっているか可視化されていて面白いと思う．また，動かすこともできるのが良い．&lt;/p&gt;
+&lt;h3 id=&#34;3-まとめ&#34;&gt;3. まとめ&lt;/h3&gt;
+&lt;p&gt;Plotly は面白いので，詳しくなりたい．&lt;/p&gt;
 &lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
 &lt;hr&gt;
 &lt;ol&gt;
