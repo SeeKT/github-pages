@@ -47,27 +47,6 @@
     <loc>https://tachibana-ai.netlify.app/post/docker_r/</loc>
     <lastmod>2021-08-30T09:15:39+09:00</lastmod>
   </url><url>
-    <loc>https://tachibana-ai.netlify.app/tag/c-/</loc>
-    <lastmod>2021-09-04T16:26:25+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/category/nonlinear-systems/</loc>
-    <lastmod>2021-09-04T16:26:25+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/tag/nonlinear-systems/</loc>
-    <lastmod>2021-09-04T16:26:25+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/tag/python/</loc>
-    <lastmod>2021-09-04T16:26:25+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_example/</loc>
-    <lastmod>2021-08-28T17:11:39+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_definition/</loc>
-    <lastmod>2021-08-28T12:26:44+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/post/nonlinear_bifurcation_introduction/</loc>
-    <lastmod>2021-09-04T16:26:25+09:00</lastmod>
-  </url><url>
     <loc>https://tachibana-ai.netlify.app/post/requirements/</loc>
     <lastmod>2021-08-27T23:32:00+09:00</lastmod>
   </url><url>
@@ -75,6 +54,9 @@
     <lastmod>2021-08-27T23:15:59+09:00</lastmod>
   </url><url>
     <loc>https://tachibana-ai.netlify.app/category/optimal-control/</loc>
+    <lastmod>2021-08-27T23:15:59+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/tag/python/</loc>
     <lastmod>2021-08-27T23:15:59+09:00</lastmod>
   </url><url>
     <loc>https://tachibana-ai.netlify.app/post/optimal_control_direct_method/</loc>
