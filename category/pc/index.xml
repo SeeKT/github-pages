@@ -18,7 +18,7 @@
       <pubDate>Fri, 17 Sep 2021 22:28:21 +0900</pubDate>
       <guid>https://tachibana-ai.netlify.app/post/python_plotly/</guid>
       <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
-&lt;p&gt;Plotly&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; をご存知だろうか．統計や金融，科学等の幅広い分野で用いられている，データの可視化のためのライブラリであり，Python やR などで用いることができる．&lt;/p&gt;
+&lt;p&gt;Plotly&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; をご存知だろうか．統計や金融，科学等の幅広い分野で用いられている，データの可視化のためのライブラリであり，Python や R などで用いることができる．&lt;/p&gt;
 &lt;p&gt;Plotly を用いると，3d plot をとてもきれいにできる．今回は，Plotly を用いて適当なグラフを描画して遊ぼうと思う．&lt;/p&gt;
 &lt;h3 id=&#34;1-a-namesection1準備a&#34;&gt;1. &lt;a name=&#34;section1&#34;&gt;準備&lt;/a&gt;&lt;/h3&gt;
 &lt;h4 id=&#34;11-インストール&#34;&gt;1.1. インストール&lt;/h4&gt;
@@ -32,7 +32,7 @@
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Definition
-$$f(\boldsymbol{x}) = An + \sum_{i = 1}^n (x_i^2 - A \cos (2 \pi x_1)), \ \ \text{where} \ \ A = 10.$$&lt;/p&gt;
+$$f(\boldsymbol{x}) = An + \sum_{i = 1}^n (x_i^2 - A \cos (2 \pi x_i)), \ \ \text{where} \ \ A = 10.$$&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Search domain
@@ -47,7 +47,7 @@ $$ f(0, \ldots, 0) = 0. $$&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Definition
-$$ f(x, y) = -20 \exp \left(-0.2 \sqrt{0.5(x^2 + y^2)} \right) - \exp \left(0.5 (\cos 2 \pi x + \cos 2 \pi y)\right) + e + 20.$$&lt;/p&gt;
+$$ f(x, y) = -20 \exp \left(-0.2 \sqrt{0.5(x^2 + y^2)} \right)$$$$\hspace{45mm} - \exp \left(0.5 (\cos 2 \pi x + \cos 2 \pi y)\right) + e + 20.$$&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Search domain

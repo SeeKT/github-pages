@@ -5,12 +5,168 @@
     <link>https://tachibana-ai.netlify.app/tag/blog/</link>
       <atom:link href="https://tachibana-ai.netlify.app/tag/blog/index.xml" rel="self" type="application/rss+xml" />
     <description>blog</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Wed, 08 Sep 2021 18:46:10 +0900</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Mon, 20 Sep 2021 22:10:44 +0900</lastBuildDate>
     <image>
       <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>blog</title>
       <link>https://tachibana-ai.netlify.app/tag/blog/</link>
     </image>
+    
+    <item>
+      <title>この1年半体験したオンラインの物事についての所感</title>
+      <link>https://tachibana-ai.netlify.app/post/blog_online/</link>
+      <pubDate>Mon, 20 Sep 2021 22:10:44 +0900</pubDate>
+      <guid>https://tachibana-ai.netlify.app/post/blog_online/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;私が修士の間，私の研究科の講義はすべてオンライン開講である (他研究科の講義や集中講義は対面開講のものもあったが)．私がこれまでに参加した学会は国内，国際共に全てオンラインであったし，就活も全てオンラインだった．&lt;/p&gt;
+&lt;p&gt;今回は，私が1年半体験したオンラインの物事について，私なりに感じたこと (良いと思った点と微妙だと思った点など) を書いていこうと思う．アンケートをとってデータを分析したわけでもなければ，文献を読んだわけでもないので，あくまで個人の感想程度に思っていただけたら幸いである．また，これはあくまでサービスを享受した側，特に学生視点の感想である．オンラインの物事を提供してくださる方には感謝したいと思う．&lt;/p&gt;
+&lt;p&gt;きっと来年就職した後もリモートワークが主体だろうなと思うと，少しつらい．&lt;/p&gt;
+&lt;h5 id=&#34;目次&#34;&gt;目次&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;1 &lt;a href=&#34;#section1&#34;&gt;講義&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2 &lt;a href=&#34;#section2&#34;&gt;学会&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;3 &lt;a href=&#34;#section3&#34;&gt;就活&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;4 &lt;a href=&#34;#section4&#34;&gt;イベント (ライブ等)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;5 &lt;a href=&#34;#section5&#34;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;1-a-namesection1授業a&#34;&gt;1. &lt;a name=&#34;section1&#34;&gt;授業&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;良かった点&#34;&gt;良かった点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;移動する必要がないので，講義の空き時間を使って他のこと (e.g. 論文を探す，研究のプログラムを書く) 等ができる．&lt;/li&gt;
+&lt;li&gt;講義のビデオをアップロードしてくだされば，後から見返してそのときは理解できなくても後で理解することができる．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;微妙な点&#34;&gt;微妙な点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;(特に家で講義を受けている場合，) 自分を律しないとだらけてしまう．特に作業部屋と寝室が同じ部屋であるような場合はベッドに寝転びながら講義を受けることが可能である．
+&lt;ul&gt;
+&lt;li&gt;これに関しては自分を律すればどうとでもなるが&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;スライドを使う講義では，理解する前に先に進むことが多い．事前に資料を配布してくれ，なおかつiPad等でそのスライドにメモを取らないと説明に追いつけない．顔を合わせていないので，「質問等ありますか？」という先生のコメントに対して何もコメントできない．
+&lt;ul&gt;
+&lt;li&gt;基本的すぎる質問をすることを怖がる自分の問題でもある．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;オンデマンド形式の講義では，授業時間の時間分のビデオを用意されてしまうと，見るために講義時間の2 - 3倍程度かかる．&lt;/li&gt;
+&lt;li&gt;オンライン講義に先生も学生も慣れていなかった2020年前期は，課題の多さに苦しんだ．
+&lt;ul&gt;
+&lt;li&gt;とっていた講義全てで課題が課されたことがあったため，とても苦しんだ．&lt;/li&gt;
+&lt;li&gt;成績評価のためには仕方なかったのかもしれない．今は改善されていると思う．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;講義資料配布のみの講義の存在．&lt;/li&gt;
+&lt;li&gt;履修していない講義に潜るのが難しい．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;オンライン講義に対する要望&#34;&gt;オンライン講義に対する要望&lt;/h4&gt;
+&lt;p&gt;ここでは，私が一番好きだった講義の形式について述べる．それは，iPad 等のタブレットで板書し，それを画面共有する形式である．&lt;/p&gt;
+&lt;p&gt;この形式の利点は，先生の板書のスピードに合わせてメモを取ることができ，書きながら理解できる点である．しかし，この形式でも，過去の板書 (議論) を見返すために画面を戻さないといけないという問題点がある．そのため，数学系の科目でオンライン講義は厳しいのではないか，と考えている．&lt;/p&gt;
+&lt;p&gt;余談だが，私は理学研究科の数学の講義を履修していた．この講義は対面開講で，黒板を有効に使った講義であり，内容は難しかったが何とか議論を追うことはできた．やはり，数学系の科目は黒板を使ってくれるとありがたい．&lt;/p&gt;
+&lt;h3 id=&#34;2-a-namesection2学会a&#34;&gt;2. &lt;a name=&#34;section2&#34;&gt;学会&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;良かった点-1&#34;&gt;良かった点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;参加費が安い．
+&lt;ul&gt;
+&lt;li&gt;(研究費から出してくれるので，それほどメリットは感じない)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;移動費がかからない．
+&lt;ul&gt;
+&lt;li&gt;上に同じく&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;練習と発表の環境が同じ．
+&lt;ul&gt;
+&lt;li&gt;これはかなりのメリットだと思う．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;微妙な点-1&#34;&gt;微妙な点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;発表の他の交流が失われているように思う．
+&lt;ul&gt;
+&lt;li&gt;発表後の議論等が行いにくい．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;学会で発表して質疑応答するのみで，楽しみがない．モチベーションが下がる．
+&lt;ul&gt;
+&lt;li&gt;(国内旅行と海外旅行をするチャンスを失って悲しい顔になっている)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;発表ツールのトラブルが現地開催のときよりも影響が大きいように思う．&lt;/li&gt;
+&lt;li&gt;発表の残り時間の伝えるベルをオンラインでも上手く使う方法を教えてほしい．&lt;/li&gt;
+&lt;li&gt;特に国際学会では，時差の影響が大きい．
+&lt;ul&gt;
+&lt;li&gt;私が参加した学会は米国の西海岸の時間で開催されていたので，23時半頃に発表した．眠かった．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;個人的な要望&#34;&gt;個人的な要望&lt;/h4&gt;
+&lt;p&gt;(特に国際) 学会は対面がいいです．&lt;/p&gt;
+&lt;h3 id=&#34;3-a-namesection3就活a&#34;&gt;3. &lt;a name=&#34;section3&#34;&gt;就活&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;良かった点-2&#34;&gt;良かった点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;移動費が浮く．それに伴い，就活全体を通じた費用がかなり浮いた．&lt;/li&gt;
+&lt;li&gt;(カメラを入れろという指示がないようなオンラインの説明会であれば) 気楽に参加できる．&lt;/li&gt;
+&lt;li&gt;色々な企業を見ることが可能．&lt;/li&gt;
+&lt;li&gt;(スライドを使って説明できる企業は) スライドの有効活用が可能．&lt;/li&gt;
+&lt;li&gt;オンラインでも「この人苦手だな」というのは普通にわかる．
+&lt;ul&gt;
+&lt;li&gt;これはメリットでもありデメリットでもある．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;一日に複数の就活イベントに参加可能．
+&lt;ul&gt;
+&lt;li&gt;ただしメンタルにくる．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;微妙な点-2&#34;&gt;微妙な点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;オンラインインターンは，家にいるのに家に帰りたい状態になる可能性がある．
+&lt;ul&gt;
+&lt;li&gt;参加企業の吟味は重要．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;オンラインのグループワークには色々と思うところがある．
+&lt;ul&gt;
+&lt;li&gt;(そもそも私のような個人プレイをするような人間はグループワークが苦手というのもある)&lt;/li&gt;
+&lt;li&gt;コミュニケーションが一方通行になっているように感じる．誰かが話しているときに他の人が入るのが難しい．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;面談の手応えがつかめない．&lt;/li&gt;
+&lt;li&gt;一度も企業に行かずに内定．おそらく入社式まで一度も企業に行かない可能性がある．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;個人的な考え&#34;&gt;個人的な考え&lt;/h4&gt;
+&lt;p&gt;企業説明会はカメラオフで良いと思うが，その辺どうなのだろうか．&lt;/p&gt;
+&lt;h3 id=&#34;4-a-namesection4イベント-ライブ等a&#34;&gt;4. &lt;a name=&#34;section4&#34;&gt;イベント (ライブ等)&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;良かった点-3&#34;&gt;良かった点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;チケ代が安い．&lt;/li&gt;
+&lt;li&gt;移動費が浮く．&lt;/li&gt;
+&lt;li&gt;地理的な制約と時間的な制約があり，絶対に現地には行けないだろうと思ったイベントにも参加することができる．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;微妙な点-3&#34;&gt;微妙な点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;イベントが終わった後にご飯を食べながら語る楽しみがなくなった．
+&lt;ul&gt;
+&lt;li&gt;私のようなぼっちイベンターにとっては良いことだったかもしれない．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;良い機器を揃えないと臨場感が出ない．&lt;/li&gt;
+&lt;li&gt;(特にライブの場合，) 家で1人で声を出していると悲しい気持ちになる．
+&lt;ul&gt;
+&lt;li&gt;LV もスクリーンに向かって声出してるぞ()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;個人的な考え-1&#34;&gt;個人的な考え&lt;/h4&gt;
+&lt;p&gt;あまり大人数ではないトークイベントはオンライン (Zoomとか) で良いかなとは思う．オンラインライブは判断が難しい．&lt;/p&gt;
+&lt;p&gt;今後もオンラインお渡し会が続くのかは気になっている．&lt;/p&gt;
+&lt;h3 id=&#34;5-a-namesection5まとめa&#34;&gt;5. &lt;a name=&#34;section5&#34;&gt;まとめ&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;ここまでの私の考えをまとめる．オンラインの物事を体験する側の人間の利点は，主に金銭的，地理的，時間的な制約の解消が挙げられると考える (同じタイムゾーンに属している限り)．そう考えると，対面の講義を行うことができていた時期とオンライン主体の時期で大学の授業料が同じであることに不平不満が出ることは仕方がないと思う．&lt;/p&gt;
+&lt;p&gt;オンラインのメリットである地理的な制約の解消と金銭的な制約の解消は大きい．オンラインのデメリットばかり主張して不満を述べても仕方ないので，メリットも考えるようにしたいと思う．&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>B4の頃に研究が辛かったときとその後の話</title>
