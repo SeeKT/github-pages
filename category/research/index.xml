@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>research | 立ち話</title>
+    <link>https://tachibana-ai.netlify.app/category/research/</link>
+      <atom:link href="https://tachibana-ai.netlify.app/category/research/index.xml" rel="self" type="application/rss+xml" />
+    <description>research</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Fri, 01 Oct 2021 22:19:21 +0900</lastBuildDate>
+    <image>
+      <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>research</title>
+      <link>https://tachibana-ai.netlify.app/category/research/</link>
+    </image>
+    
+    <item>
+      <title>私の研究について</title>
+      <link>https://tachibana-ai.netlify.app/post/my_research/</link>
+      <pubDate>Fri, 01 Oct 2021 22:19:21 +0900</pubDate>
+      <guid>https://tachibana-ai.netlify.app/post/my_research/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;最近，私の研究が引用されたという通知が来た．また，M1 の後半に取り組んでいた研究が論文誌に採択された．私の研究に興味を持ってくださる方が少ないながらもいるようで，嬉しく思う．この記事では，私の研究のことを少し書きたいと思う．&lt;/p&gt;
+&lt;h3 id=&#34;1-研究でやりたいこと&#34;&gt;1. 研究でやりたいこと&lt;/h3&gt;
+&lt;p&gt;ここで書くことは，私が学部生の頃から考えていたことではなく，研究をしていく中で自分がしたい研究について少しずつ固まっていった後に考えていたことである．&lt;/p&gt;
+&lt;p&gt;私がもともと気になっていたことは，人を動かすようなものである．例えばそれは感情のような内的なものであったり，法律のような外的なものだったりするだろう．&lt;/p&gt;
+&lt;p&gt;一方で，システム工学について学んでいたということもあり，システムの制御にも興味があった．だが，ロボットの制御にはあまり興味が持てず，どちらかと言うとコンピュータシステムや人や組織から構成されるようなシステムの方に興味があった．特に人や組織が関わってくるようなシステムにおいては，そのシステムを動かすような制度や決まりごとが必要になってくると考えられる．&lt;/p&gt;
+&lt;p&gt;私が現在研究でやりたいこと (やっていること) は，数理最適化やゲーム理論，制御理論を制度設計に応用することである．例えば，政府がある組織に対しての補助金の与え方を決定する問題を最適化問題として記述する，といったことができるかと思う．また，複数の組織がいる状況下で全ての組織にとって良い状況にしようということをゲームとして書くことができるだろう．また，組織の状態を所望なものにするための制御を導入することもできるだろう．&lt;/p&gt;
+&lt;p&gt;このように，現実の問題を解くためのツールである数理最適化，複数主体が関わる意思決定のための数学的なモデルであるゲーム，状態や出力の制御のための制御理論を，国や州などの制度の設計のために応用できれば面白いと思っている．&lt;/p&gt;
+&lt;h3 id=&#34;2-今の研究&#34;&gt;2. 今の研究&lt;/h3&gt;
+&lt;p&gt;色々と課題の多い研究だとは思っているが，お気持ちを少し書きたいと思う (どれくらい需要がある研究なのかということは正直あまりわかっていないところもある)．&lt;/p&gt;
+&lt;p&gt;今はブロックチェーン&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;という技術のうち，パブリックブロックチェーン&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;に着目して研究している．特に，コンセンサスアルゴリズム&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;として Proof of Work&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt; (以下 PoW) が用いられているパブリックブロックチェーンの研究をしている (Proof of Stake の研究はしていない)．&lt;/p&gt;
+&lt;p&gt;はじめのうちは，PoW に参加するマイナーの意思決定とマイニング報酬の関係について研究していた．非協力ゲームというものでモデル化をすることで，マイナーの意思決定をゲームのナッシュ均衡の解析をすることで解析した．この研究が最近引用されたようである．&lt;/p&gt;
+&lt;p&gt;この研究の後，進化ゲームで用いられるレプリケータダイナミクスというダイナミクス (用いたのは連続時間系) でモデル化をして，ダイナミクスの平衡点の安定解析をすることで，意思決定の解析をした．また，マイニングへの参加者がいなくならないようなマイニング報酬の制御という問題を考えた (すでにあるブロックチェーン基盤ではマイニング報酬の与え方は基盤が作られた時点で定まっているように思うが，後から制御できるという状況をここでは考えた)．この研究を書いた論文が最近査読に通った．&lt;/p&gt;
+&lt;p&gt;現在は，政府がマイニングの収益に対して税金をかけているという状況で税率の設計ができないかな，と思って研究している．これを書いたものが国際会議のワークショップに採択された．12月に発表する予定である．研究を進めていくうちに自分がやってみたいことがだんだんわかってきたように思う．&lt;/p&gt;
+&lt;p&gt;残り半年でもう1つくらい面白い結果が出てくれたら嬉しいと思っている．&lt;/p&gt;
+&lt;h3 id=&#34;3-まとめ&#34;&gt;3. まとめ&lt;/h3&gt;
+&lt;p&gt;4月から企業の研究所で働く予定である．残り半年，勉強と研究をしんどくならない程度に頑張りたいと思う．&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;分散台帳技術．詳しくは &lt;a href=&#34;https://gaiax-blockchain.com/blockchain-first-book&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ブロックチェーンとは　〜初心者のためのわかりやすい解説〜&lt;/a&gt; など．&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;ブロックチェーンのうち，管理者が存在しないもの，つまり，ネットワークに接続できれば誰でも参加できるもの．BitcoinやEthereumなど．&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;分散システムにおいて，全体の状態を1つにするための決まり．&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;費やした計算量によって合意を取るコンセンサスアルゴリズム．&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
