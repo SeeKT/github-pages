@@ -5,12 +5,53 @@
     <link>https://tachibana-ai.netlify.app/</link>
       <atom:link href="https://tachibana-ai.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <description>立ち話</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Mon, 27 Sep 2021 19:18:20 +0900</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Fri, 01 Oct 2021 19:14:32 +0900</lastBuildDate>
     <image>
       <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>立ち話</title>
       <link>https://tachibana-ai.netlify.app/</link>
     </image>
+    
+    <item>
+      <title>Publications</title>
+      <link>https://tachibana-ai.netlify.app/publication/</link>
+      <pubDate>Fri, 01 Oct 2021 19:14:32 +0900</pubDate>
+      <guid>https://tachibana-ai.netlify.app/publication/</guid>
+      <description>&lt;h2 id=&#34;journal-paper&#34;&gt;Journal Paper&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, &amp;ldquo;Effects of miners&#39; location on blocks selection in blockchain,&amp;rdquo; IEICE Communications Express, vol.9, no.12, pp.610-615, December 2020, DOI: 10.1587/comex.2020COL0012 &lt;a href=&#34;https://www.jstage.jst.go.jp/article/comex/9/12/9_2020COL0012/_article/-char/en&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, &amp;ldquo;Modeling Modeling and Supervisory Control of Blockchain Forks,&amp;rdquo; IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, vol.E104.A, no.2, pp.474-475, February 2021, DOI: 10.1587/transfun.2020MAL0001 &lt;a href=&#34;https://www.jstage.jst.go.jp/article/transfun/E104.A/2/E104.A_2020MAL0001/_article&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, &amp;ldquo;Game-Theoretic Approach to a Decision-Making Problem for Blockchain Mining,&amp;rdquo; IEEE Control Systems Letters, vol.5, no.5, pp.1783-1788, November 2021, DOI: 10.1109/LCSYS.2020.3043834. &lt;a href=&#34;https://ieeexplore.ieee.org/document/9290112&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[paper]&lt;/a&gt; &lt;a href=&#34;https://arxiv.org/abs/2010.05370&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[arXiv]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, &amp;ldquo;Stability analysis and control of decision-making of miners in blockchain,&amp;rdquo; IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, vol.E105-A, no.4, pp.-, April 2022. &lt;a href=&#34;https://arxiv.org/abs/2104.08460&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[arXiv]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;international-conference&#34;&gt;International Conference&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, &amp;ldquo;Game-Theoretic Approach to a Decision-Making Problem for Blockchain Mining,&amp;rdquo; in Proceedings of the 2021 American Control Conference (ACC 2021), Online, May 2021.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Kosuke Toda, Naomi Kuze, and Toshimitsu Ushio, &amp;ldquo;Dynamics of miners&#39; decision making under taxation in blockchain,&amp;rdquo; in Proceedings of the 2021 NonLinear Science Workshop, Online, December 2021.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;domestic-conference&#34;&gt;Domestic Conference&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;戸田康介・久世尚美・潮俊光, &amp;ldquo;ブロックチェーンマイニングの意思決定問題の解析 ～ マイナーが3人の場合 ～,&amp;rdquo; 電子情報通信学会技術研究報告, (信学技報), vol.120, no.246, pp.85-90, オンライン, 11月 2020.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;戸田 康介，久世 尚美，潮 俊光, &amp;ldquo;ブロックチェーンにおけるマイナーの意思決定ダイナミクス,&amp;rdquo; 2021年 電子情報通信学会 NOLTA ソサイエティ大会, (IEICE, NOLTA ソサイエティ), p.19, オンライン, 6月 2021.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>自分のこと (2)</title>
