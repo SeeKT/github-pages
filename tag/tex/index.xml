@@ -5,12 +5,119 @@
     <link>https://tachibana-ai.netlify.app/tag/tex/</link>
       <atom:link href="https://tachibana-ai.netlify.app/tag/tex/index.xml" rel="self" type="application/rss+xml" />
     <description>TeX</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Thu, 08 Jul 2021 18:00:11 +0900</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Sat, 09 Oct 2021 17:37:18 +0900</lastBuildDate>
     <image>
       <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>TeX</title>
       <link>https://tachibana-ai.netlify.app/tag/tex/</link>
     </image>
+    
+    <item>
+      <title>卒論・修論のテンプレート (TeX) について</title>
+      <link>https://tachibana-ai.netlify.app/post/thesis_template/</link>
+      <pubDate>Sat, 09 Oct 2021 17:37:18 +0900</pubDate>
+      <guid>https://tachibana-ai.netlify.app/post/thesis_template/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;研究室単位で修論のテンプレートがあると思う．私の研究室にあったテンプレートはTeXソースの分割がされていないようなものだったので，テンプレートを作り直すついでに備忘録として残しておくことにする．&lt;/p&gt;
+&lt;p&gt;作ったテンプレートと同様のものは，GitHubリポジトリ &lt;a href=&#34;https://github.com/SeeKT/thesis_template&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SeeKT/thesis_template&lt;/a&gt; にアップロードした．自分が使うためのテンプレートなので色々と問題点もあるだろうが，ご容赦願いたい．&lt;/p&gt;
+&lt;h3 id=&#34;1-ディレクトリ構成&#34;&gt;1. ディレクトリ構成&lt;/h3&gt;
+&lt;p&gt;卒論や修論は文章の量が多くなるので，1つのTeXソースに全て書こうとするとTeXソースの行数が増え，修正が大変になる．そこで，修論本体のTeXソースに各章のTeXソースをinputするようにする．&lt;/p&gt;
+&lt;p&gt;今回は，以下のようなディレクトリ構成にする．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;|- bib/: bibtexするもの
+|   |- hogehoge.bib
+|
+|- fig/: 図を入れるディレクトリ
+|
+|- main/: main.tex のディレクトリ
+|
+|- tex/: main.texにinputするTeXソースのディレクトリ
+|   |- preamble_thesis.tex: プリアンブルをまとめたTeXファイル
+|   |- その他inputするTeXソース
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2-コンパイル方法等&#34;&gt;2. コンパイル方法等&lt;/h3&gt;
+&lt;p&gt;今回は，documentclass を &lt;code&gt;jsbook&lt;/code&gt; としている．コンパイルは &lt;code&gt;platex&lt;/code&gt; 等で行うと良いように思う．&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://tachibana-ai.netlify.app/post/ubuntu_tex/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ubuntu20.04にTeX Liveをインストールする&lt;/a&gt; にまとめた&lt;code&gt;latexmk&lt;/code&gt; を使うと，&lt;code&gt;bibtex&lt;/code&gt; あたりの処理が楽になる．&lt;/p&gt;
+&lt;p&gt;コンパイル時は，例えば&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;latexmk main.tex
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;とする．&lt;/p&gt;
+&lt;details&gt;
+&lt;summary&gt;卒論/修論本体のTeXソース&lt;/summary&gt;
+&lt;pre&gt;&lt;code class=&#34;language-tex&#34;&gt;% 卒論/修論 テンプレート
+\documentclass[a4j,report,dvipdfmx]{jsbook}
+% 英語のときは
+% \documentclass[a4j,report,english]{jsbook}
+
+% preamble_thesis.tex を input
+\input{../tex/preamble_thesis}
+\begin{document}
+
+%%%%%%%%%%%% Title %%%%%%%%%%%%
+\input{../tex/title}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%% Table of Contents %%%%%%%%%%%%
+\clearpage
+\tableofcontents
+\clearpage
+\setcounter{page}{0}
+\pagenumbering{arabic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%% Chapter1 Introduction %%%%%%%%%%%%
+\input{../tex/1_Intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%% Chapter2 Preliminaries %%%%%%%%%%%%
+\input{../tex/2_preliminaries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%% Chapter3 main1 %%%%%%%%%%%%
+\input{../tex/3_main1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%% Chapter4 main2 %%%%%%%%%%%%
+\input{../tex/4_main2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%% Chapter5 Conclusion %%%%%%%%%%%%
+\input{../tex/5_conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%% Acknowledgement %%%%%%%%%%%%
+\input{../tex/acknowledgement}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%% References %%%%%%%%%%%%
+% 参考文献のスタイルファイル (hogehoge.bst)
+\bibliographystyle{junsrt}
+% 参考文献のbibtexファイル (main.texからの相対パスで指定, hogehoge.bib)
+\bibliography{../bib/ref_circle,../bib/ref_triangle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
+&lt;h4 id=&#34;個人的に思う-利点&#34;&gt;(個人的に思う) 利点&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;卒論や修論が長くなっても，本体の長さはそれほど変わらない．&lt;/li&gt;
+&lt;li&gt;修正の際は各章のTeXソースを修正すれば良い．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-githubリポジトリ&#34;&gt;3. GitHubリポジトリ&lt;/h3&gt;
+&lt;p&gt;GitHubリポジトリとして卒論や修論を管理するのが推奨されているように思う．ここでは，このリポジトリの &lt;code&gt;.gitignore&lt;/code&gt; を紹介する．&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-txt&#34;&gt;*.aux
+*.fls
+*.log
+*.fdb_latexmk
+*.toc
+*.synctex.gz
+*.dvi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;TeXのコンパイルでは様々な副産物ができるが，提出時に必要なものはTeXソースとPDFファイルのみであることが多い．&lt;a href=&#34;https://github.com/SeeKT/thesis_template&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SeeKT/thesis_template&lt;/a&gt; では副産物をGitの管理に含めないようにしている．&lt;/p&gt;
+&lt;h3 id=&#34;4-まとめ&#34;&gt;4. まとめ&lt;/h3&gt;
+&lt;p&gt;この記事では，作成した卒論/修論のテンプレートについて簡単に紹介した．私はこのテンプレートを卒論/修論だけでなく長めのTeXの資料 (&lt;code&gt;jsbook&lt;/code&gt;) を作るときにも活用している．&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Ubuntu20.04にTeX Liveをインストールする</title>
