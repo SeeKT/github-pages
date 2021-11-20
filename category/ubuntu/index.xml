@@ -5,12 +5,321 @@
     <link>https://tachibana-ai.netlify.app/category/ubuntu/</link>
       <atom:link href="https://tachibana-ai.netlify.app/category/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     <description>Ubuntu</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Fri, 09 Jul 2021 18:39:46 +0900</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Sat, 20 Nov 2021 09:20:14 +0900</lastBuildDate>
     <image>
       <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>Ubuntu</title>
       <link>https://tachibana-ai.netlify.app/category/ubuntu/</link>
     </image>
+    
+    <item>
+      <title>KVM を使って仮想マシンを作成する (試験勉強用)</title>
+      <link>https://tachibana-ai.netlify.app/post/setting_kvm/</link>
+      <pubDate>Sat, 20 Nov 2021 09:20:14 +0900</pubDate>
+      <guid>https://tachibana-ai.netlify.app/post/setting_kvm/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;Linux の試験を受けようと考えている．普段家で使っている OS は Ubuntu 20.04 であるが，試験勉強用の環境を普段使っている OS とは隔離された形で作りたいと思った．&lt;/p&gt;
+&lt;p&gt;そこで，今回は Ubuntu の仮想化機能である KVM を用いて仮想マシンを作成する．あくまで試験勉強用の環境であり，一般用途として使う際に適しているとは限らない．&lt;/p&gt;
+&lt;h5 id=&#34;目次&#34;&gt;目次&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;1 &lt;a href=&#34;#section1&#34;&gt;構成と仕様&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2 &lt;a href=&#34;#section2&#34;&gt;KVM の導入と仮想マシンの作成&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;2.1 &lt;a href=&#34;#section2-1&#34;&gt;KVM の導入&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2.2 &lt;a href=&#34;#section2-2&#34;&gt;仮想マシンの作成&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;3 &lt;a href=&#34;#section3&#34;&gt;SSH 接続の設定&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;4 &lt;a href=&#34;#section4&#34;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;1-a-namesection1構成と仕様a&#34;&gt;1. &lt;a name=&#34;section1&#34;&gt;構成と仕様&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;試験では Debian 系の OS と Red Hat 系の OS の両方の知識が求められると考えられるので，両方を導入する．Debian 系 OS として Ubuntu 20.04 を導入し，Red Hat 系 OS として CentOS 7 を導入する．&lt;/p&gt;
+&lt;p&gt;また，練習用途として利用するために，次のようなことを求める．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;インターネットに接続できる．&lt;/li&gt;
+&lt;li&gt;ホスト OS と ssh で接続できる．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-a-namesection2kvm-の導入と仮想マシンの作成a&#34;&gt;2. &lt;a name=&#34;section2&#34;&gt;KVM の導入と仮想マシンの作成&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;21-a-namesection2-1kvm-の導入a&#34;&gt;2.1. &lt;a name=&#34;section2-1&#34;&gt;KVM の導入&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;仮想化機能の KVM を導入する (参考:&lt;a href=&#34;https://www.tecmint.com/install-kvm-on-ubuntu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to Install KVM on Ubuntu 20.04&lt;/a&gt;)．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(Host)
+sudo apt -y install virt-manager qemu-system
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;KVM をインストールすると，デフォルトで &lt;code&gt;virbr0&lt;/code&gt; というブリッジが作成される (参考: &lt;a href=&#34;https://qiita.com/yoshiyasu1111/items/8d07a4fd55116fba07f7&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;KVMでゲストOSをブリッジ接続する&lt;/a&gt;)．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(Host)
+tcbn@tcbn-V530-15ICR:~$ ifconfig virbr0
+virbr0: flags=4099&amp;lt;UP,BROADCAST,MULTICAST&amp;gt;  mtu 1500
+        inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255
+        ether 52:54:00:fe:91:8f  txqueuelen 1000  (Ethernet)
+        RX packets 291159  bytes 16410705 (16.4 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 582378  bytes 822922760 (822.9 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;192.168.122.0&lt;/code&gt; というネットワークであり，ホスト OS は &lt;code&gt;192.168.122.1&lt;/code&gt; という IP address でゲスト OS と接続できる．&lt;/p&gt;
+&lt;h4 id=&#34;22-a-namesection2-2仮想マシンの作成a&#34;&gt;2.2. &lt;a name=&#34;section2-2&#34;&gt;仮想マシンの作成&lt;/a&gt;&lt;/h4&gt;
+&lt;h5 id=&#34;手順&#34;&gt;手順&lt;/h5&gt;
+&lt;p&gt;まず，ISO ファイルを入手する．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://jp.ubuntu.com/download&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ubuntu 20.04&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.centos.org/download/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CentOS 7&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;(Host)
+virt-manager
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;で virt-manager を起動し，&amp;ldquo;Create a new virtual machine&amp;rdquo; を選択する．基本的に手順にしたがって新しい仮想マシンを作成する．ネットワークは，Virtual network &amp;lsquo;default&amp;rsquo;: NAT を選択する (これを選択するとインターネットに接続できたため．他の方法もあるだろう)．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-step-1-of-5-local-install-media-を選択&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./step1.png&#34; alt=&#34;Step 1 of 5, Local install media を選択．&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      Step 1 of 5, Local install media を選択．
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-step-2-of-5-browse-を選択しbrowse-local-で先程インストールした-iso-ファイルを指定する&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./step2.png&#34; alt=&#34;Step 2 of 5, Browse を選択し，Browse Local で先程インストールした ISO ファイルを指定する．&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      Step 2 of 5, Browse を選択し，Browse Local で先程インストールした ISO ファイルを指定する．
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-step-3-of-5-割り当てるメモリと-cpu-を適当に指定する&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./step3.png&#34; alt=&#34;Step 3 of 5, 割り当てるメモリと CPU を適当に指定する．&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      Step 3 of 5, 割り当てるメモリと CPU を適当に指定する．
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-step-4-of-5-仮想マシンのディスクイメージのサイズを適当に指定する&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./step4.png&#34; alt=&#34;Step 4 of 5, 仮想マシンのディスクイメージのサイズを適当に指定する．&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      Step 4 of 5, 仮想マシンのディスクイメージのサイズを適当に指定する．
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-step-5-of-5-network-selection-で-virtual-network-default-nat-を選択する&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./step5.png&#34; alt=&#34;Step 5 of 5, Network selection で Virtual network &amp;#39;default&amp;#39;: NAT を選択する．&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      Step 5 of 5, Network selection で Virtual network &amp;lsquo;default&amp;rsquo;: NAT を選択する．
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;あとは通常の OS のインストールと同様の操作である．&lt;/p&gt;
+&lt;h3 id=&#34;3-a-namesection3ssh-接続の設定a&#34;&gt;3. &lt;a name=&#34;section3&#34;&gt;SSH 接続の設定&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;以降，Ubuntu での操作を載せる．CentOS は異なるコマンドだが，同様の操作をすることで実現できる．&lt;/p&gt;
+&lt;p&gt;OS のインストール後は &lt;code&gt;update&lt;/code&gt; と &lt;code&gt;upgrade&lt;/code&gt; を行う．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(Guest)
+sudo apt update &amp;amp;&amp;amp; sudo apt -y upgrade
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;次に，SSH 接続のために OpenSSH Server を導入する．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(Guest)
+sudo apt -y install openssh-server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;また，&lt;code&gt;ssh.service&lt;/code&gt; が active か，マシンの起動後に active になるか (enable か) を確認する．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(Guest)
+sudo systemctl is-enabled ssh
+sudo systemctl status ssh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-ssh-の状態の確認&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./ssh.png&#34; alt=&#34;ssh の状態の確認．&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      ssh の状態の確認．
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;ゲスト OS の IP address を &lt;code&gt;ip addr&lt;/code&gt; で確認する．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-ip-address-の確認&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./ipaddr.png&#34; alt=&#34;IP address の確認．&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      IP address の確認．
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;今回，Ubuntu 20.04 には &lt;code&gt;192.168.122.165&lt;/code&gt; という IP address が割り当てられている．この IP address は &lt;a href=&#34;https://www.nic.ad.jp/ja/basics/terms/dhcp.html#:~:text=DHCP%E3%81%A8%E3%81%AF%E3%80%8CDynamic%20Host,%E8%A1%8C%E3%81%86%E3%81%9F%E3%82%81%E3%81%AE%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB%E3%81%A7%E3%81%99%E3%80%82&amp;amp;text=%E3%81%AA%E3%81%8ADHCP%E3%81%AB%E3%81%AF%E8%AA%8D%E8%A8%BC,%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E8%84%86%E5%BC%B1%E3%81%A7%E3%81%99%E3%80%82&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DHCP&lt;/a&gt; で割り当てられたものである&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;．&lt;/p&gt;
+&lt;p&gt;ホスト OS とゲスト OS 間の接続ができるかどうか，確認する．&lt;/p&gt;
+&lt;p&gt;ホスト OS → ゲスト OS:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tcbn@tcbn-V530-15ICR:~$ ping -c 3 192.168.122.165
+PING 192.168.122.165 (192.168.122.165) 56(84) bytes of data.
+64 bytes from 192.168.122.165: icmp_seq=1 ttl=64 time=0.544 ms
+64 bytes from 192.168.122.165: icmp_seq=2 ttl=64 time=0.201 ms
+64 bytes from 192.168.122.165: icmp_seq=3 ttl=64 time=0.366 ms
+
+--- 192.168.122.165 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2043ms
+rtt min/avg/max/mdev = 0.201/0.370/0.544/0.140 ms
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ゲスト OS → ホスト OS:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-ゲスト-os--ホスト-os-に-ping&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./ping.png&#34; alt=&#34;ゲスト OS → ホスト OS に ping.&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      ゲスト OS → ホスト OS に ping.
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;両方向に接続できていることが確認される．&lt;/p&gt;
+&lt;p&gt;SSH 接続を行う．学習用環境なので，パスワード認証で十分だろう． ホスト OS 側で &lt;code&gt;ssh [username]@[IP address]&lt;/code&gt; とする．初回接続時は確認が出るが，yes を選択する．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(Host)
+tcbn@tcbn-V530-15ICR:~$ ssh ai@192.168.122.165
+ai@192.168.122.165&#39;s password: 
+Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.11.0-40-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+0 updates can be applied immediately.
+
+Your Hardware Enablement Stack (HWE) is supported until April 2025.
+Last login: Sat Nov 20 09:08:44 2021 from 192.168.122.1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;毎回このコマンドを打つのは面倒 (特に，公開鍵認証を用いている場合) なので，ホスト OS 側の &lt;code&gt;~/.ssh/config&lt;/code&gt; ファイルに設定を書く (パスはこれではない可能性もある)．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Host Host_name
+    HostName [IP address]
+    User [username]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;という書式である (参考: &lt;a href=&#34;https://linux.die.net/man/5/ssh_config&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ssh_config(5) - Linux man page&lt;/a&gt;)．&lt;code&gt;ssh Host_name&lt;/code&gt; で接続できる&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;．&lt;/p&gt;
+&lt;h3 id=&#34;4-a-namesection4まとめa&#34;&gt;4. &lt;a name=&#34;section4&#34;&gt;まとめ&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;学習用の環境を仮想マシンで作った．特にインターネット接続あたりで詰まったので，備忘録としてまとめた．&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;IP address を固定しようと思ったが，固定するとインターネット接続ができなくなったので DHCP で割り当てられた IP address を用いることにした．原因が分からなかったので，いずれ調べたいと思う．&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;VS Code に優秀な拡張機能 Remote - SSH があるので，使うのをおすすめする．接続先のファイルをまるで手元で扱っているかのように編集できる．&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+    </item>
     
     <item>
       <title>ファイルサーバを構築したときのログ (Ubuntu18.04)</title>

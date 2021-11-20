@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="0. はじめに 私が学部4年から修士1年までに使っていたPytho" />
+  <meta name="description" content="0. はじめに Linux の試験を受けようと考えている．普段家で使っている" />
 
   
-  <link rel="alternate" hreflang="ja-jp" href="https://tachibana-ai.netlify.app/post/ubuntu_docker/" />
+  <link rel="alternate" hreflang="ja-jp" href="https://tachibana-ai.netlify.app/post/setting_kvm/" />
 
   
 
@@ -293,7 +293,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://tachibana-ai.netlify.app/post/ubuntu_docker/" />
+  <link rel="canonical" href="https://tachibana-ai.netlify.app/post/setting_kvm/" />
 
   
   
@@ -310,18 +310,18 @@
   <meta property="twitter:card" content="summary" />
   
   <meta property="og:site_name" content="立ち話" />
-  <meta property="og:url" content="https://tachibana-ai.netlify.app/post/ubuntu_docker/" />
-  <meta property="og:title" content="Ubuntu20.04にDocker Engineをインストールする | 立ち話" />
-  <meta property="og:description" content="0. はじめに 私が学部4年から修士1年までに使っていたPytho" /><meta property="og:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:url" content="https://tachibana-ai.netlify.app/post/setting_kvm/" />
+  <meta property="og:title" content="KVM を使って仮想マシンを作成する (試験勉強用) | 立ち話" />
+  <meta property="og:description" content="0. はじめに Linux の試験を受けようと考えている．普段家で使っている" /><meta property="og:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="ja-jp" />
   
     
       <meta
         property="article:published_time"
-        content="2021-07-08T18:25:39&#43;09:00"
+        content="2021-11-20T09:20:14&#43;09:00"
       />
     
-    <meta property="article:modified_time" content="2021-08-30T09:28:39&#43;09:00">
+    <meta property="article:modified_time" content="2021-11-20T09:20:14&#43;09:00">
   
 
   
@@ -345,12 +345,12 @@
   "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://tachibana-ai.netlify.app/post/ubuntu_docker/"
+    "@id": "https://tachibana-ai.netlify.app/post/setting_kvm/"
   },
-  "headline": "Ubuntu20.04にDocker Engineをインストールする",
+  "headline": "KVM を使って仮想マシンを作成する (試験勉強用)",
   
-  "datePublished": "2021-07-08T18:25:39+09:00",
-  "dateModified": "2021-08-30T09:28:39+09:00",
+  "datePublished": "2021-11-20T09:20:14+09:00",
+  "dateModified": "2021-11-20T09:20:14+09:00",
   
   "author": {
     "@type": "Person",
@@ -365,7 +365,7 @@
       "url": "https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "0. はじめに 私が学部4年から修士1年までに使っていたPytho"
+  "description": "0. はじめに Linux の試験を受けようと考えている．普段家で使っている"
 }
 </script>
 
@@ -381,11 +381,11 @@
 
 
 
-  <title>Ubuntu20.04にDocker Engineをインストールする | 立ち話</title>
+  <title>KVM を使って仮想マシンを作成する (試験勉強用) | 立ち話</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="2d5b8af647c7799f914162293fa262cc" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="d1aceb9cc0e4dcc9a1946186ca9eae1c" >
 
   
   
@@ -684,7 +684,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>Ubuntu20.04にDocker Engineをインストールする</h1>
+  <h1>KVM を使って仮想マシンを作成する (試験勉強用)</h1>
 
   
 
@@ -702,10 +702,8 @@
     
     
       
-          最終更新
-      
     
-    Aug 30, 2021
+    Nov 20, 2021
   </span>
   
 
@@ -714,7 +712,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 分で読める
+    4 分で読める
   </span>
   
 
@@ -749,102 +747,306 @@
 
     <div class="article-style">
       <h3 id="0-はじめに">0. はじめに</h3>
-<p>私が学部4年から修士1年までに使っていたPythonの開発環境はUbuntu上にpipとpipenvを入れ，pipenvで仮想環境を作って使うというものだった．Ubuntuを20にアップグレードしたときにこれまで使っていた仮想環境でプログラムが動かない，ということが起こった．</p>
-<p>このように，OSに1つの環境を作って動かそうとした際には，更新に伴いプログラムが動かなくなるというリスクがある．さらに，以下のような問題が挙げられる．</p>
+<p>Linux の試験を受けようと考えている．普段家で使っている OS は Ubuntu 20.04 であるが，試験勉強用の環境を普段使っている OS とは隔離された形で作りたいと思った．</p>
+<p>そこで，今回は Ubuntu の仮想化機能である KVM を用いて仮想マシンを作成する．あくまで試験勉強用の環境であり，一般用途として使う際に適しているとは限らない．</p>
+<h5 id="目次">目次</h5>
 <ul>
-<li>OSが汚れる
+<li>1 <a href="#section1">構成と仕様</a></li>
+<li>2 <a href="#section2">KVM の導入と仮想マシンの作成</a>
 <ul>
-<li>OSに直接インストールするので，複数のバージョンが共存するといったことが起こる．</li>
+<li>2.1 <a href="#section2-1">KVM の導入</a></li>
+<li>2.2 <a href="#section2-2">仮想マシンの作成</a></li>
 </ul>
 </li>
-<li>問題の切り分けが難しい
-<ul>
-<li>OSのアップグレードの問題なのか，パッケージの問題なのか分からなくなる．</li>
+<li>3 <a href="#section3">SSH 接続の設定</a></li>
+<li>4 <a href="#section4">まとめ</a></li>
 </ul>
+<h3 id="1-a-namesection1構成と仕様a">1. <a name="section1">構成と仕様</a></h3>
+<p>試験では Debian 系の OS と Red Hat 系の OS の両方の知識が求められると考えられるので，両方を導入する．Debian 系 OS として Ubuntu 20.04 を導入し，Red Hat 系 OS として CentOS 7 を導入する．</p>
+<p>また，練習用途として利用するために，次のようなことを求める．</p>
+<ul>
+<li>インターネットに接続できる．</li>
+<li>ホスト OS と ssh で接続できる．</li>
+</ul>
+<h3 id="2-a-namesection2kvm-の導入と仮想マシンの作成a">2. <a name="section2">KVM の導入と仮想マシンの作成</a></h3>
+<h4 id="21-a-namesection2-1kvm-の導入a">2.1. <a name="section2-1">KVM の導入</a></h4>
+<p>仮想化機能の KVM を導入する (参考:<a href="https://www.tecmint.com/install-kvm-on-ubuntu/" target="_blank" rel="noopener">How to Install KVM on Ubuntu 20.04</a>)．</p>
+<pre><code>(Host)
+sudo apt -y install virt-manager qemu-system
+</code></pre>
+<p>KVM をインストールすると，デフォルトで <code>virbr0</code> というブリッジが作成される (参考: <a href="https://qiita.com/yoshiyasu1111/items/8d07a4fd55116fba07f7" target="_blank" rel="noopener">KVMでゲストOSをブリッジ接続する</a>)．</p>
+<pre><code>(Host)
+tcbn@tcbn-V530-15ICR:~$ ifconfig virbr0
+virbr0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500
+        inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255
+        ether 52:54:00:fe:91:8f  txqueuelen 1000  (Ethernet)
+        RX packets 291159  bytes 16410705 (16.4 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 582378  bytes 822922760 (822.9 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+</code></pre>
+<p><code>192.168.122.0</code> というネットワークであり，ホスト OS は <code>192.168.122.1</code> という IP address でゲスト OS と接続できる．</p>
+<h4 id="22-a-namesection2-2仮想マシンの作成a">2.2. <a name="section2-2">仮想マシンの作成</a></h4>
+<h5 id="手順">手順</h5>
+<p>まず，ISO ファイルを入手する．</p>
+<ul>
+<li><a href="https://jp.ubuntu.com/download" target="_blank" rel="noopener">Ubuntu 20.04</a></li>
+<li><a href="https://www.centos.org/download/" target="_blank" rel="noopener">CentOS 7</a></li>
+</ul>
+<pre><code>(Host)
+virt-manager
+</code></pre>
+<p>で virt-manager を起動し，&ldquo;Create a new virtual machine&rdquo; を選択する．基本的に手順にしたがって新しい仮想マシンを作成する．ネットワークは，Virtual network &lsquo;default&rsquo;: NAT を選択する (これを選択するとインターネットに接続できたため．他の方法もあるだろう)．</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-step-1-of-5-local-install-media-を選択">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./step1.png" alt="Step 1 of 5, Local install media を選択．" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      Step 1 of 5, Local install media を選択．
+    </figcaption></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-step-2-of-5-browse-を選択しbrowse-local-で先程インストールした-iso-ファイルを指定する">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./step2.png" alt="Step 2 of 5, Browse を選択し，Browse Local で先程インストールした ISO ファイルを指定する．" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      Step 2 of 5, Browse を選択し，Browse Local で先程インストールした ISO ファイルを指定する．
+    </figcaption></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-step-3-of-5-割り当てるメモリと-cpu-を適当に指定する">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./step3.png" alt="Step 3 of 5, 割り当てるメモリと CPU を適当に指定する．" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      Step 3 of 5, 割り当てるメモリと CPU を適当に指定する．
+    </figcaption></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-step-4-of-5-仮想マシンのディスクイメージのサイズを適当に指定する">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./step4.png" alt="Step 4 of 5, 仮想マシンのディスクイメージのサイズを適当に指定する．" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      Step 4 of 5, 仮想マシンのディスクイメージのサイズを適当に指定する．
+    </figcaption></figure>
+</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-step-5-of-5-network-selection-で-virtual-network-default-nat-を選択する">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./step5.png" alt="Step 5 of 5, Network selection で Virtual network &#39;default&#39;: NAT を選択する．" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      Step 5 of 5, Network selection で Virtual network &lsquo;default&rsquo;: NAT を選択する．
+    </figcaption></figure>
+</p>
+<p>あとは通常の OS のインストールと同様の操作である．</p>
+<h3 id="3-a-namesection3ssh-接続の設定a">3. <a name="section3">SSH 接続の設定</a></h3>
+<p>以降，Ubuntu での操作を載せる．CentOS は異なるコマンドだが，同様の操作をすることで実現できる．</p>
+<p>OS のインストール後は <code>update</code> と <code>upgrade</code> を行う．</p>
+<pre><code>(Guest)
+sudo apt update &amp;&amp; sudo apt -y upgrade
+</code></pre>
+<p>次に，SSH 接続のために OpenSSH Server を導入する．</p>
+<pre><code>(Guest)
+sudo apt -y install openssh-server
+</code></pre>
+<p>また，<code>ssh.service</code> が active か，マシンの起動後に active になるか (enable か) を確認する．</p>
+<pre><code>(Guest)
+sudo systemctl is-enabled ssh
+sudo systemctl status ssh
+</code></pre>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-ssh-の状態の確認">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./ssh.png" alt="ssh の状態の確認．" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      ssh の状態の確認．
+    </figcaption></figure>
+</p>
+<p>ゲスト OS の IP address を <code>ip addr</code> で確認する．</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-ip-address-の確認">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./ipaddr.png" alt="IP address の確認．" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      IP address の確認．
+    </figcaption></figure>
+</p>
+<p>今回，Ubuntu 20.04 には <code>192.168.122.165</code> という IP address が割り当てられている．この IP address は <a href="https://www.nic.ad.jp/ja/basics/terms/dhcp.html#:~:text=DHCP%E3%81%A8%E3%81%AF%E3%80%8CDynamic%20Host,%E8%A1%8C%E3%81%86%E3%81%9F%E3%82%81%E3%81%AE%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB%E3%81%A7%E3%81%99%E3%80%82&amp;text=%E3%81%AA%E3%81%8ADHCP%E3%81%AB%E3%81%AF%E8%AA%8D%E8%A8%BC,%E3%81%AB%E5%AF%BE%E3%81%97%E3%81%A6%E8%84%86%E5%BC%B1%E3%81%A7%E3%81%99%E3%80%82" target="_blank" rel="noopener">DHCP</a> で割り当てられたものである<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>．</p>
+<p>ホスト OS とゲスト OS 間の接続ができるかどうか，確認する．</p>
+<p>ホスト OS → ゲスト OS:</p>
+<pre><code>tcbn@tcbn-V530-15ICR:~$ ping -c 3 192.168.122.165
+PING 192.168.122.165 (192.168.122.165) 56(84) bytes of data.
+64 bytes from 192.168.122.165: icmp_seq=1 ttl=64 time=0.544 ms
+64 bytes from 192.168.122.165: icmp_seq=2 ttl=64 time=0.201 ms
+64 bytes from 192.168.122.165: icmp_seq=3 ttl=64 time=0.366 ms
+
+--- 192.168.122.165 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2043ms
+rtt min/avg/max/mdev = 0.201/0.370/0.544/0.140 ms
+</code></pre>
+<p>ゲスト OS → ホスト OS:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-ゲスト-os--ホスト-os-に-ping">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./ping.png" alt="ゲスト OS → ホスト OS に ping." loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      ゲスト OS → ホスト OS に ping.
+    </figcaption></figure>
+</p>
+<p>両方向に接続できていることが確認される．</p>
+<p>SSH 接続を行う．学習用環境なので，パスワード認証で十分だろう． ホスト OS 側で <code>ssh [username]@[IP address]</code> とする．初回接続時は確認が出るが，yes を選択する．</p>
+<pre><code>(Host)
+tcbn@tcbn-V530-15ICR:~$ ssh ai@192.168.122.165
+ai@192.168.122.165's password: 
+Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.11.0-40-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+0 updates can be applied immediately.
+
+Your Hardware Enablement Stack (HWE) is supported until April 2025.
+Last login: Sat Nov 20 09:08:44 2021 from 192.168.122.1
+</code></pre>
+<p>毎回このコマンドを打つのは面倒 (特に，公開鍵認証を用いている場合) なので，ホスト OS 側の <code>~/.ssh/config</code> ファイルに設定を書く (パスはこれではない可能性もある)．</p>
+<pre><code>Host Host_name
+    HostName [IP address]
+    User [username]
+</code></pre>
+<p>という書式である (参考: <a href="https://linux.die.net/man/5/ssh_config" target="_blank" rel="noopener">ssh_config(5) - Linux man page</a>)．<code>ssh Host_name</code> で接続できる<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>．</p>
+<h3 id="4-a-namesection4まとめa">4. <a name="section4">まとめ</a></h3>
+<p>学習用の環境を仮想マシンで作った．特にインターネット接続あたりで詰まったので，備忘録としてまとめた．</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>IP address を固定しようと思ったが，固定するとインターネット接続ができなくなったので DHCP で割り当てられた IP address を用いることにした．原因が分からなかったので，いずれ調べたいと思う．&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-</ul>
-<p>そんなときDockerに出会う．Dockerの説明は省略するが，イメージは1つのサーバに独立した複数のサーバを同時に構築することができる，というものである．これは良いと思い，研究の開発環境をDocker container上に作ることにした．</p>
-<p>Ubuntu20.04にDocker Engineをインストールするためのシェルスクリプトを作ったので，この記事で共有する．</p>
-<h3 id="1-dockerの利点と欠点">1. Dockerの利点と欠点</h3>
-<p>私が思うDockerの利点と欠点を以下に示す．あまり詳しくないエアプ発言かもしれない．</p>
-<h4 id="利点">利点</h4>
-<ul>
-<li>Dockerfileに開発に必要なパッケージのインストールについて記述できるので，Dockerfileとして記述してしまえば，そのとおりに環境構築ができる．</li>
-<li>移植しやすい．</li>
-<li>Python等のバージョンが変わったときもDockerfileの内容を変えることで最新版にアップデートできる．</li>
-<li>OSのバージョンに依らない．依存関係に関する問題を，パッケージのバージョンにまで絞り込める．</li>
-<li>OSが汚れない．</li>
-<li>1つのPCの中に複数の異なる開発環境を構築できる．</li>
-<li>VSCodeの拡張機能が優秀で，使いやすい．</li>
-</ul>
-<h4 id="欠点">欠点</h4>
-<ul>
-<li>Windowsでエラーが出ることが多い気がする．Windowsで同じようなことをしようと思ってもうまく動かないことがある．</li>
-<li>WindowsではWSL2をバックエンドにしているので，メモリの消費量が多い．まともに動かそうと思うとメモリ16GBはないと厳しい．</li>
-<li>導入コスト．(自分が賢くないだけだけど) 難しい．</li>
-</ul>
-<h3 id="2-インストールのためのシェルスクリプト">2. インストールのためのシェルスクリプト</h3>
-<p>福山大学の<a href="https://www.kkaneko.jp/tools/docker/ubuntu_docker.html" target="_blank" rel="noopener">金子邦彦先生のウェブサイト</a> がかなり参考になった．Docker Engineの導入以外にもかなり参考にさせていただいた．</p>
-<p>次のようなシェルスクリプトを作り，<code>~/install_docker.sh</code>として保存した．</p>
-<pre><code class="language-shell">#!/bin/bash
-
-# Written by A.Tachibana, 2021/3/19
-
-# Objective
-## To install docker in Ubuntu 20
-
-# Reference
-## https://www.kkaneko.jp/tools/docker/ubuntu_docker.html
-
-############ To execute ############
-# chmod 755 install_docker.sh
-# ./install_docker.sh
-####################################
-
-
-# Require password
-printf &quot;password: &quot;
-read -s password
-
-# Update and Upgrade
-echo &quot;$password&quot; | sudo -S apt update &amp;&amp; sudo -S apt -y upgrade
-
-# Install Docker
-## Delete old version (if exists)
-sudo -S apt -y remove docker docker-engine docker.io containerd docker-ce docker-ce-cli
-sudo -S apt -y autoremove
-## Install required software
-sudo -S apt update
-sudo -S apt -y install apt-transport-https ca-certificates curl software-properties-common
-sudo -S apt -y install linux-image-generic
-## Set docker repository
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-apt-key fingerprint 0EBFCD88
-sudo -S add-apt-repository \
-    &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -sc) \
-    stable&quot;
-sudo -S apt update
-## Install docker.io
-sudo -S apt -y install docker.io containerd docker-compose
-## Add authority
-sudo -S usermod -aG docker $USER
-## Set autostart
-sudo -S systemctl unmask docker.service
-sudo -S systemctl enable docker
-sudo -S systemctl is-enabled docker
-## let user ubuntu use docker
-sudo gpasswd -a $USER docker
-</code></pre>
-<p>このファイルに実行権限を与え，実行する．</p>
-<pre><code class="language-bash">chmod 755 install_docker.sh
-./install_docker.sh
-</code></pre>
-<p>なお，このシェルスクリプトは，私のサブのGitHubアカウントの<a href="https://github.com/tcbn-ai/TIL/blob/main/Study_Docker/shellscript/install_docker.sh" target="_blank" rel="noopener">publicリポジトリ</a>にアップロードしている．</p>
-<h4 id="参考">参考</h4>
-<ul>
-<li><a href="https://www.kkaneko.jp/cc/vm/ubuntu_docker.html" target="_blank" rel="noopener">Docker Engine のインストールと使用法（Ubuntu 上）</a></li>
-</ul>
+<li id="fn:2" role="doc-endnote">
+<p>VS Code に優秀な拡張機能 Remote - SSH があるので，使うのをおすすめする．接続先のファイルをまるで手元で扱っているかのように編集できる．&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
 
     </div>
 
@@ -857,9 +1059,11 @@ sudo gpasswd -a $USER docker
 
 <div class="article-tags">
   
-  <a class="badge badge-light" href="/tag/docker/">Docker</a>
-  
   <a class="badge badge-light" href="/tag/ubuntu/">Ubuntu</a>
+  
+  <a class="badge badge-light" href="/tag/kvm/">KVM</a>
+  
+  <a class="badge badge-light" href="/tag/linux/">Linux</a>
   
 </div>
 
@@ -876,7 +1080,7 @@ sudo gpasswd -a $USER docker
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://tachibana-ai.netlify.app/post/ubuntu_docker/&amp;text=Ubuntu20.04%e3%81%abDocker%20Engine%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%99%e3%82%8b" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://tachibana-ai.netlify.app/post/setting_kvm/&amp;text=KVM%20%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e4%bb%ae%e6%83%b3%e3%83%9e%e3%82%b7%e3%83%b3%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b%20%28%e8%a9%a6%e9%a8%93%e5%8b%89%e5%bc%b7%e7%94%a8%29" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -889,7 +1093,7 @@ sudo gpasswd -a $USER docker
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://tachibana-ai.netlify.app/post/ubuntu_docker/&amp;t=Ubuntu20.04%e3%81%abDocker%20Engine%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%99%e3%82%8b" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://tachibana-ai.netlify.app/post/setting_kvm/&amp;t=KVM%20%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e4%bb%ae%e6%83%b3%e3%83%9e%e3%82%b7%e3%83%b3%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b%20%28%e8%a9%a6%e9%a8%93%e5%8b%89%e5%bc%b7%e7%94%a8%29" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -902,7 +1106,7 @@ sudo gpasswd -a $USER docker
       
       
       <li>
-        <a href="mailto:?subject=Ubuntu20.04%e3%81%abDocker%20Engine%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%99%e3%82%8b&amp;body=https://tachibana-ai.netlify.app/post/ubuntu_docker/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=KVM%20%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e4%bb%ae%e6%83%b3%e3%83%9e%e3%82%b7%e3%83%b3%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b%20%28%e8%a9%a6%e9%a8%93%e5%8b%89%e5%bc%b7%e7%94%a8%29&amp;body=https://tachibana-ai.netlify.app/post/setting_kvm/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -915,7 +1119,7 @@ sudo gpasswd -a $USER docker
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://tachibana-ai.netlify.app/post/ubuntu_docker/&amp;title=Ubuntu20.04%e3%81%abDocker%20Engine%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%99%e3%82%8b" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://tachibana-ai.netlify.app/post/setting_kvm/&amp;title=KVM%20%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e4%bb%ae%e6%83%b3%e3%83%9e%e3%82%b7%e3%83%b3%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b%20%28%e8%a9%a6%e9%a8%93%e5%8b%89%e5%bc%b7%e7%94%a8%29" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -928,7 +1132,7 @@ sudo gpasswd -a $USER docker
       
       
       <li>
-        <a href="whatsapp://send?text=Ubuntu20.04%e3%81%abDocker%20Engine%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%99%e3%82%8b%20https://tachibana-ai.netlify.app/post/ubuntu_docker/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=KVM%20%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e4%bb%ae%e6%83%b3%e3%83%9e%e3%82%b7%e3%83%b3%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b%20%28%e8%a9%a6%e9%a8%93%e5%8b%89%e5%bc%b7%e7%94%a8%29%20https://tachibana-ai.netlify.app/post/setting_kvm/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -941,7 +1145,7 @@ sudo gpasswd -a $USER docker
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://tachibana-ai.netlify.app/post/ubuntu_docker/&amp;title=Ubuntu20.04%e3%81%abDocker%20Engine%e3%82%92%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%99%e3%82%8b" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://tachibana-ai.netlify.app/post/setting_kvm/&amp;title=KVM%20%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e4%bb%ae%e6%83%b3%e3%83%9e%e3%82%b7%e3%83%b3%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b%20%28%e8%a9%a6%e9%a8%93%e5%8b%89%e5%bc%b7%e7%94%a8%29" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -1043,15 +1247,15 @@ sudo gpasswd -a $USER docker
     <h3>関連項目</h3>
     <ul>
       
-      <li><a href="/post/good_references/">研究室に入った後今までお世話になっている神サイト/ツールたち</a></li>
-      
-      <li><a href="/post/setting_kvm/">KVM を使って仮想マシンを作成する (試験勉強用)</a></li>
-      
       <li><a href="/post/create_server/">ファイルサーバを構築したときのログ (Ubuntu18.04)</a></li>
+      
+      <li><a href="/post/ubuntu_docker/">Ubuntu20.04にDocker Engineをインストールする</a></li>
       
       <li><a href="/post/ubuntu_rstudio/">Ubuntu20.04にRとRStudioをインストールする</a></li>
       
       <li><a href="/post/ubuntu_tex/">Ubuntu20.04にTeX Liveをインストールする</a></li>
+      
+      <li><a href="/post/good_references/">研究室に入った後今までお世話になっている神サイト/ツールたち</a></li>
       
     </ul>
   </div>
