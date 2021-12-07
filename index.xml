@@ -5,12 +5,144 @@
     <link>https://tachibana-ai.netlify.app/</link>
       <atom:link href="https://tachibana-ai.netlify.app/index.xml" rel="self" type="application/rss+xml" />
     <description>立ち話</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Sat, 20 Nov 2021 09:20:14 +0900</lastBuildDate>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>ja-jp</language><copyright>@SeeKT</copyright><lastBuildDate>Tue, 07 Dec 2021 22:17:14 +0900</lastBuildDate>
     <image>
       <url>https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
       <title>立ち話</title>
       <link>https://tachibana-ai.netlify.app/</link>
     </image>
+    
+    <item>
+      <title>Docker Container として LaTeX の執筆環境を作る</title>
+      <link>https://tachibana-ai.netlify.app/post/docker_latex/</link>
+      <pubDate>Tue, 07 Dec 2021 22:17:14 +0900</pubDate>
+      <guid>https://tachibana-ai.netlify.app/post/docker_latex/</guid>
+      <description>&lt;h3 id=&#34;0-はじめに&#34;&gt;0. はじめに&lt;/h3&gt;
+&lt;p&gt;現在，Ubuntu 20.04 上に TeXLive をインストールして LaTeX の文書を作成している．今後，仕事等で使うマシンが Windows になる可能性がある．そこで，OS に依らずに使える執筆環境として Docker Container を用いるものを作成した．&lt;/p&gt;
+&lt;p&gt;過去に同様の環境を作ってくれていた方の Docker image やブログを参考に作成した．作成したものは，GitHub の Public リポジトリ (&lt;a href=&#34;https://github.com/SeeKT/Docker_latex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SeeKT/Docker_latex&lt;/a&gt;) にアップロードしている．&lt;/p&gt;
+&lt;h5 id=&#34;目次&#34;&gt;目次&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;1 &lt;a href=&#34;#section1&#34;&gt;採用しているコンパイルのルール&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;2 &lt;a href=&#34;#section2&#34;&gt;概要&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;3 &lt;a href=&#34;#section3&#34;&gt;ディレクトリ構成&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;4 &lt;a href=&#34;#section4&#34;&gt;使用方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;5 &lt;a href=&#34;#section5&#34;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;1-a-namesection1採用しているコンパイルのルールa&#34;&gt;1. &lt;a name=&#34;section1&#34;&gt;採用しているコンパイルのルール&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;日本語文書
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;platex&lt;/code&gt; + &lt;code&gt;dvipdfmx&lt;/code&gt; (&lt;code&gt;latexmk&lt;/code&gt; として記述)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pbibtex&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;英語文書
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pdflatex&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bibtex&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;スライド (beamer)
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;xelatex&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bibtex&lt;/code&gt; or &lt;code&gt;pbibtex&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2-a-namesection2概要a&#34;&gt;2. &lt;a name=&#34;section2&#34;&gt;概要&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/aruneko&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Aruneno&lt;/a&gt; 様の &lt;a href=&#34;https://hub.docker.com/r/aruneko/texlive&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;aruneko/texlive&lt;/a&gt; を使って，Docker Container として TeX の執筆環境を作成した．また，&lt;a href=&#34;https://github.com/korosuke613&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Futa HIRAKOBA&lt;/a&gt; 様の &lt;a href=&#34;https://korosuke613.hatenablog.com/entry/2019/06/24/171246&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;爆速で日本語LaTeX執筆環境を用意する&lt;/a&gt; を参考にして，VSCode の LaTeX Workshop を用いたコンパイルの効率化をしている．この2つのサイトにはとてもお世話になった．とても感謝している．&lt;/p&gt;
+&lt;h3 id=&#34;3-a-namesection3ディレクトリ構成a&#34;&gt;3. &lt;a name=&#34;section3&#34;&gt;ディレクトリ構成&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/SeeKT/Docker_latex&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SeeKT/Docker_latex&lt;/a&gt; はこのようなディレクトリ構成をとっている．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;|- .devcontainer/
+|   |- .latexmkrc: latexmk の設定ファイル
+|   |- devcontainer.json: VSCode の Remote Container 機能を使うときの設定
+|   |- docker-compose.yml: コンテナの起動に対する処理
+|   |- dockerfile: コンテナを作るための処理
+|
+|- .vscode/
+|   |- setting.json: LaTeX Workshop の設定
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;.vscode/setting.json&lt;/code&gt; でコンパイル方法を指示することで，コンパイルの効率化を図っている．&lt;/p&gt;
+&lt;h3 id=&#34;4-a-namesection4使用方法a&#34;&gt;4. &lt;a name=&#34;section4&#34;&gt;使用方法&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;VSCode の Remote Development を用いて，コンテナ内に入る．そして，TeX ソースを開く．&lt;/p&gt;
+&lt;p&gt;日本語文書のコンパイルには，&lt;code&gt;platex&lt;/code&gt; (&lt;code&gt;latexmk&lt;/code&gt;) を使う．LaTeX Workshop の &lt;code&gt;Recipe: pLatex&lt;/code&gt; をクリックし，&lt;code&gt;View LaTeX PDF&lt;/code&gt; をクリックすると，右側に PDF ファイルが開かれる．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-日本語文書のコンパイル&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./fig/tex_jp.png&#34; alt=&#34;fig1&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      日本語文書のコンパイル
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;英語文書のコンパイルには，&lt;code&gt;pdflatex&lt;/code&gt; を使う．LaTeX Workshop の &lt;code&gt;Recipe: pdflatex&lt;/code&gt; をクリックし，&lt;code&gt;View LaTeX PDF&lt;/code&gt; をクリックすると，右側に PDF ファイルが開かれる．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-英語文書のコンパイル&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./fig/tex_en.png&#34; alt=&#34;fig1&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      英語文書のコンパイル
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;英語文書のコンパイルには，&lt;code&gt;xelatex&lt;/code&gt; を使う．LaTeX Workshop の &lt;code&gt;Recipe: xelatex&lt;/code&gt; をクリックし，&lt;code&gt;View LaTeX PDF&lt;/code&gt; をクリックすると，右側に PDF ファイルが開かれる．&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  id=&#34;figure-スライドのコンパイル&#34;&gt;
+  &lt;div class=&#34;d-flex justify-content-center&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img src=&#34;./fig/tex_slide.png&#34; alt=&#34;fig1&#34; loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;figcaption&gt;
+      スライドのコンパイル
+    &lt;/figcaption&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;.vscode/setting.json&lt;/code&gt; を工夫すれば，一部の文書に対しては &lt;code&gt;pdflatex&lt;/code&gt; みたいに設定できるらしいが，やり方がよく分からなかったので，今回はやらなかった．&lt;/p&gt;
+&lt;h3 id=&#34;5-a-namesection5まとめa&#34;&gt;5. &lt;a name=&#34;section5&#34;&gt;まとめ&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;何故か上手くいかなくて悩んでいたが，TeX 本体をインストールするときを思い出したらなんとかいけた．時間かかったけど．&lt;/p&gt;
+&lt;p&gt;Docker Container としてプログラム (&lt;code&gt;R&lt;/code&gt;, &lt;code&gt;Python&lt;/code&gt;) の開発環境を作成した &lt;a href=&#34;https://github.com/tcbn-ai/TIL/blob/main/Study_Docker/Docker_Environment/docker_environment.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;資料&lt;/a&gt; もあるので，一応リンクを貼っておく．&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>KVM を使って仮想マシンを作成する (試験勉強用)</title>

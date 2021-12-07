@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="0. はじめに この記事では，Docker containerとして" />
+  <meta name="description" content="0. はじめに 現在，Ubuntu 20.04 上に TeXLive をインストールして LaTeX の文" />
 
   
-  <link rel="alternate" hreflang="ja-jp" href="https://tachibana-ai.netlify.app/post/docker_python/" />
+  <link rel="alternate" hreflang="ja-jp" href="https://tachibana-ai.netlify.app/post/docker_latex/" />
 
   
 
@@ -293,7 +293,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://tachibana-ai.netlify.app/post/docker_python/" />
+  <link rel="canonical" href="https://tachibana-ai.netlify.app/post/docker_latex/" />
 
   
   
@@ -310,18 +310,18 @@
   <meta property="twitter:card" content="summary" />
   
   <meta property="og:site_name" content="立ち話" />
-  <meta property="og:url" content="https://tachibana-ai.netlify.app/post/docker_python/" />
-  <meta property="og:title" content="Python3の開発環境をDocker containerとして作る | 立ち話" />
-  <meta property="og:description" content="0. はじめに この記事では，Docker containerとして" /><meta property="og:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+  <meta property="og:url" content="https://tachibana-ai.netlify.app/post/docker_latex/" />
+  <meta property="og:title" content="Docker Container として LaTeX の執筆環境を作る | 立ち話" />
+  <meta property="og:description" content="0. はじめに 現在，Ubuntu 20.04 上に TeXLive をインストールして LaTeX の文" /><meta property="og:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
     <meta property="twitter:image" content="https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="ja-jp" />
   
     
       <meta
         property="article:published_time"
-        content="2021-07-08T18:58:51&#43;09:00"
+        content="2021-12-07T22:17:14&#43;09:00"
       />
     
-    <meta property="article:modified_time" content="2021-07-08T18:58:51&#43;09:00">
+    <meta property="article:modified_time" content="2021-12-07T22:17:14&#43;09:00">
   
 
   
@@ -345,12 +345,12 @@
   "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://tachibana-ai.netlify.app/post/docker_python/"
+    "@id": "https://tachibana-ai.netlify.app/post/docker_latex/"
   },
-  "headline": "Python3の開発環境をDocker containerとして作る",
+  "headline": "Docker Container として LaTeX の執筆環境を作る",
   
-  "datePublished": "2021-07-08T18:58:51+09:00",
-  "dateModified": "2021-07-08T18:58:51+09:00",
+  "datePublished": "2021-12-07T22:17:14+09:00",
+  "dateModified": "2021-12-07T22:17:14+09:00",
   
   "author": {
     "@type": "Person",
@@ -365,7 +365,7 @@
       "url": "https://tachibana-ai.netlify.app/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
     }
   },
-  "description": "0. はじめに この記事では，Docker containerとして"
+  "description": "0. はじめに 現在，Ubuntu 20.04 上に TeXLive をインストールして LaTeX の文"
 }
 </script>
 
@@ -381,11 +381,11 @@
 
 
 
-  <title>Python3の開発環境をDocker containerとして作る | 立ち話</title>
+  <title>Docker Container として LaTeX の執筆環境を作る | 立ち話</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="7471e873b14f0c8e0af18a6a496e2caf" >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="2ad3c8131dd9c6ef7e84ae0bd2928920" >
 
   
   
@@ -684,7 +684,7 @@
   
   
 <div class="article-container pt-3">
-  <h1>Python3の開発環境をDocker containerとして作る</h1>
+  <h1>Docker Container として LaTeX の執筆環境を作る</h1>
 
   
 
@@ -703,7 +703,7 @@
     
       
     
-    Jul 8, 2021
+    Dec 7, 2021
   </span>
   
 
@@ -712,7 +712,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 分で読める
+    2 分で読める
   </span>
   
 
@@ -747,149 +747,129 @@
 
     <div class="article-style">
       <h3 id="0-はじめに">0. はじめに</h3>
-<p>この記事では，Docker containerとしてPythonの開発環境を作ったときのメモを残す．
-この記事の内容は，GitHubのサブのアカウントの<a href="https://github.com/tcbn-ai/Docker_python_env" target="_blank" rel="noopener">publicリポジトリ</a>で公開している．</p>
-<h3 id="1-必要なもの">1. 必要なもの</h3>
+<p>現在，Ubuntu 20.04 上に TeXLive をインストールして LaTeX の文書を作成している．今後，仕事等で使うマシンが Windows になる可能性がある．そこで，OS に依らずに使える執筆環境として Docker Container を用いるものを作成した．</p>
+<p>過去に同様の環境を作ってくれていた方の Docker image やブログを参考に作成した．作成したものは，GitHub の Public リポジトリ (<a href="https://github.com/SeeKT/Docker_latex" target="_blank" rel="noopener">SeeKT/Docker_latex</a>) にアップロードしている．</p>
+<h5 id="目次">目次</h5>
 <ul>
-<li>Docker Engineのインストール</li>
-<li>VSCodeのインストール
+<li>1 <a href="#section1">採用しているコンパイルのルール</a></li>
+<li>2 <a href="#section2">概要</a></li>
+<li>3 <a href="#section3">ディレクトリ構成</a></li>
+<li>4 <a href="#section4">使用方法</a></li>
+<li>5 <a href="#section5">まとめ</a></li>
+</ul>
+<h3 id="1-a-namesection1採用しているコンパイルのルールa">1. <a name="section1">採用しているコンパイルのルール</a></h3>
 <ul>
-<li>Remote Developementの導入</li>
+<li>日本語文書
+<ul>
+<li><code>platex</code> + <code>dvipdfmx</code> (<code>latexmk</code> として記述)</li>
+<li><code>pbibtex</code></li>
+</ul>
+</li>
+<li>英語文書
+<ul>
+<li><code>pdflatex</code></li>
+<li><code>bibtex</code></li>
+</ul>
+</li>
+<li>スライド (beamer)
+<ul>
+<li><code>xelatex</code></li>
+<li><code>bibtex</code> or <code>pbibtex</code></li>
 </ul>
 </li>
 </ul>
-<h3 id="2-基本構成">2. 基本構成</h3>
-<ul>
-<li>Docker Image
-<ul>
-<li><a href="https://hub.docker.com/_/python" target="_blank" rel="noopener">python</a>の<a href="https://github.com/docker-library/python/blob/e0e01b8482ea14352c710134329cdd93ece88317/3.8/buster/Dockerfile" target="_blank" rel="noopener">3.8.10-buster</a>を使っている．</li>
-</ul>
-</li>
-<li>ディレクトリ構成
-<pre><code>|- test_code/   # コードを置いている
-|- .devcontainer/
-    |- devcontainer.json
-    |- docker-compose.yml
-    |- dockerfile
-    |- requirements.txt
+<h3 id="2-a-namesection2概要a">2. <a name="section2">概要</a></h3>
+<p><a href="https://github.com/aruneko" target="_blank" rel="noopener">Aruneno</a> 様の <a href="https://hub.docker.com/r/aruneko/texlive" target="_blank" rel="noopener">aruneko/texlive</a> を使って，Docker Container として TeX の執筆環境を作成した．また，<a href="https://github.com/korosuke613" target="_blank" rel="noopener">Futa HIRAKOBA</a> 様の <a href="https://korosuke613.hatenablog.com/entry/2019/06/24/171246" target="_blank" rel="noopener">爆速で日本語LaTeX執筆環境を用意する</a> を参考にして，VSCode の LaTeX Workshop を用いたコンパイルの効率化をしている．この2つのサイトにはとてもお世話になった．とても感謝している．</p>
+<h3 id="3-a-namesection3ディレクトリ構成a">3. <a name="section3">ディレクトリ構成</a></h3>
+<p><a href="https://github.com/SeeKT/Docker_latex" target="_blank" rel="noopener">SeeKT/Docker_latex</a> はこのようなディレクトリ構成をとっている．</p>
+<pre><code>|- .devcontainer/
+|   |- .latexmkrc: latexmk の設定ファイル
+|   |- devcontainer.json: VSCode の Remote Container 機能を使うときの設定
+|   |- docker-compose.yml: コンテナの起動に対する処理
+|   |- dockerfile: コンテナを作るための処理
+|
+|- .vscode/
+|   |- setting.json: LaTeX Workshop の設定
 </code></pre>
-</li>
-</ul>
-<h4 id="各種ファイル">各種ファイル</h4>
-<ul>
-<li><code>devcontainer.json</code>
-<ul>
-<li>VSCodeのRemoteを使うときの設定
-<pre><code class="language-json">// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.177.0/containers/docker-existing-dockerfile
-{
-  // 名前は任意
-  &quot;name&quot;: &quot;Docker-Python&quot;,
-  // dockercomposefileの場所 (同階層に置いている)
-  &quot;dockerComposeFile&quot;: &quot;docker-compose.yml&quot;,
-  // 使う拡張機能
-  &quot;extensions&quot;: [
-    &quot;ms-python.python&quot;
-  ],
-  // ここに記載している&quot;service&quot;名とdocker-compose.ymlに記載している&quot;service&quot;を一致させる
-  &quot;service&quot;: &quot;python&quot;,
-  // コンテナ内に入ったときのworkdir
-  &quot;workspaceFolder&quot;: &quot;/code&quot;,
-  // VSCodeを閉じたときのアクション
-  &quot;shutdownAction&quot;: &quot;stopCompose&quot;
-}
-</code></pre>
-</li>
-</ul>
-</li>
-<li><code>docker-compose.yml</code>
-<ul>
-<li>複数のコンテナを定義し，実行することができる．</li>
-<li>今回は，1つのコンテナに対する処理を記述
-<pre><code class="language-yml">version: &quot;3&quot;    # 3が最新版
-services: 
-    python: # ここの名前とdevcontainer.jsonの&quot;service&quot;を一致させる
-        build: .    # 同階層のdockerfileからビルドする
-        command: sleep infinity
-        volumes: 
-            - ../:/code  # 上階層のディレクトリをDocker Container上のworkdirにマウント
-        environment: 
-            SHELL: /bin/bash
-</code></pre>
-</li>
-</ul>
-</li>
-<li><code>dockerfile</code>
-<ul>
-<li>コンテナを作るための処理
-<pre><code class="language-dockerfile">########### Image file ###########
-FROM python:3.8.10-buster
-##################################
+<p><code>.vscode/setting.json</code> でコンパイル方法を指示することで，コンパイルの効率化を図っている．</p>
+<h3 id="4-a-namesection4使用方法a">4. <a name="section4">使用方法</a></h3>
+<p>VSCode の Remote Development を用いて，コンテナ内に入る．そして，TeX ソースを開く．</p>
+<p>日本語文書のコンパイルには，<code>platex</code> (<code>latexmk</code>) を使う．LaTeX Workshop の <code>Recipe: pLatex</code> をクリックし，<code>View LaTeX PDF</code> をクリックすると，右側に PDF ファイルが開かれる．</p>
+<p>
 
-########### update and install packages ###########
-# apt-get upgradeに-yを付けないとexit 1になります．追加しました．(5/23)
-RUN apt-get update &amp;&amp; \
-    apt-get -y upgrade &amp;&amp; \
-    apt-get install -y vim git &amp;&amp; \
-    rm -rf /var/lib/apt/lists*
-###################################################
 
-########### create workspace ###########
-RUN mkdir /code
-WORKDIR /code
-ADD ./requirements.txt /code/
-########################################
 
-########### install packages via pip ###########
-RUN pip3 install -r requirements.txt
-ADD . /code/
-################################################
-</code></pre>
-</li>
-</ul>
-</li>
-<li><code>requirements.txt</code>
-<ul>
-<li><code>pip install</code>するファイル
-<pre><code class="language-txt">############ Requirements Packages ############
-pylint
-numpy
-scipy
-sympy
-matplotlib
-statsmodels
-sklearn
-pandas
-networkx
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-使用時">3. 使用時</h3>
-<ul>
-<li><code>test_code</code>と同階層に自分のコードを格納したフォルダを配置して，VSCodeの左下の&quot;Open Remote Window&quot;を選択．</li>
-<li>Reopen in Containerを選択．</li>
-<li>ワークスペースが開いたら，terminalを開き，<code>python *.py</code>で実行する．</li>
-</ul>
-<h3 id="4-いろいろ変えたいとき">4. いろいろ変えたいとき</h3>
-<ul>
-<li><code>pip install</code>するパッケージを変更したいとき
-<ul>
-<li><code>requirements.txt</code>を書き換える</li>
-</ul>
-</li>
-<li>Pythonのバージョンを3の別バージョンに変えたいとき
-<ul>
-<li><code>dockerfile</code>のイメージファイル (2行目の<code>FROM</code>以下) を書き換える．</li>
-</ul>
-</li>
-<li>Pythonのバージョンを2にしたいとき
-<ul>
-<li><a href="https://hub.docker.com/_/python" target="_blank" rel="noopener">python</a>には2系がないので，イメージファイルをUbuntu等にして1からインストールする．</li>
-</ul>
-</li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-日本語文書のコンパイル">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/tex_jp.png" alt="fig1" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      日本語文書のコンパイル
+    </figcaption></figure>
+</p>
+<p>英語文書のコンパイルには，<code>pdflatex</code> を使う．LaTeX Workshop の <code>Recipe: pdflatex</code> をクリックし，<code>View LaTeX PDF</code> をクリックすると，右側に PDF ファイルが開かれる．</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-英語文書のコンパイル">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/tex_en.png" alt="fig1" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      英語文書のコンパイル
+    </figcaption></figure>
+</p>
+<p>英語文書のコンパイルには，<code>xelatex</code> を使う．LaTeX Workshop の <code>Recipe: xelatex</code> をクリックし，<code>View LaTeX PDF</code> をクリックすると，右側に PDF ファイルが開かれる．</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  id="figure-スライドのコンパイル">
+  <div class="d-flex justify-content-center">
+    <div class="w-100" ><img src="./fig/tex_slide.png" alt="fig1" loading="lazy" data-zoomable /></div>
+  </div><figcaption>
+      スライドのコンパイル
+    </figcaption></figure>
+</p>
+<p><code>.vscode/setting.json</code> を工夫すれば，一部の文書に対しては <code>pdflatex</code> みたいに設定できるらしいが，やり方がよく分からなかったので，今回はやらなかった．</p>
+<h3 id="5-a-namesection5まとめa">5. <a name="section5">まとめ</a></h3>
+<p>何故か上手くいかなくて悩んでいたが，TeX 本体をインストールするときを思い出したらなんとかいけた．時間かかったけど．</p>
+<p>Docker Container としてプログラム (<code>R</code>, <code>Python</code>) の開発環境を作成した <a href="https://github.com/tcbn-ai/TIL/blob/main/Study_Docker/Docker_Environment/docker_environment.pdf" target="_blank" rel="noopener">資料</a> もあるので，一応リンクを貼っておく．</p>
 
     </div>
 
@@ -902,9 +882,9 @@ networkx
 
 <div class="article-tags">
   
-  <a class="badge badge-light" href="/tag/python/">Python</a>
-  
   <a class="badge badge-light" href="/tag/docker/">Docker</a>
+  
+  <a class="badge badge-light" href="/tag/latex/">LaTeX</a>
   
 </div>
 
@@ -921,7 +901,7 @@ networkx
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://tachibana-ai.netlify.app/post/docker_python/&amp;text=Python3%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83%e3%82%92Docker%20container%e3%81%a8%e3%81%97%e3%81%a6%e4%bd%9c%e3%82%8b" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://tachibana-ai.netlify.app/post/docker_latex/&amp;text=Docker%20Container%20%e3%81%a8%e3%81%97%e3%81%a6%20LaTeX%20%e3%81%ae%e5%9f%b7%e7%ad%86%e7%92%b0%e5%a2%83%e3%82%92%e4%bd%9c%e3%82%8b" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -934,7 +914,7 @@ networkx
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://tachibana-ai.netlify.app/post/docker_python/&amp;t=Python3%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83%e3%82%92Docker%20container%e3%81%a8%e3%81%97%e3%81%a6%e4%bd%9c%e3%82%8b" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://tachibana-ai.netlify.app/post/docker_latex/&amp;t=Docker%20Container%20%e3%81%a8%e3%81%97%e3%81%a6%20LaTeX%20%e3%81%ae%e5%9f%b7%e7%ad%86%e7%92%b0%e5%a2%83%e3%82%92%e4%bd%9c%e3%82%8b" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -947,7 +927,7 @@ networkx
       
       
       <li>
-        <a href="mailto:?subject=Python3%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83%e3%82%92Docker%20container%e3%81%a8%e3%81%97%e3%81%a6%e4%bd%9c%e3%82%8b&amp;body=https://tachibana-ai.netlify.app/post/docker_python/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Docker%20Container%20%e3%81%a8%e3%81%97%e3%81%a6%20LaTeX%20%e3%81%ae%e5%9f%b7%e7%ad%86%e7%92%b0%e5%a2%83%e3%82%92%e4%bd%9c%e3%82%8b&amp;body=https://tachibana-ai.netlify.app/post/docker_latex/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -960,7 +940,7 @@ networkx
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://tachibana-ai.netlify.app/post/docker_python/&amp;title=Python3%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83%e3%82%92Docker%20container%e3%81%a8%e3%81%97%e3%81%a6%e4%bd%9c%e3%82%8b" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://tachibana-ai.netlify.app/post/docker_latex/&amp;title=Docker%20Container%20%e3%81%a8%e3%81%97%e3%81%a6%20LaTeX%20%e3%81%ae%e5%9f%b7%e7%ad%86%e7%92%b0%e5%a2%83%e3%82%92%e4%bd%9c%e3%82%8b" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -973,7 +953,7 @@ networkx
       
       
       <li>
-        <a href="whatsapp://send?text=Python3%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83%e3%82%92Docker%20container%e3%81%a8%e3%81%97%e3%81%a6%e4%bd%9c%e3%82%8b%20https://tachibana-ai.netlify.app/post/docker_python/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=Docker%20Container%20%e3%81%a8%e3%81%97%e3%81%a6%20LaTeX%20%e3%81%ae%e5%9f%b7%e7%ad%86%e7%92%b0%e5%a2%83%e3%82%92%e4%bd%9c%e3%82%8b%20https://tachibana-ai.netlify.app/post/docker_latex/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -986,7 +966,7 @@ networkx
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://tachibana-ai.netlify.app/post/docker_python/&amp;title=Python3%e3%81%ae%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83%e3%82%92Docker%20container%e3%81%a8%e3%81%97%e3%81%a6%e4%bd%9c%e3%82%8b" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://tachibana-ai.netlify.app/post/docker_latex/&amp;title=Docker%20Container%20%e3%81%a8%e3%81%97%e3%81%a6%20LaTeX%20%e3%81%ae%e5%9f%b7%e7%ad%86%e7%92%b0%e5%a2%83%e3%82%92%e4%bd%9c%e3%82%8b" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -1088,15 +1068,13 @@ networkx
     <h3>関連項目</h3>
     <ul>
       
-      <li><a href="/post/docker_latex/">Docker Container として LaTeX の執筆環境を作る</a></li>
-      
       <li><a href="/post/docker_r/">RStudio ServerをDockerで使うときのメモ</a></li>
       
-      <li><a href="/post/python_plotly/">PythonのPlotlyで遊んだ</a></li>
+      <li><a href="/post/docker_python/">Python3の開発環境をDocker containerとして作る</a></li>
       
       <li><a href="/post/good_references/">研究室に入った後今までお世話になっている神サイト/ツールたち</a></li>
       
-      <li><a href="/post/optimal_control_direct_method/">最適制御問題: 直接法 (プログラム)</a></li>
+      <li><a href="/post/ubuntu_docker/">Ubuntu20.04にDocker Engineをインストールする</a></li>
       
     </ul>
   </div>

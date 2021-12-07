@@ -3,7 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://tachibana-ai.netlify.app/categories/</loc>
-    <lastmod>2021-11-20T09:20:14+09:00</lastmod>
+    <lastmod>2021-12-07T22:17:14+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/tag/docker/</loc>
+    <lastmod>2021-12-07T22:17:14+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/category/docker/</loc>
+    <lastmod>2021-12-07T22:17:14+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/post/docker_latex/</loc>
+    <lastmod>2021-12-07T22:17:14+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/tag/latex/</loc>
+    <lastmod>2021-12-07T22:17:14+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/post/</loc>
+    <lastmod>2021-12-07T22:17:14+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/tags/</loc>
+    <lastmod>2021-12-07T22:17:14+09:00</lastmod>
+  </url><url>
+    <loc>https://tachibana-ai.netlify.app/</loc>
+    <lastmod>2021-12-07T22:17:14+09:00</lastmod>
   </url><url>
     <loc>https://tachibana-ai.netlify.app/tag/kvm/</loc>
     <lastmod>2021-11-20T09:20:14+09:00</lastmod>
@@ -14,19 +35,10 @@
     <loc>https://tachibana-ai.netlify.app/tag/linux/</loc>
     <lastmod>2021-11-20T09:20:14+09:00</lastmod>
   </url><url>
-    <loc>https://tachibana-ai.netlify.app/post/</loc>
-    <lastmod>2021-11-20T09:20:14+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/tags/</loc>
-    <lastmod>2021-11-20T09:20:14+09:00</lastmod>
-  </url><url>
     <loc>https://tachibana-ai.netlify.app/tag/ubuntu/</loc>
     <lastmod>2021-11-20T09:20:14+09:00</lastmod>
   </url><url>
     <loc>https://tachibana-ai.netlify.app/category/ubuntu/</loc>
-    <lastmod>2021-11-20T09:20:14+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/</loc>
     <lastmod>2021-11-20T09:20:14+09:00</lastmod>
   </url><url>
     <loc>https://tachibana-ai.netlify.app/tag/blog/</loc>
@@ -86,17 +98,11 @@
     <loc>https://tachibana-ai.netlify.app/post/blog_lab/</loc>
     <lastmod>2021-09-08T18:46:10+09:00</lastmod>
   </url><url>
-    <loc>https://tachibana-ai.netlify.app/tag/docker/</loc>
-    <lastmod>2021-09-04T17:26:46+09:00</lastmod>
-  </url><url>
     <loc>https://tachibana-ai.netlify.app/tag/pc/</loc>
     <lastmod>2021-09-04T17:26:46+09:00</lastmod>
   </url><url>
     <loc>https://tachibana-ai.netlify.app/post/good_references/</loc>
     <lastmod>2021-09-04T17:26:46+09:00</lastmod>
-  </url><url>
-    <loc>https://tachibana-ai.netlify.app/category/docker/</loc>
-    <lastmod>2021-08-30T09:15:39+09:00</lastmod>
   </url><url>
     <loc>https://tachibana-ai.netlify.app/tag/r/</loc>
     <lastmod>2021-08-30T09:15:39+09:00</lastmod>
